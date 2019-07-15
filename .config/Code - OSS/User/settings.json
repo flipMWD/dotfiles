@@ -1,0 +1,139 @@
+{
+    // Visual Studio Code
+    "telemetry.enableTelemetry": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.wordWrap": "bounded",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.statusBar.visible": true,
+    "workbench.statusBar.feedback.visible": false,
+    "workbench.editor.showTabs": true,
+    "workbench.startupEditor": "newUntitledFile",
+    // "workbench.settings.openDefaultSettings": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#1b455e",
+        "statusBar.noFolderBackground": "#0a202c",
+        "statusBar.debuggingBackground": "#1374a1"
+    },
+    "explorer.openEditors.visible": 0,
+    "window.zoomLevel": 0,
+    "explorer.confirmDragAndDrop": false,
+    "editor.lineNumbers": "relative",
+    "files.autoSave": "off",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "explorer.confirmDelete": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+    "breadcrumbs.enabled": false,
+    "workbench.tree.indent": 10,
+    "editor.detectIndentation": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[vue]": {
+        "editor.tabSize": 2
+    },
+    "C_Cpp.intelliSenseCachePath": "C:\\Users\\Felipe\\.intelliSenseCacheC_Cpp",
+    "C_Cpp.intelliSenseCacheSize": 500,
+    // Emmet
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    // Vim
+    "vim.easymotion": true,
+    "vim.easymotionMarkerBackgroundColor": "Black",
+    "vim.easymotionMarkerForegroundColorOneChar": "Cyan",
+    "vim.easymotionMarkerForegroundColorTwoChar": "Lime",
+    "vim.easymotionMarkerWidthPerChar": 8,
+    "vim.easymotionMarkerHeight": 16,
+    "vim.easymotionMarkerYOffset": 3,
+    "vim.easymotionKeys": "hklyuiopnmqwertzxcvbasdgjf",
+    "vim.easymotionJumpToAnywhereRegex": ".$",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["Y"],
+            "after": ["y", "$"]
+        },
+        {
+            "before": [
+                "<leader>", ";"],
+            "after": ["A", ";", "<Esc>"]
+        },
+        {
+            "before": ["<Space>"],
+            "after": ["<leader>", "<leader>", "s"]
+        },
+        {
+            "before": ["<leader>", "i"],
+            "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
+        },
+        {
+            "before": ["<leader>", "k"],
+            "after": ["<leader>", "<leader>", "<leader>", "b", "d", "e"]
+        },
+        {
+            "before": ["<leader>", "j"],
+            "after": ["<leader>", "<leader>", "<leader>", "b", "d", "j", "k"]
+        },
+        {
+            "before": ["<leader>", "l"],
+            "after": ["<leader>", "<leader>", "<leader>", "j"]
+        },
+        {
+            "before": ["S"],
+            "after": ["<Nop>"]
+        }
+    ],
+    // Git - Terminal
+    "terminal.integrated.rendererType": "canvas",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    // Live Server
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+    // XAMPP
+    "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    // Bracket Pair Colorizer 2
+    "bracket-pair-colorizer-2.colors": [
+        "White",
+        "Cyan",
+        "MediumSlateblue",
+        "Fuchsia"
+    ],
+    // Indent Rainbow
+    "indentRainbow.colors": [
+        "rgba(27, 69, 94, 0.1)",
+        "rgba(27, 69, 94, 0.2)",
+        "rgba(27, 69, 94, 0.3)",
+        "rgba(27, 69, 94, 0.2)"
+    ],
+    "indentRainbow.errorColor": "rgba(19, 116, 161, 0.4)",
+    // Live Sass Compiler
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/dist/css"
+        }
+    ],
+    // Code Runner
+    "code-runner.enableAppInsights": false,
+    "code-runner.showExecutionMessage": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.runInTerminal": false,
+    // NativeScript
+    "nativescript.analytics.enabled": false,
+    // Latex Workshop
+    "latex-workshop.view.pdf.viewer": "tab",
+    "window.menuBarVisibility": "toggle"
+}

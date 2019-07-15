@@ -1,0 +1,34 @@
+/*
+
+!.gitignore
+
+!.bashrc
+!.dir_colors
+!.profile
+!.vimrc
+!.Xresources
+
+!.i3/
+
+!.config/
+.config/*
+!.config/compton.conf
+
+!.config/cmus/
+.config/cmus/*
+!.config/cmus/autosave
+!.config/cmus/flip.theme
+
+!.config/Code\ -\ OSS/
+.config/Code\ -\ OSS/*
+!.config/Code\ -\ OSS/User/
+.config/Code\ -\ OSS/User/*
+!.config/Code\ -\ OSS/User/*.json
+
+!.config/i3blocks/
+!.config/i3status/
+
+!.config/ranger/
+.config/ranger/*
+!.config/ranger/rc.conf
+!.config/ranger/rifle.conf

@@ -1,0 +1,330 @@
+# Reset to Default: i3-config-wizard(1)
+# Fonts: awesome-terminal-fonts, icons-in-terminal
+
+# Set Mod Key (Mod1 = Alt, Mod4 = Super)
+set $mod Mod4
+
+# Variables
+set $wallpaper "blue-starship_bar.jpg"
+
+
+#=====# APPEARANCE #=====#
+
+
+# Set Gaps
+gaps inner 10
+gaps outer 0
+
+bindsym $mod+e gaps outer current plus 40
+bindsym $mod+r gaps outer current minus 40
+
+# Configure Border Style
+default_border pixel 1
+default_floating_border normal
+hide_edge_borders none
+
+# Font for Window Titles and Bar if not set in bar {}
+font xft:URWGothic-Book 10
+
+# Color Variables from file ~/.Xresources
+set_from_resource $term_bg	background
+set_from_resource $term_fg 	foreground
+set_from_resource $term_c0	color0
+set_from_resource $term_c1     	color1
+set_from_resource $term_c2     	color2
+set_from_resource $term_c3     	color3
+set_from_resource $term_c4     	color4
+set_from_resource $term_c5     	color5
+set_from_resource $term_c6     	color6
+set_from_resource $term_c7     	color7
+set_from_resource $term_c8     	color8
+set_from_resource $term_c9     	color9
+set_from_resource $term_c10	color10
+set_from_resource $term_c11    	color11
+set_from_resource $term_c12    	color12
+set_from_resource $term_c13    	color13
+set_from_resource $term_c14    	color14
+set_from_resource $term_c15    	color15
+
+# Window Title Colors
+# class			border		backgr.		text		indic.		child_border
+client.focused		$term_c0	$term_bg	$term_c12	$term_c15
+client.focused_inactive	$term_c8	"#2F3D44"	$term_c15	$term_c15
+client.unfocused	$term_c8	"#434d52"	$term_c7	$term_c15
+client.urgent		$term_c0	$term_c11	$term_c15	$term_c15
+client.background       $term_c0
+
+# i3 Bar Colors
+bar {
+	i3bar_command i3bar -t
+	# status_command i3status
+	status_command i3blocks
+	separator_symbol " | "
+	position top
+
+	# Set Output Screen - Use: 'xrandr --output eDP1 --primary'
+	# tray_output primary
+	# tray_output eDP1
+
+	bindsym button4 nop
+	bindsym button5 nop
+	# Ignore Ordering Number prepended to Workspace Name
+	strip_workspace_numbers yes
+
+	colors {
+		background #00000000
+		statusline $term_c15
+		separator  $term_c7
+
+		# class			border		backgr.		text
+		focused_workspace  	#f8f8f830	$term_c12	$term_c15
+		active_workspace   	$term_c8	$term_c0	$term_c7
+		inactive_workspace 	#f8f8f840	#f8f8f8a0	$term_c8
+		binding_mode       	#f8f8f840	#f8f8f8a0	$term_c8
+		urgent_workspace   	$term_c8	$term_c11	$term_c15
+	}
+}
+
+
+#=====# KEYBINDINGS #=====#
+
+
+# Start Terminal
+bindsym $mod+Return exec terminal
+
+# Kill Focused Window
+bindsym $mod+y kill
+
+# Start Program Launcher
+bindsym $mod+slash --release exec --no-startup-id rofi -show combi -combi-modi drun#window -modi combi
+bindsym $mod+Shift+slash --release exec --no-startup-id rofi -show run
+
+# Change Focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move Focused Window to direction and by pixels when Floating
+bindsym $mod+Shift+h move left 40 px
+bindsym $mod+Shift+j move down 40 px
+bindsym $mod+Shift+k move up 40 px
+bindsym $mod+Shift+l move right 40 px
+
+bindsym $mod+Shift+Left move left 40 px
+bindsym $mod+Shift+Down move down 40 px
+bindsym $mod+Shift+Up move up 40 px
+bindsym $mod+Shift+Right move right 40 px
+
+# Toggle Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Split Orientation
+bindsym $mod+period split h
+bindsym $mod+comma split v
+
+# Change Container Layout
+bindsym $mod+s layout stacking
+bindsym $mod+d layout tabbed
+bindsym $mod+semicolon layout toggle split
+
+# Focus the Parent and Child Container
+bindsym $mod+equal focus parent
+bindsym $mod+minus focus child
+
+# Toggle Tiling / Floating
+bindsym $mod+Shift+n floating toggle
+bindsym $mod+n focus mode_toggle
+
+# Use Mouse+$mod to Drag Floating Window
+floating_modifier $mod
+
+# Toggle Sticky Floating Window on all Workspaces
+bindsym $mod+a sticky toggle
+
+# Move the Focused Window to the Scratchpad and alternate between
+bindsym $mod+Shift+o move scratchpad
+bindsym $mod+o scratchpad show
+
+# Workspace Names
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
+# Switch to Workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+u workspace prev
+bindsym $mod+i workspace next
+bindsym $mod+Tab workspace back_and_forth
+
+# Move Focused Container to Workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+u move container to workspace prev; workspace prev
+bindsym $mod+Shift+i move container to workspace next; workspace next
+
+# Mode to Resize Window
+set $mode_resize   Resize
+bindsym $mod+m mode " $mode_resize "
+mode " $mode_resize " {
+        # Pixels for Floating and Percentage Points for Tilling Container
+        bindsym h resize shrink width 40 px or 10 ppt
+        bindsym j resize grow height 40 px or 10 ppt
+        bindsym k resize shrink height 40 px or 10 ppt
+        bindsym l resize grow width 40 px or 10 ppt
+
+        bindsym Left resize shrink width 40 px or 10 ppt
+        bindsym Down resize grow height 40 px or 10 ppt
+        bindsym Up resize shrink height 40 px or 10 ppt
+        bindsym Right resize grow width 40 px or 10 ppt
+
+	bindsym f floating enable, resize set 1840 1000, move position center, mode "default"
+	bindsym u floating enable, resize set 1280 720, move position center, mode "default"
+	bindsym i floating enable, resize set 640 360, move position center, mode "default"
+	bindsym p floating enable, resize set 640 360, move position 1270 710, mode "default"
+	bindsym o move position center, mode "default"
+
+        # Exit Resize Mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+	bindsym $mod+m mode "default"
+	bindsym m mode "default"
+}
+
+# Reload Config File and Restart i3
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+w restart
+
+# Mode to Restart, Exit and Shutdown #  sus[P]end,  [H]ibernate
+set $mode_system  L  |   U  |   E  |   R  |   S
+bindsym $mod+Shift+q mode " $mode_system "
+mode " $mode_system " {
+	bindsym l exec --no-startup-id i3exit lock, mode "default"
+    	bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    	bindsym e exec --no-startup-id i3exit logout, mode "default"
+    	# bindsym p exec --no-startup-id i3exit suspend, mode "default"
+    	# bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    	bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    	bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+
+    	# Exit System Mode
+    	bindsym Return mode "default"
+    	bindsym Escape mode "default"
+}
+
+
+#=====# RUN APLICATIONS #=====#
+
+
+# Alsa and PulseAudio Configuration
+exec --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+#bindsym $mod+Ctrl+m exec pavucontrol
+
+# Media Player Controls
+bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screen Brightness Controls
+# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Launch Applications
+bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+bindsym $mod+F3 exec pcmanfm
+# bindsym $mod+F3 exec ranger
+bindsym $mod+Shift+F3 exec gksu pcmanfm
+bindsym $mod+F5 exec terminal -e 'mocp'
+# bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+# bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# Open specific Applications in Floating Mode - Use: 'xprop'
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="calamares"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
+for_window [class="feh"] floating enable border pixel 1 resize set 1280 720
+for_window [class="(?i)sxiv"] floating enable border pixel 1
+for_window [class="(?i)qalculate-gtk"] floating enable border pixel 1
+
+# Switch to Workspace with Urgent Window automatically
+for_window [urgent=latest] focus
+
+# Autostart Applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always --no-startup-id feh --bg-scale /home/flip/Pictures/Wallpapers/$wallpaper
+exec --no-startup-id compton -b
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id pamac-tray
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id clipit
+#exec_always --no-startup-id sbxkb
+#exec_always --no-startup-id ff-theme-util
+#exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id xset -b
+exec --no-startup-id xmodmap ~/.i3/swap-cl-esc
+exec --no-startup-id udisksctl mount -b /dev/sdc1
+exec --no-startup-id udisksctl mount -b /dev/sdb1
