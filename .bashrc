@@ -120,8 +120,10 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
+alias gm='cd /run/media/flip/ && pwd && ls'
 alias la='ls -al'
 alias r='ranger'
+alias v='vim'
 
 xhost +local:root > /dev/null 2>&1
 

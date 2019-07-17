@@ -17,7 +17,7 @@
 
 !.config/cmus/
 .config/cmus/*
-!.config/cmus/autosave
+!.config/cmus/autosave.backup
 !.config/cmus/flip.theme
 
 !.config/Code\ -\ OSS/
