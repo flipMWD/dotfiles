@@ -122,6 +122,7 @@ alias np='nano -w PKGBUILD'
 alias more=less
 alias gm='cd /run/media/flip/ && pwd && ls'
 alias la='ls -al'
+alias p='sudo pacman'
 alias r='ranger'
 alias v='vim'
 
