@@ -1,0 +1,7 @@
+scroll_offset (2) 8
+bind -f common h win-next
+bind -f common l win-next
+bind common < seek -1m
+bind common > seek +1m
+bind -f common , seek -5
+bind -f common . seek +5

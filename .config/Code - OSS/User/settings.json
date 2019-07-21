@@ -3,6 +3,7 @@
     "telemetry.enableTelemetry": false,
     "editor.renderWhitespace": "boundary",
     "editor.wordWrap": "bounded",
+    "window.menuBarVisibility": "toggle",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.statusBar.visible": true,
     "workbench.statusBar.feedback.visible": false,
@@ -37,7 +38,7 @@
     "[vue]": {
         "editor.tabSize": 2
     },
-    "C_Cpp.intelliSenseCachePath": "C:\\Users\\Felipe\\.intelliSenseCacheC_Cpp",
+    "C_Cpp.intelliSenseCachePath": "~/.vscode-oss/C-cache",
     "C_Cpp.intelliSenseCacheSize": 500,
     // Emmet
     "emmet.includeLanguages": {
@@ -45,6 +46,7 @@
     },
     // Vim
     "vim.easymotion": true,
+    "vim.easymotionMarkerFontFamily": "Droid Sans Mono",
     "vim.easymotionMarkerBackgroundColor": "Black",
     "vim.easymotionMarkerForegroundColorOneChar": "Cyan",
     "vim.easymotionMarkerForegroundColorTwoChar": "Lime",
@@ -53,6 +55,7 @@
     "vim.easymotionMarkerYOffset": 3,
     "vim.easymotionKeys": "hklyuiopnmqwertzxcvbasdgjf",
     "vim.easymotionJumpToAnywhereRegex": ".$",
+    "keyboard.dispatch": "keyCode",
     "vim.insertModeKeyBindings": [
         {
             "before": ["j", "k"],
@@ -135,5 +138,4 @@
     "nativescript.analytics.enabled": false,
     // Latex Workshop
     "latex-workshop.view.pdf.viewer": "tab",
-    "window.menuBarVisibility": "toggle"
 }

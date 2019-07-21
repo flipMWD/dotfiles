@@ -199,15 +199,15 @@ set $mode_resize   Resize
 bindsym $mod+m mode " $mode_resize "
 mode " $mode_resize " {
         # Pixels for Floating and Percentage Points for Tilling Container
-        bindsym h resize shrink width 40 px or 10 ppt
-        bindsym j resize grow height 40 px or 10 ppt
-        bindsym k resize shrink height 40 px or 10 ppt
-        bindsym l resize grow width 40 px or 10 ppt
+        bindsym h resize shrink width 40 px or 8 ppt
+        bindsym j resize grow height 40 px or 8 ppt
+        bindsym k resize shrink height 40 px or 8 ppt
+        bindsym l resize grow width 40 px or 8 ppt
 
-        bindsym Left resize shrink width 40 px or 10 ppt
-        bindsym Down resize grow height 40 px or 10 ppt
-        bindsym Up resize shrink height 40 px or 10 ppt
-        bindsym Right resize grow width 40 px or 10 ppt
+        bindsym Left resize shrink width 40 px or 8 ppt
+        bindsym Down resize grow height 40 px or 8 ppt
+        bindsym Up resize shrink height 40 px or 8 ppt
+        bindsym Right resize grow width 40 px or 8 ppt
 
 	bindsym f floating enable, resize set 1840 1000, move position center, mode "default"
 	bindsym u floating enable, resize set 1280 720, move position center, mode "default"
@@ -248,17 +248,19 @@ mode " $mode_system " {
 
 
 # Alsa and PulseAudio Configuration
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon -d 'alsamixer'
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
-# Media Player Controls
-bindsym XF86AudioPlay exec playerctl play-pause
-# bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# Media Player Controls # pactl list sinks
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 4 toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 4 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 4 +5%
 
 # Screen Brightness Controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
@@ -281,10 +283,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # Open specific Applications in Floating Mode - Use: 'xprop'
 for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-settings"] floating enable
@@ -320,7 +319,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id pamac-tray
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id clipit
+#exec --no-startup-id clipit
 #exec_always --no-startup-id sbxkb
 #exec_always --no-startup-id ff-theme-util
 #exec_always --no-startup-id fix_xcursor
