@@ -6,10 +6,11 @@
     "window.menuBarVisibility": "toggle",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.statusBar.visible": true,
-    "workbench.statusBar.feedback.visible": false,
     "workbench.editor.showTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    // "workbench.settings.openDefaultSettings": true,
+    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "workbench.settings.openDefaultSettings": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#1b455e",
         "statusBar.noFolderBackground": "#0a202c",
@@ -29,15 +30,7 @@
     "editor.detectIndentation": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
-    "[html]": {
-        "editor.tabSize": 2
-    },
-    "[javascript]": {
-        "editor.tabSize": 2
-    },
-    "[vue]": {
-        "editor.tabSize": 2
-    },
+    // C & C++
     "C_Cpp.intelliSenseCachePath": "~/.vscode-oss/C-cache",
     "C_Cpp.intelliSenseCacheSize": 500,
     // Emmet
@@ -46,7 +39,7 @@
     },
     // Vim
     "vim.easymotion": true,
-    "vim.easymotionMarkerFontFamily": "Droid Sans Mono",
+    "vim.easymotionMarkerFontFamily": "Fira Code",
     "vim.easymotionMarkerBackgroundColor": "Black",
     "vim.easymotionMarkerForegroundColorOneChar": "Cyan",
     "vim.easymotionMarkerForegroundColorTwoChar": "Lime",

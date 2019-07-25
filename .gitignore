@@ -27,6 +27,8 @@
 .config/Code\ -\ OSS/User/*
 !.config/Code\ -\ OSS/User/*.json
 
+!.config/mpv
+
 !.config/i3blocks/
 !.config/i3status/
 

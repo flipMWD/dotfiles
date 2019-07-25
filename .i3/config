@@ -27,62 +27,62 @@ hide_edge_borders none
 font xft:URWGothic-Book 10
 
 # Color Variables from file ~/.Xresources
-set_from_resource $term_bg	background
-set_from_resource $term_fg 	foreground
-set_from_resource $term_c0	color0
-set_from_resource $term_c1     	color1
-set_from_resource $term_c2     	color2
-set_from_resource $term_c3     	color3
-set_from_resource $term_c4     	color4
-set_from_resource $term_c5     	color5
-set_from_resource $term_c6     	color6
-set_from_resource $term_c7     	color7
-set_from_resource $term_c8     	color8
-set_from_resource $term_c9     	color9
-set_from_resource $term_c10	color10
-set_from_resource $term_c11    	color11
-set_from_resource $term_c12    	color12
-set_from_resource $term_c13    	color13
-set_from_resource $term_c14    	color14
-set_from_resource $term_c15    	color15
+set_from_resource $term_bg      background
+set_from_resource $term_fg      foreground
+set_from_resource $term_c0      color0
+set_from_resource $term_c1      color1
+set_from_resource $term_c2      color2
+set_from_resource $term_c3      color3
+set_from_resource $term_c4      color4
+set_from_resource $term_c5      color5
+set_from_resource $term_c6      color6
+set_from_resource $term_c7      color7
+set_from_resource $term_c8      color8
+set_from_resource $term_c9      color9
+set_from_resource $term_c10     color10
+set_from_resource $term_c11     color11
+set_from_resource $term_c12     color12
+set_from_resource $term_c13     color13
+set_from_resource $term_c14     color14
+set_from_resource $term_c15     color15
 
 # Window Title Colors
-# class			border		backgr.		text		indic.		child_border
-client.focused		$term_c0	$term_bg	$term_c12	$term_c15
-client.focused_inactive	$term_c8	"#2F3D44"	$term_c15	$term_c15
-client.unfocused	$term_c8	"#434d52"	$term_c7	$term_c15
-client.urgent		$term_c0	$term_c11	$term_c15	$term_c15
+# class                 border          backgr.         text            indic.          child_border
+client.focused          $term_c0        $term_bg        $term_c12       $term_c15
+client.focused_inactive $term_c8        "#2F3D44"       $term_c15       $term_c15
+client.unfocused        $term_c8        "#434d52"       $term_c7        $term_c15
+client.urgent           $term_c0        $term_c11       $term_c15       $term_c15
 client.background       $term_c0
 
 # i3 Bar Colors
 bar {
-	i3bar_command i3bar -t
-	# status_command i3status
-	status_command i3blocks
-	separator_symbol " | "
-	position top
+    i3bar_command i3bar -t
+    # status_command i3status
+    status_command i3blocks
+    separator_symbol " | "
+    position top
 
-	# Set Output Screen - Use: 'xrandr --output eDP1 --primary'
-	# tray_output primary
-	# tray_output eDP1
+    # Set Output Screen - Use: 'xrandr --output eDP1 --primary'
+    # tray_output primary
+    # tray_output eDP1
 
-	bindsym button4 nop
-	bindsym button5 nop
-	# Ignore Ordering Number prepended to Workspace Name
-	strip_workspace_numbers yes
+    bindsym button4 nop
+    bindsym button5 nop
+    # Ignore Ordering Number prepended to Workspace Name
+    strip_workspace_numbers yes
 
-	colors {
-		background #00000000
-		statusline $term_c15
-		separator  $term_c7
+    colors {
+        background #00000000
+        statusline $term_c15
+        separator  $term_c7
 
-		# class			border		backgr.		text
-		focused_workspace  	#f8f8f830	$term_c12	$term_c15
-		active_workspace   	$term_c8	$term_c0	$term_c7
-		inactive_workspace 	#f8f8f840	#f8f8f8a0	$term_c8
-		binding_mode       	#f8f8f840	#f8f8f8a0	$term_c8
-		urgent_workspace   	$term_c8	$term_c11	$term_c15
-	}
+        # class                 border          backgr.         text
+        focused_workspace       #f8f8f830       $term_c12       $term_c15
+        active_workspace        $term_c8        $term_c0        $term_c7
+        inactive_workspace      #f8f8f840       #f8f8f8a0       $term_c8
+        binding_mode            #f8f8f840       #f8f8f8a0       $term_c8
+        urgent_workspace        $term_c8        $term_c11       $term_c15
+    }
 }
 
 
@@ -198,28 +198,28 @@ bindsym $mod+Shift+i move container to workspace next; workspace next
 set $mode_resize   Resize
 bindsym $mod+m mode " $mode_resize "
 mode " $mode_resize " {
-        # Pixels for Floating and Percentage Points for Tilling Container
-        bindsym h resize shrink width 40 px or 8 ppt
-        bindsym j resize grow height 40 px or 8 ppt
-        bindsym k resize shrink height 40 px or 8 ppt
-        bindsym l resize grow width 40 px or 8 ppt
+    # Pixels for Floating and Percentage Points for Tilling Container
+    bindsym h resize shrink width 40 px or 8 ppt
+    bindsym j resize grow height 40 px or 8 ppt
+    bindsym k resize shrink height 40 px or 8 ppt
+    bindsym l resize grow width 40 px or 8 ppt
 
-        bindsym Left resize shrink width 40 px or 8 ppt
-        bindsym Down resize grow height 40 px or 8 ppt
-        bindsym Up resize shrink height 40 px or 8 ppt
-        bindsym Right resize grow width 40 px or 8 ppt
+    bindsym Left resize shrink width 40 px or 8 ppt
+    bindsym Down resize grow height 40 px or 8 ppt
+    bindsym Up resize shrink height 40 px or 8 ppt
+    bindsym Right resize grow width 40 px or 8 ppt
 
-	bindsym f floating enable, resize set 1840 1000, move position center, mode "default"
-	bindsym u floating enable, resize set 1280 720, move position center, mode "default"
-	bindsym i floating enable, resize set 640 360, move position center, mode "default"
-	bindsym p floating enable, resize set 640 360, move position 1270 710, mode "default"
-	bindsym o move position center, mode "default"
+    bindsym f floating enable, resize set 1840 1000, move position center, mode "default"
+    bindsym u floating enable, resize set 1280 720, move position center, mode "default"
+    bindsym i floating enable, resize set 640 360, move position center, mode "default"
+    bindsym p floating enable, resize set 640 360, move position 1270 710, mode "default"
+    bindsym o move position center, mode "default"
 
-        # Exit Resize Mode
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-	bindsym $mod+m mode "default"
-	bindsym m mode "default"
+    # Exit Resize Mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+    bindsym m mode "default"
 }
 
 # Reload Config File and Restart i3
@@ -230,17 +230,17 @@ bindsym $mod+Shift+w restart
 set $mode_system  L  |   U  |   E  |   R  |   S
 bindsym $mod+Shift+q mode " $mode_system "
 mode " $mode_system " {
-	bindsym l exec --no-startup-id i3exit lock, mode "default"
-    	bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    	bindsym e exec --no-startup-id i3exit logout, mode "default"
-    	# bindsym p exec --no-startup-id i3exit suspend, mode "default"
-    	# bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    	bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    	bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    # bindsym p exec --no-startup-id i3exit suspend, mode "default"
+    # bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
 
-    	# Exit System Mode
-    	bindsym Return mode "default"
-    	bindsym Escape mode "default"
+    # Exit System Mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 
@@ -258,9 +258,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 4 toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 4 -5%
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 4 +5%
+bindsym XF86AudioMute exec --no-startup-id /home/flip/.i3/pactl-find-sink.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/flip/.i3/pactl-find-sink.sh -m
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/flip/.i3/pactl-find-sink.sh -p
 
 # Screen Brightness Controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"

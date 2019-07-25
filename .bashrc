@@ -115,16 +115,16 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-alias cp="cp -i"                          # confirm before overwriting something
+alias cp='cp -i'                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
-alias gm='cd /run/media/flip/ && pwd && ls'
+alias gi='cd /run/media/flip/ && pwd && ls'
 alias la='ls -al'
 alias p='sudo pacman'
-alias r='ranger'
 alias v='vim'
+alias r='ranger'
 
 xhost +local:root > /dev/null 2>&1
 
