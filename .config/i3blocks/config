@@ -53,6 +53,7 @@ interval=5
 
 # Memory usage
 [memory]
+command=~/.config/i3blocks/mem-used
 label= 
 interval=5
 

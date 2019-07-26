@@ -1,7 +1,7 @@
 #!/bin/sh
 # Find correct Bluetooth Headset Sink for i3 - Volume Control
 
-current=$(pactl list short sinks | grep RUNNING | cut -f1)
+current=$(pactl list short sinks | grep -e RUNNING -e a2dp_sink | cut -f1)
 
 if [ "$1" == "-m" ]
 then

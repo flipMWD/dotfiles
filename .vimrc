@@ -2,8 +2,8 @@
 " vim-surround
 
 " Paths
-"set path-=/usr/include
-"set path+=
+set path-=/usr/include
+set path+=/run/media/$USER/Data/Projects/CodeTutorial
 
 " General
 set number
@@ -12,7 +12,7 @@ set scrolloff=9
 set textwidth=80
 set formatoptions+=t
 set linebreak
-set showbreak=>
+set showbreak=»
 set listchars=eol:¬,tab:\|->,space:·,trail:X
 set hidden
 set splitbelow
@@ -49,7 +49,6 @@ autocmd ColorScheme *
     \ hi User7          ctermfg=15      ctermbg=9       cterm=bold |
     \ hi ModeMsg        ctermfg=12                      |
 
-set statusline=
 set laststatus=2
 set statusline=
 set statusline+=%1*\ \«\ %n\ \»\ %*         " buffer number
@@ -88,9 +87,7 @@ let g:netrw_browse_split=4      " open on previous window
 
 " Alternate between Only Window and split with Alt Buffer
 function AltOwAb()
-    let win_count=0
-    windo let win_count=win_count+1
-    if (bufexists(0) && win_count==#1)      " buf 0 = #
+    if (bufexists(0) && winnr('$') == 1)      " buf 0 = #
         sbuffer #
     else
         only
@@ -119,13 +116,14 @@ nnoremap <Leader>N :let @/=""<CR>
 nnoremap <Leader>W :split $MYVIMRC<CR>
 nnoremap <Leader>w :source $MYVIMRC<CR>
 nnoremap <Leader>s :set list!<CR>
+nnoremap <Leader>f :find<Space>
 
 inoremap <C-u> <Esc>viwUea
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
 nnoremap <Leader>j :ls!<CR>:b<Space>
-nnoremap <Leader>k :b#<CR>
+nnoremap <Leader>k :buffer #<CR>
 nnoremap <Leader>m :marks<CR>:normal `
 
 " :sp :vs <C-w>t|b <C-w>H|J|K|L <C-w>=|_ z{nr}

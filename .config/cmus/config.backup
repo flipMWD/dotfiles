@@ -5,3 +5,4 @@ bind common < seek -1m
 bind common > seek +1m
 bind -f common , seek -5
 bind -f common . seek +5
+bind -f common u shell ~/.config/cmus/update-lib

@@ -4,6 +4,7 @@
 !README.md
 
 !.bashrc
+!.bash_aliases
 !.dir_colors
 !.profile
 !.vimrc
@@ -20,6 +21,7 @@
 !.config/cmus/autosave.backup
 !.config/cmus/flip.theme
 !.config/cmus/config.backup
+!.config/cmus/update-lib
 
 !.config/Code\ -\ OSS/
 .config/Code\ -\ OSS/*

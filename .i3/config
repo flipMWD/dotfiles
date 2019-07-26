@@ -48,10 +48,10 @@ set_from_resource $term_c15     color15
 
 # Window Title Colors
 # class                 border          backgr.         text            indic.          child_border
-client.focused          $term_c0        $term_bg        $term_c12       $term_c15
-client.focused_inactive $term_c8        "#2F3D44"       $term_c15       $term_c15
-client.unfocused        $term_c8        "#434d52"       $term_c7        $term_c15
-client.urgent           $term_c0        $term_c11       $term_c15       $term_c15
+client.focused          $term_c0        $term_bg        $term_c12       $term_c7
+client.focused_inactive $term_c8        "#2F3D44"       $term_c15       $term_c7
+client.unfocused        $term_c8        "#434d52"       $term_c7        $term_c7
+client.urgent           $term_c0        $term_c11       $term_c15       $term_c7
 client.background       $term_c0
 
 # i3 Bar Colors
@@ -258,9 +258,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioMute exec --no-startup-id /home/flip/.i3/pactl-find-sink.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id /home/flip/.i3/pactl-find-sink.sh -m
-bindsym XF86AudioRaiseVolume exec --no-startup-id /home/flip/.i3/pactl-find-sink.sh -p
+bindsym XF86AudioMute exec --no-startup-id ~/.i3/pactl-find-sink
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.i3/pactl-find-sink -m
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.i3/pactl-find-sink -p
 
 # Screen Brightness Controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
