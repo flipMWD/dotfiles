@@ -3,7 +3,7 @@
 
 " Paths
 set path-=/usr/include
-set path+=/run/media/$USER/Data/Projects/CodeTutorial
+"set path+=
 
 " General
 set number

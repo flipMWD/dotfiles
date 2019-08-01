@@ -248,7 +248,6 @@ mode " $mode_system " {
 
 
 # Alsa and PulseAudio Configuration
-#exec --no-startup-id volumeicon -d 'alsamixer'
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
@@ -319,9 +318,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id pamac-tray
 exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id clipit
 #exec_always --no-startup-id sbxkb
-#exec_always --no-startup-id ff-theme-util
 #exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id xset -b
 exec --no-startup-id xmodmap ~/.i3/swap-cl-esc
