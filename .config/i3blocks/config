@@ -112,7 +112,7 @@ signal=10
 # Date Time
 [time]
 label=
-command=date '+%a, %b %d'
+command=date '+%a, %d %b'
 separator=false
 interval=60
 

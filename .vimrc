@@ -30,6 +30,7 @@ autocmd ColorScheme *
     \ hi Visual                         ctermbg=15      |
     \ hi NonText        ctermfg=8                       |
     \ hi SpecialKey     ctermfg=8                       |
+    \ hi Folded         ctermfg=12      ctermbg=0       |
     \ hi VertSplit      ctermfg=0                       |
     \ hi Pmenu          ctermfg=7       ctermbg=0       |
     \ hi PmenuSel       ctermfg=15      ctermbg=12      |
@@ -60,7 +61,7 @@ set statusline+=%4*\ %P\ %*                 " doc percentage
 " Formatting
 set shiftwidth=4        " indent length
 set softtabstop=4       " mix space and tab
-set expandtab
+set expandtab           " into spaces
 set autoindent
 set smartindent
 set smarttab
@@ -86,9 +87,14 @@ let g:netrw_browse_split=4      " open on previous window
 "=== Functions ==="
 
 " Alternate between Only Window and split with Alt Buffer
-function AltOwAb()
+function AltBOnly()
     if (bufexists(0) && winnr('$') == 1)      " buf 0 = #
-        sbuffer #
+        if (winwidth(0) >= 170)
+            vsplit
+            buffer #
+        else
+            sbuffer #
+        endif
     else
         only
     endif
@@ -113,8 +119,8 @@ nnoremap <Leader>P "+P
 nnoremap <Leader>r diw"0P
 nnoremap <Leader>n :noh<CR><Esc>
 nnoremap <Leader>N :let @/=""<CR>
-nnoremap <Leader>W :split $MYVIMRC<CR>
-nnoremap <Leader>w :source $MYVIMRC<CR>
+nnoremap <Leader>C :split $MYVIMRC<CR>
+nnoremap <Leader>c :source $MYVIMRC<CR>
 nnoremap <Leader>s :set list!<CR>
 nnoremap <Leader>f :find<Space>
 
@@ -127,13 +133,34 @@ nnoremap <Leader>k :buffer #<CR>
 nnoremap <Leader>m :marks<CR>:normal `
 
 " :sp :vs <C-w>t|b <C-w>H|J|K|L <C-w>=|_ z{nr}
-nnoremap <Leader>o :call AltOwAb()<CR>
+nnoremap <Leader>o :call AltBOnly()<CR>
 nnoremap <Leader>h :wincmd W<CR>
 nnoremap <Leader>l :wincmd w<CR>
 nnoremap <Leader>H :wincmd R<CR>
 nnoremap <Leader>L :wincmd r<CR>
 
+nnoremap <Leader>w- :split<CR>
+nnoremap <Leader>w/ :vsplit<CR>
+nnoremap <Leader>wj :wincmd J<CR>
+nnoremap <Leader>wk :wincmd K<CR>
+nnoremap <Leader>wh :wincmd H<CR>
+nnoremap <Leader>wl :wincmd L<CR>
+nnoremap <Leader>wt :wincmd t<CR>
+nnoremap <Leader>wb :wincmd b<CR>
+nnoremap <Leader>wd :q<CR>
+nnoremap <Leader>ws :resize 10<CR>
+nnoremap <Leader>we :wincmd =<CR>
+
 " gt|T :tabe|f :tabo :tabn|p :tabm -|+
 nnoremap <Leader>u :tab h<Space>
 nnoremap <Leader>i :tab sb %
 nnoremap <Leader>U :tabclose<CR>
+
+nnoremap <Leader>tw :wincmd T<CR> 
+nnoremap <Leader>tj :tabprevious<CR> 
+nnoremap <Leader>tk :tabnext<CR> 
+nnoremap <Leader>th :tabfirst<CR> 
+nnoremap <Leader>tl :tabs<CR>:tabnext<Space>
+nnoremap <Leader>td :tabclose<CR> 
+nnoremap <Leader>to :tabonly<CR> 
+nnoremap <Leader>tm :tabmove +

@@ -8,8 +8,7 @@
     "workbench.statusBar.visible": true,
     "workbench.editor.showTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "workbench.settings.openDefaultSettings": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#1b455e",
@@ -39,7 +38,7 @@
     },
     // Vim
     "vim.easymotion": true,
-    "vim.easymotionMarkerFontFamily": "Fira Code",
+    "vim.easymotionMarkerFontFamily": "Droid Sans Mono",
     "vim.easymotionMarkerBackgroundColor": "Black",
     "vim.easymotionMarkerForegroundColorOneChar": "Cyan",
     "vim.easymotionMarkerForegroundColorTwoChar": "Lime",
@@ -49,12 +48,6 @@
     "vim.easymotionKeys": "hklyuiopnmqwertzxcvbasdgjf",
     "vim.easymotionJumpToAnywhereRegex": ".$",
     "keyboard.dispatch": "keyCode",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "k"],
-            "after": ["<Esc>"]
-        }
-    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["Y"],
