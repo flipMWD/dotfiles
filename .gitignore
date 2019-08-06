@@ -13,6 +13,10 @@
 
 !.i3/
 
+!.vim/
+.vim/*
+!.vim/colors/
+
 !.config/
 .config/*
 !.config/compton.conf

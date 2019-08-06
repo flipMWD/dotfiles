@@ -14,6 +14,7 @@ set formatoptions+=t
 set linebreak
 set showbreak=»
 set listchars=eol:¬,tab:\|->,space:·,trail:X
+set diffopt+=context:5,foldcolumn:0
 set hidden
 set splitbelow
 set splitright
@@ -21,42 +22,17 @@ set wildmenu
 set timeout timeoutlen=3000 ttimeoutlen=50  " deal with term esc
 
 " Style
-colorscheme default
-autocmd ColorScheme *
-    \ hi LineNr         ctermfg=7                       |
-    \ hi CursorLineNr   ctermfg=15                      |
-    \ hi Search         ctermfg=11      ctermbg=none    cterm=underline |
-    \ hi MatchParen     ctermfg=15      ctermbg=13      |
-    \ hi Visual                         ctermbg=15      |
-    \ hi NonText        ctermfg=8                       |
-    \ hi SpecialKey     ctermfg=8                       |
-    \ hi Folded         ctermfg=12      ctermbg=0       |
-    \ hi VertSplit      ctermfg=0                       |
-    \ hi Pmenu          ctermfg=7       ctermbg=0       |
-    \ hi PmenuSel       ctermfg=15      ctermbg=12      |
-    \ hi PmenuSbar                      ctermbg=8       |
-    \ hi PmenuThumb                     ctermbg=7       |
-    \ hi TabLine        ctermfg=7       ctermbg=8       cterm=none |
-    \ hi TabLineFill    ctermfg=0       ctermbg=0       cterm=none |
-    \ hi TabLineSel     ctermfg=15      ctermbg=12      cterm=bold |
-    \ hi StatusLine     ctermfg=8       ctermbg=15      |
-    \ hi WildMenu       ctermfg=0       ctermbg=11      cterm=bold |
-    \ hi User1          ctermfg=7       ctermbg=8       |
-    \ hi User2          ctermfg=15      ctermbg=0       |
-    \ hi User3          ctermfg=0       ctermbg=7       cterm=bold |
-    \ hi User4          ctermfg=15      ctermbg=12      |
-    \ hi User5          ctermfg=15      ctermbg=10      cterm=bold |
-    \ hi User6          ctermfg=15      ctermbg=13      cterm=bold |
-    \ hi User7          ctermfg=15      ctermbg=9       cterm=bold |
-    \ hi ModeMsg        ctermfg=12                      |
-
+colorscheme flipAi3
 set laststatus=2
 set statusline=
 set statusline+=%1*\ \«\ %n\ \»\ %*         " buffer number
-set statusline+=%2*\ %<%f\ %m%*             " file path [modf]
-set statusline+=%2*%=\ %y\ %*               " file type
-set statusline+=%3*\ %l-%L\ \:\ %v\ %*      " lines-total : cols
-set statusline+=%4*\ %P\ %*                 " doc percentage
+set statusline+=\ %<%f\ %m                  " file path [modf]
+set statusline+=%=\ %y\                     " file type
+set statusline+=%2*\ %l-%L\ \:\ %v\ %*      " lines-total : cols
+set statusline+=%3*\ %P\ %*                 " doc percentage
+
+"set statusline+=%2*\ %<%f\ %m%*             " file path [modf]
+"set statusline+=%2*%=\ %y\ %*               " file type
 
 " Formatting
 set shiftwidth=4        " indent length
@@ -100,6 +76,17 @@ function AltBOnly()
     endif
 endfunction
 
+function ToggleLines()
+    set list!
+    set cursorline!
+    set cursorcolumn!
+    if (&cursorcolumn)
+        set colorcolumn=+1
+    else
+        set colorcolumn=""
+    endif
+endfunction
+
 
 "=== Keybindings ==="
 
@@ -121,7 +108,7 @@ nnoremap <Leader>n :noh<CR><Esc>
 nnoremap <Leader>N :let @/=""<CR>
 nnoremap <Leader>C :split $MYVIMRC<CR>
 nnoremap <Leader>c :source $MYVIMRC<CR>
-nnoremap <Leader>s :set list!<CR>
+nnoremap <Leader>s :call ToggleLines()<CR>
 nnoremap <Leader>f :find<Space>
 
 inoremap <C-u> <Esc>viwUea
