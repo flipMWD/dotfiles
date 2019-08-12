@@ -95,9 +95,9 @@ if ${use_color} ; then
     fi
 
     if [[ ${EUID} == 0 ]] ; then
-        PS1=''$Cl$Bd$FL$Rd'\h'$Cl$Bd$FN$Wt' \W'$Cl$Bd$FL$Rd' \$'$ColorReset' '
+        PS1=''$Cl$Bd$FN$Rd'\h'$Cl$Bd$FN$Wt' \W'$Cl$Bd$FN$Rd' \$'$ColorReset' '
     else
-        PS1=''$Cl$Rg$FN$Wt'\u'$Cl$Rg$FL$Be'::'$Cl$Rg$FN$Wt'\h'$Cl$Bd$FL$Wt' \W '$Cl$Rg$FL$Bk'>'$Cl$Rg$FL$Be'>'$Cl$Rg$FL$Wt'>'$ColorReset' '
+        PS1=''$Cl$Rg$FN$Wt'\u'$Cl$Rg$FN$Be'::'$Cl$Rg$FN$Wt'\h'$Cl$Bd$FL$Wt' \W '$Cl$Rg$FL$Bk'>'$Cl$Rg$FN$Be'>'$Cl$Rg$FL$Wt'>'$ColorReset' '
     fi
 
     alias ls='ls --color=auto --group-directories-first'

@@ -9,7 +9,8 @@ set number
 set relativenumber
 set scrolloff=9
 set textwidth=80
-set formatoptions+=l
+set formatoptions+=ljr
+set formatoptions-=o
 set linebreak
 set showbreak=»
 set listchars=eol:¬,tab:\|->,space:·,trail:X
@@ -56,6 +57,7 @@ set smartcase           " type Caps to match A-Z only
 set showmatch           " highlight parens
 
 " Language
+filetype plugin on
 syntax on
 "set spell
 
@@ -120,6 +122,7 @@ nnoremap <expr> <Leader>F winwidth(0) >= 170 ? ':vert sf <C-z><S-Tab>' : ':sf <C
 nnoremap <Leader>- :Lexplore<CR>
 
 inoremap <C-u> <Esc>viwUea
+inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]

@@ -48,10 +48,10 @@ set_from_resource $term_c15     color15
 
 # Window Title Colors
 # class                 border          backgr.         text            indic.          child_border
-client.focused          $term_c0        $term_bg        $term_c12       $term_c7
+client.focused          $term_c0        $term_bg        $term_c4        $term_c7
 client.focused_inactive $term_c8        "#2F3D44"       $term_c15       $term_c7
 client.unfocused        $term_c8        "#434d52"       $term_c7        $term_c7
-client.urgent           $term_c0        $term_c11       $term_c15       $term_c7
+client.urgent           $term_c0        $term_c3        $term_c15       $term_c7
 client.background       $term_c0
 
 # i3 Bar Colors
@@ -77,11 +77,11 @@ bar {
         separator  $term_c7
 
         # class                 border          backgr.         text
-        focused_workspace       #f8f8f830       $term_c12       $term_c15
+        focused_workspace       #f8f8f830       $term_c4        $term_c15
         active_workspace        $term_c8        $term_c0        $term_c7
         inactive_workspace      #f8f8f840       #f8f8f8a0       $term_c8
         binding_mode            #f8f8f840       #f8f8f8a0       $term_c8
-        urgent_workspace        $term_c8        $term_c11       $term_c15
+        urgent_workspace        $term_c8        $term_c3        $term_c15
     }
 }
 
@@ -221,6 +221,8 @@ mode " $mode_resize " {
     bindsym $mod+m mode "default"
     bindsym m mode "default"
 }
+# Quick Resize for Vim
+bindsym $mod+v resize shrink width 40px or 8 ppt
 
 # Reload Config File and Restart i3
 bindsym $mod+Shift+c reload
@@ -306,6 +308,7 @@ for_window [class="Xfburn"] floating enable
 for_window [class="feh"] floating enable border pixel 1 resize set 1280 720
 for_window [class="(?i)sxiv"] floating enable border pixel 1
 for_window [class="(?i)qalculate-gtk"] floating enable border pixel 1
+for_window [class="(?i)piper"] floating enable border pixel 1
 
 # Switch to Workspace with Urgent Window automatically
 for_window [urgent=latest] focus

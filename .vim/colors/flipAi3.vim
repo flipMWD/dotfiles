@@ -18,112 +18,112 @@ let g:colors_name = "flipAi3"
 hi Normal           ctermfg=none        ctermbg=none
 hi Visual                               ctermbg=white
 hi VisualNOS                            ctermbg=white
-hi Search           ctermfg=yellow      ctermbg=none        cterm=underline
-hi IncSearch        ctermfg=black       ctermbg=yellow      cterm=bold
+hi Search           ctermfg=3           ctermbg=none        cterm=underline
+hi IncSearch        ctermfg=black       ctermbg=3           cterm=bold
 
 " Status Bar
 hi StatusLine       ctermfg=white       ctermbg=black       cterm=none
 hi StatusLineNC     ctermfg=gray        ctermbg=black       cterm=none
 hi StatusLineTerm   ctermfg=white       ctermbg=black       cterm=none
 hi StatusLineTermNC ctermfg=gray        ctermbg=black       cterm=none
-hi WildMenu         ctermfg=black       ctermbg=yellow      cterm=bold
-hi WarningMsg       ctermfg=red
-hi ErrorMsg         ctermfg=white       ctermbg=red
-hi ModeMsg          ctermfg=blue
+hi WildMenu         ctermfg=black       ctermbg=3           cterm=bold
+hi WarningMsg       ctermfg=darkred
+hi ErrorMsg         ctermfg=white       ctermbg=darkred
+hi ModeMsg          ctermfg=darkblue
 hi MoreMsg          ctermfg=darkgreen
-hi Question         ctermfg=green                           cterm=none
+hi Question         ctermfg=darkgreen                       cterm=none
 
-hi Directory        ctermfg=darkblue
-hi Title            ctermfg=magenta                         cterm=bold
+hi Directory        ctermfg=blue
+hi Title            ctermfg=darkmagenta                     cterm=bold
 
 hi User1            ctermfg=gray        ctermbg=8           cterm=bold
 hi User2            ctermfg=black       ctermbg=gray        cterm=bold
-hi User3            ctermfg=white       ctermbg=blue
+hi User3            ctermfg=white       ctermbg=darkblue
 
 " Lines
 hi LineNr           ctermfg=gray
 hi CursorLineNr     ctermfg=white
-hi FoldColumn       ctermfg=blue        ctermbg=black
+hi FoldColumn       ctermfg=darkblue    ctermbg=black
 hi SignColumn       ctermfg=magenta     ctermbg=black
 hi ColorColumn                          ctermbg=8
 hi VertSplit        ctermfg=black       ctermbg=none        cterm=none
-hi Folded           ctermfg=blue        ctermbg=black
+hi Folded           ctermfg=darkblue    ctermbg=black
 hi NonText          ctermfg=8
 hi SpecialKey       ctermfg=8
 
 " Cursor
-hi Cursor           ctermfg=black       ctermbg=yellow
+hi Cursor           ctermfg=black       ctermbg=3
 hi lCursor          ctermfg=black       ctermbg=white
 hi CursorLine                           ctermbg=black       cterm=none
 hi CursorColumn                         ctermbg=black
-hi MatchParen       ctermfg=white       ctermbg=magenta
+hi MatchParen       ctermfg=white       ctermbg=darkmagenta
 
 " Diff Mode
-hi DiffAdd          ctermfg=white       ctermbg=green
-hi DiffDelete       ctermfg=black       ctermbg=red
-hi DiffChange       ctermfg=yellow      ctermbg=black
-hi DiffText         ctermfg=black       ctermbg=yellow
+hi DiffAdd          ctermfg=white       ctermbg=darkgreen
+hi DiffDelete       ctermfg=black       ctermbg=darkred
+hi DiffChange       ctermfg=3           ctermbg=black
+hi DiffText         ctermfg=black       ctermbg=3
 
 " Quickfix
-hi QuickFixLine     ctermfg=yellow      ctermbg=none        cterm=underline
+hi QuickFixLine     ctermfg=3           ctermbg=none        cterm=underline
 
 " Popup Menu
 hi Pmenu            ctermfg=gray        ctermbg=black
-hi PmenuSel         ctermfg=white       ctermbg=blue
+hi PmenuSel         ctermfg=white       ctermbg=darkblue
 hi PmenuSbar                            ctermbg=8
 hi PmenuThumb                           ctermbg=gray
 
 " Tab Pages
 hi TabLine          ctermfg=gray        ctermbg=8           cterm=none
 hi TabLineFill      ctermfg=black       ctermbg=black       cterm=none
-hi TabLineSel       ctermfg=white       ctermbg=blue        cterm=bold
+hi TabLineSel       ctermfg=white       ctermbg=darkblue    cterm=bold
 
 " Syntax
 hi Comment          ctermfg=darkgray
 
-hi Constant         ctermfg=darkblue                        cterm=none
-hi String           ctermfg=darkred
-hi Character        ctermfg=darkred
-hi Number           ctermfg=darkgreen
-hi Boolean          ctermfg=blue
-hi Float            ctermfg=darkgreen
+hi Constant         ctermfg=blue                            cterm=none
+hi String           ctermfg=red
+hi Character        ctermfg=red
+hi Number           ctermfg=green
+hi Boolean          ctermfg=darkblue
+hi Float            ctermfg=green
 
-hi Identifier       ctermfg=darkblue                        cterm=none
-hi Function         ctermfg=3
+hi Identifier       ctermfg=blue                            cterm=none
+hi Function         ctermfg=yellow
 
-hi Statement        ctermfg=darkmagenta                     cterm=none
-hi Conditional      ctermfg=darkmagenta
-hi Repeat           ctermfg=darkmagenta
-hi Label            ctermfg=darkmagenta
+hi Statement        ctermfg=magenta                         cterm=none
+hi Conditional      ctermfg=magenta
+hi Repeat           ctermfg=magenta
+hi Label            ctermfg=magenta
 hi Operator         ctermfg=white
-hi Keyword          ctermfg=blue
-hi Exception        ctermfg=darkmagenta
+hi Keyword          ctermfg=darkblue
+hi Exception        ctermfg=magenta
 
-hi PreProc          ctermfg=magenta                         cterm=none
-hi Include          ctermfg=magenta
-hi Define           ctermfg=magenta
-hi Macro            ctermfg=magenta
-hi PreCondit        ctermfg=magenta
+hi PreProc          ctermfg=darkmagenta                     cterm=none
+hi Include          ctermfg=darkmagenta
+hi Define           ctermfg=darkmagenta
+hi Macro            ctermfg=darkmagenta
+hi PreCondit        ctermfg=darkmagenta
 
-hi Type             ctermfg=blue                            cterm=none
-hi StorageClass     ctermfg=blue
-hi Structure        ctermfg=blue
-hi Typedef          ctermfg=blue
+hi Type             ctermfg=darkblue                        cterm=none
+hi StorageClass     ctermfg=darkblue
+hi Structure        ctermfg=darkblue
+hi Typedef          ctermfg=darkblue
 
-hi Special          ctermfg=cyan                            cterm=none
-hi SpecialChar      ctermfg=magenta
-hi Tag              ctermfg=darkred
-hi Delimiter        ctermfg=cyan
-hi SpecialComment   ctermfg=cyan
-hi Debug            ctermfg=darkyellow
+hi Special          ctermfg=darkcyan                        cterm=none
+hi SpecialChar      ctermfg=cyan
+hi Tag              ctermfg=red
+hi Delimiter        ctermfg=darkcyan
+hi SpecialComment   ctermfg=darkcyan
+hi Debug            ctermfg=brown
 
-hi Underlined       ctermfg=darkcyan                        cterm=underline
+hi Underlined       ctermfg=blue                            cterm=underline
 hi Ignore           ctermfg=darkgray
-hi Error            ctermfg=white       ctermbg=red
+hi Error            ctermfg=white       ctermbg=darkred
 hi Todo             ctermfg=black       ctermbg=yellow
 
 " Spelling Errors
-hi SpellBad         ctermfg=red         ctermbg=none        cterm=underline
-hi SpellCap         ctermfg=magenta     ctermbg=none        cterm=underline
+hi SpellBad         ctermfg=darkred     ctermbg=none        cterm=underline
+hi SpellCap         ctermfg=darkmagenta ctermbg=none        cterm=underline
 hi SpellLocal       ctermfg=cyan        ctermbg=none        cterm=underline
 hi SpellRare        ctermfg=cyan        ctermbg=none        cterm=underline

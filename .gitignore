@@ -16,6 +16,7 @@
 !.vim/
 .vim/*
 !.vim/colors/
+!.vim/syntax/
 
 !.config/
 .config/*
@@ -43,3 +44,6 @@
 .config/ranger/*
 !.config/ranger/rc.conf
 !.config/ranger/rifle.conf
+!.config/ranger/colorschemes/
+.config/ranger/colorschemes/*
+!.config/ranger/colorschemes/marine-ranger-Ai3.py

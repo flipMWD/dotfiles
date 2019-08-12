@@ -91,12 +91,12 @@ BLK 40;33;01	# block device driver
 CHR 40;33;01	# character device driver
 ORPHAN 01;05;37;41  # orphaned syminks
 MISSING 01;05;37;41 # ... and the files they point to
-SETUID 33;41	# file that is setuid (u+s)
-SETGID 30;43	# file that is setgid (g+s)
+SETUID 35;40	# file that is setuid (u+s)
+SETGID 07;35;40	# file that is setgid (g+s)
 CAPABILITY 30;41	# file with capability
 STICKY_OTHER_WRITABLE 30;42 # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 36;42 # dir that is other-writable (o+w) and not sticky
-STICKY 30;44	# dir with the sticky bit set (+t) and not other-writable
+OTHER_WRITABLE 36;44 # dir that is other-writable (o+w) and not sticky
+STICKY 01;37;42	# dir with the sticky bit set (+t) and not other-writable
 
 # This is for files with execute permission:
 EXEC 01;32
