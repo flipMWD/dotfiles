@@ -39,6 +39,7 @@ class Default(ColorScheme):
                     fg += BRIGHT
             if context.container:
                 fg = red
+                fg += BRIGHT
             if context.directory:
                 attr |= bold
                 fg = blue
@@ -83,6 +84,7 @@ class Default(ColorScheme):
                 if context.marked:
                     attr |= bold
                     fg = cyan
+                    fg += BRIGHT
             if context.badinfo:
                 if attr & reverse:
                     bg = magenta
@@ -90,21 +92,23 @@ class Default(ColorScheme):
                     fg = magenta
 
             if context.inactive_pane:
-                fg = white
+                fg = black
+                fg += BRIGHT
 
         elif context.in_titlebar:
             if context.hostname:
                 fg = red if context.bad else blue
             elif context.directory:
                 fg = white
+                fg += BRIGHT
             elif context.tab:
                 if context.good:
                     fg = white
                     bg = blue
+                    fg += BRIGHT
             elif context.link:
                 fg = cyan
             attr |= bold
-            fg += BRIGHT
 
         elif context.in_statusbar:
             if context.permissions:

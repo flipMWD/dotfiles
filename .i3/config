@@ -4,9 +4,6 @@
 # Set Mod Key (Mod1 = Alt, Mod4 = Super)
 set $mod Mod4
 
-# Variables
-set $wallpaper "blue-starship_bar.jpg"
-
 
 #=====# APPEARANCE #=====#
 
@@ -79,8 +76,8 @@ bar {
         # class                 border          backgr.         text
         focused_workspace       #f8f8f830       $term_c4        $term_c15
         active_workspace        $term_c8        $term_c0        $term_c7
-        inactive_workspace      #f8f8f840       #f8f8f8a0       $term_c8
-        binding_mode            #f8f8f840       #f8f8f8a0       $term_c8
+        inactive_workspace      #f8f8f840       #f8f8f890       $term_c8
+        binding_mode            #f8f8f840       #f8f8f890       $term_c8
         urgent_workspace        $term_c8        $term_c3        $term_c15
     }
 }
@@ -315,7 +312,7 @@ for_window [urgent=latest] focus
 
 # Autostart Applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always --no-startup-id feh --bg-scale /home/flip/Pictures/Wallpapers/$wallpaper
+exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet

@@ -3,7 +3,6 @@
 " Maintainer:	flipMWD
 " Last Change:	2019 Aug 10
 
-" Test
 syn match cCustomParen          "?=(" contains=cParen,cCppParen
 syn match cCustomFunc           "\w\+\s*(\@=" contains=cCustomParen
 syn match cCustomScope          "::"

@@ -119,6 +119,13 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases               # source file
 fi
 
+# Allow opening files with vim from :term w/o nesting
+if [ -z "$VIMRUNTIME" ]; then
+    alias vs='vim --servername VTERMREADY'
+else
+    alias vs="vim --servername $VIM_SERVERNAME --remote"
+fi
+
 xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo

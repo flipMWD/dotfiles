@@ -20,7 +20,7 @@
 
 ! Yellow
 *color3:    #cd9731
-*color11:   #fdd561
+*color11:   #dfb565
 
 ! Blue
 *color4:    #007acc
@@ -38,13 +38,13 @@
 *color7:    #a8a8a8
 *color15:   #f8f8ff
 
-Xft.dpi:        96
-Xft.antialias:  true
-Xft.hinting:    true
-Xft.rgba:       rgb
-Xft.autohint:   false
-Xft.hintstyle:  hintslight
-Xft.lcdfilter:  lcddefault
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.hinting:                true
+Xft.rgba:                   rgb
+Xft.autohint:               false
+Xft.hintstyle:              hintslight
+Xft.lcdfilter:              lcddefault
 
 XTerm*background:           #1e1e1e
 XTerm*foreground:           #d4d4d4
@@ -54,10 +54,10 @@ XTerm*faceSize:             11
 XTerm*reverseVideo:         on
 XTerm*selectToClipboard:    true
 
-Xcursor.theme:  xcursor-breeze
-Xcursor.size:   0
+Xcursor.theme:              xcursor-breeze
+Xcursor.size:               0
 
-URxvt*font: 9x15,xft:Inconsolata:size=10,xft:TerminessTTFNerdFontMono:size=10
+URxvt*font:                 9x15,xft:Inconsolata:size=10,xft:TerminessTTFNerdFontMono:size=10
 URxvt.depth:                32
 URxvt.background:           [85]#000000
 URxvt*geometry:             120x40
@@ -66,6 +66,7 @@ URxvt*mouseWheelScrollPage: true
 URxvt*cursorBlink:          true
 URxvt*background:           black
 URxvt*foreground:           grey
+URxvt.intensityStyles:      false
 URxvt*saveLines:            4000
 URxvt*letterSpace:          0
 URxvt*lineSpace:            0
