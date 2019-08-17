@@ -120,6 +120,7 @@ nnoremap <Leader>s :call ToggleLines()<CR>
 nnoremap <Leader>f :find <C-z><S-Tab>
 nnoremap <expr> <Leader>F winwidth(0) >= 170 ? ':vert sf <C-z><S-Tab>' : ':sf <C-z><S-Tab>'
 nnoremap <Leader>- :Lexplore<CR>
+nnoremap <Leader>b jmmk:move $<CR>`m
 
 inoremap <C-u> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
