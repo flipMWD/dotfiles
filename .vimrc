@@ -14,6 +14,7 @@ set formatoptions-=o
 set linebreak
 set showbreak=»
 set listchars=eol:¬,tab:\|->,space:·,trail:X
+"set listchars=eol:l,tab:->,space:s,trail:x
 set diffopt+=context:5,foldcolumn:0
 set hidden
 set splitbelow

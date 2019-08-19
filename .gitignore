@@ -8,10 +8,7 @@
 !.dir_colors
 !.profile
 !.vimrc
-!.spacemacs
 !.Xresources
-
-!.i3/
 
 !.vim/
 .vim/*
@@ -37,8 +34,9 @@
 
 !.config/mpv
 
+!.config/i3/
+
 !.config/i3blocks/
-!.config/i3status/
 
 !.config/ranger/
 .config/ranger/*

@@ -21,7 +21,8 @@ default_floating_border normal
 hide_edge_borders none
 
 # Font for Window Titles and Bar if not set in bar {}
-font xft:URWGothic-Book 10
+#font xft:URWGothic-Book 10
+font xft:Cantarell 10
 
 # Color Variables from ~/.Xresources
 set_from_resource $term_bg      background
@@ -54,7 +55,6 @@ client.background       $term_c0
 # i3 Bar Colors
 bar {
     i3bar_command i3bar -t
-    # status_command i3status
     status_command i3blocks
     separator_symbol " | "
     position top
@@ -87,7 +87,8 @@ bar {
 
 
 # Start Terminal
-bindsym $mod+Return exec terminal
+# bindsym $mod+Return exec terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # Kill Focused Window
 bindsym $mod+y kill
@@ -255,9 +256,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioMute exec --no-startup-id ~/.i3/pactl-find-sink
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.i3/pactl-find-sink -m
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.i3/pactl-find-sink -p
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/pactl-find-sink
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/pactl-find-sink -m
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/pactl-find-sink -p
 
 # Screen Brightness Controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
@@ -306,11 +307,10 @@ exec_always --no-startup-id ~/.fehbg
 exec_always --no-startup-id compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id pamac-tray
-exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id xfce4-power-manager
 #exec_always --no-startup-id sbxkb
 #exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id xset -b
-exec --no-startup-id xmodmap ~/.i3/swap-cl-esc
+exec --no-startup-id xmodmap ~/.config/i3/swap-cl-esc
 exec --no-startup-id udisksctl mount -b /dev/sdc1
 exec --no-startup-id udisksctl mount -b /dev/sdb1
