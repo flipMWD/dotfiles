@@ -1,4 +1,4 @@
-*background:                #1e1e1e
+*background:                #0e0e0e
 *foreground:                #d4d4d4
 *fading:                    10
 *fadeColor:                 #000010
@@ -32,6 +32,8 @@
 
 ! Cyan
 *color6:    #09dbde
+
+! Orange
 *color14:   #f5670e
 
 ! White
@@ -46,31 +48,30 @@ Xft.autohint:               false
 Xft.hintstyle:              hintslight
 Xft.lcdfilter:              lcddefault
 
-XTerm*background:           #1e1e1e
+Xcursor.theme:              xcursor-breeze
+Xcursor.size:               0
+
+URxvt*font:                 9x15,xft:TerminessTTFNerdFontMono:size=10,xft:Inconsolata:size=11
+URxvt*geometry:             120x40
+URxvt*internalBorder:       10
+URxvt.depth:                32
+! URxvt.background:           [85]#000000
+URxvt*background:           #0e0e0e
+URxvt*foreground:           #d4d4d4
+URxvt.intensityStyles:      false
+URxvt*scrollBar:            false
+URxvt*cursorBlink:          true
+URxvt*letterSpace:          0
+URxvt*lineSpace:            0
+URxvt*saveLines:            4000
+
+XTerm*background:           #0e0e0e
 XTerm*foreground:           #d4d4d4
 XTerm*pointerColor:         #007acc
 XTerm*faceName:             Fixed
 XTerm*faceSize:             11
 XTerm*reverseVideo:         on
 XTerm*selectToClipboard:    true
-
-Xcursor.theme:              xcursor-breeze
-Xcursor.size:               0
-
-URxvt*font:                 9x15,xft:Inconsolata:size=10,xft:TerminessTTFNerdFontMono:size=10
-URxvt.depth:                32
-URxvt.background:           [85]#000000
-URxvt*geometry:             120x40
-URxvt*scrollBar:            false
-URxvt*mouseWheelScrollPage: true
-URxvt*cursorBlink:          true
-URxvt*background:           black
-URxvt*foreground:           grey
-URxvt.intensityStyles:      false
-URxvt*saveLines:            4000
-URxvt*letterSpace:          0
-URxvt*lineSpace:            0
-URxvt*internalBorder:       10
 
 ! Normal copy-paste keybindings without perls
 URxvt.iso14755:                     false
@@ -93,23 +94,23 @@ URxvt.keysym.Shift-Control-Down:    \033[1;6B
 ! Location on screen    8 0 4
 !                       7 6 5
 rofi.location:          2
-! rofi.yoffset:         0
-! rofi.xoffset:         0
+! rofi.yoffset:           0
+! rofi.xoffset:           0
 ! Monitor ID to show on
-! rofi.m:               -5
+! rofi.m:                 -5
 ! 0 = Pages; 1 = Continuous
 rofi.scroll-method:     1
 
 rofi.width:             30
 rofi.lines:             8
-rofi.font:              System San Francisco Display 12
+rofi.font:              Bitstream Vera Sans 12
 ! Border width
 rofi.bw:                0
 ! Row height (in chars)
 rofi.eh:                1
 rofi.padding:           20
 rofi.show-icons:        true
-! rofi.icon-theme:      Flat-Remix-Blue-Dark
+! rofi.icon-theme:        Flat-Remix-Blue-Dark
 
 rofi.color-enabled:     true
 !                       bg       border   separator

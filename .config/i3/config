@@ -1,7 +1,7 @@
 # Reset to Default: i3-config-wizard(1)
 # Fonts: awesome-terminal-fonts, icons-in-terminal
 
-# Set Mod Key (Mod1 = Alt, Mod4 = Super)
+# Set Mod Key (Mod1 = Alt, Mod4 = System)
 set $mod Mod4
 
 
@@ -17,12 +17,10 @@ bindsym $mod+r gaps outer current minus 40
 
 # Configure Border Style
 default_border pixel 1
-default_floating_border normal
-hide_edge_borders none
+default_floating_border pixel 1
 
 # Font for Window Titles and Bar if not set in bar {}
-#font xft:URWGothic-Book 10
-font xft:Cantarell 10
+font xft:Bitstream-Vera-Sans 10
 
 # Color Variables from ~/.Xresources
 set_from_resource $term_bg      background
@@ -46,10 +44,10 @@ set_from_resource $term_c15     color15
 
 # Window Title Colors
 # class                 border          backgr.         text            indic.          child_border
-client.focused          $term_c0        $term_bg        $term_c4        $term_c7
-client.focused_inactive $term_c8        "#2F3D44"       $term_c15       $term_c7
-client.unfocused        $term_c8        "#434d52"       $term_c7        $term_c7
-client.urgent           $term_c0        $term_c3        $term_c15       $term_c7
+client.focused          $term_c0        $term_bg        $term_c4        $term_c4        $term_c12
+client.focused_inactive $term_c8        $term_c8        $term_c15       $term_c7        $term_c8
+client.unfocused        $term_c8        $term_c8        $term_c7        $term_c7        $term_c8
+client.urgent           $term_c0        $term_c3        $term_c15       $term_c7        $term_c3
 client.background       $term_c0
 
 # i3 Bar Colors
@@ -87,7 +85,6 @@ bar {
 
 
 # Start Terminal
-# bindsym $mod+Return exec terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Kill Focused Window
@@ -224,6 +221,7 @@ bindsym $mod+v resize shrink width 40px or 8 ppt
 
 # Reload Config File and Restart i3
 bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+w restart
 bindsym $mod+Shift+w restart
 
 # Mode to Restart, Exit and Shutdown #  sus[P]end,  [H]ibernate
@@ -247,11 +245,6 @@ mode " $mode_system " {
 #=====# RUN APLICATIONS #=====#
 
 
-# Alsa and PulseAudio Configuration
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#bindsym $mod+Ctrl+m exec pavucontrol
-
 # Media Player Controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
@@ -261,42 +254,34 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/pactl-find-sink -
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/pactl-find-sink -p
 
 # Screen Brightness Controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Launch Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F3 exec pcmanfm
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
-# bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym XF86Explorer exec i3-sensible-terminal -e ranger
+bindsym XF86Calculator exec qalculate-gtk
+#bindsym XF86HomePage
+#bindsym XF86Mail
+#bindsym XF86Search
+bindsym $mod+F6 exec --no-startup-id compton -b
+bindsym $mod+Shift+F6 exec --no-startup-id pkill compton
+bindsym $mod+F8 exec i3-sensible-terminal -e alsamixer
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+bindsym $mod+Shift+x --release exec --no-startup-id xkill
 
 # Open specific Applications in Floating Mode - Use: 'xprop'
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [title="File Transfer*"] floating enable
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [title="alsamixer"] floating enable
+for_window [class="GParted"] floating enable
 for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
-for_window [class="feh"] floating enable border pixel 1 resize set 1280 720
-for_window [class="(?i)sxiv"] floating enable border pixel 1
-for_window [class="(?i)qalculate-gtk"] floating enable border pixel 1
-for_window [class="(?i)piper"] floating enable border pixel 1
+for_window [class="Lxappearance"] floating enable
+for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+for_window [class="qt5ct"] floating enable
+for_window [class="feh"] floating enable border resize set 1280 720
+for_window [class="(?i)sxiv"] floating enable border
+for_window [class="(?i)qalculate-gtk"] floating enable
+for_window [class="(?i)piper"] floating enable
 
 # Switch to Workspace with Urgent Window automatically
 for_window [urgent=latest] focus
@@ -304,13 +289,10 @@ for_window [urgent=latest] focus
 # Autostart Applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id ~/.fehbg
-exec_always --no-startup-id compton -b
+exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 #exec --no-startup-id xfce4-power-manager
-#exec_always --no-startup-id sbxkb
-#exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id xset -b
-exec --no-startup-id xmodmap ~/.config/i3/swap-cl-esc
 exec --no-startup-id udisksctl mount -b /dev/sdc1
 exec --no-startup-id udisksctl mount -b /dev/sdb1

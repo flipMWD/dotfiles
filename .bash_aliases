@@ -9,7 +9,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias gi="cd /run/media/$USER/ && pwd && ls"
 
-alias la='ls -AohN'
+alias la='ls -AlhNF'
 alias cp='cp -i'
 alias mv='mv -i'
 alias free='free -m'

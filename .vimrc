@@ -1,4 +1,4 @@
-" Plug-ins
+"Plug-ins
 " vim-surround
 
 " Paths
@@ -7,14 +7,13 @@ set path=.,**
 " General
 set number
 set relativenumber
-set scrolloff=9
+set scrolloff=5
 set textwidth=80
 set formatoptions+=ljr
 set formatoptions-=o
 set linebreak
 set showbreak=»
 set listchars=eol:¬,tab:\|->,space:·,trail:X
-"set listchars=eol:l,tab:->,space:s,trail:x
 set diffopt+=context:5,foldcolumn:0
 set hidden
 set splitbelow
@@ -32,7 +31,7 @@ colorscheme flipAi3
 set laststatus=2
 set statusline=
 set statusline+=%1*\ \«\ %n\ \»\ %*         " buffer number
-set statusline+=\ %<%f\ %m                  " file path [modf]
+set statusline+=\ %<%f%R\ %m                " file path [modf]
 set statusline+=%=\ %y\                     " file type
 set statusline+=%2*\ %l-%L\ \:\ %v\ %*      " lines-total : cols
 set statusline+=%3*\ %P\ %*                 " doc percentage
@@ -122,8 +121,9 @@ nnoremap <Leader>f :find <C-z><S-Tab>
 nnoremap <expr> <Leader>F winwidth(0) >= 170 ? ':vert sf <C-z><S-Tab>' : ':sf <C-z><S-Tab>'
 nnoremap <Leader>- :Lexplore<CR>
 nnoremap <Leader>b jmmk:move $<CR>`m
+nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
 
-inoremap <C-u> <Esc>viwUea
+inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
 
 " Buffer/Window/Tab Management
@@ -149,6 +149,7 @@ nnoremap <Leader>wt :wincmd t<CR>
 nnoremap <Leader>wb :wincmd b<CR>
 nnoremap <Leader>wd :quit<CR>
 nnoremap <Leader>ws :resize<Space>
+nnoremap <Leader>wS :vertical resize<Space>
 nnoremap <Leader>we :wincmd =<CR>
 nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 

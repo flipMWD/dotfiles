@@ -9,7 +9,7 @@
     "workbench.editor.showTabs": true,
     "workbench.startupEditor": "newUntitledFile",
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "workbench.settings.openDefaultSettings": true,
+    "workbench.settings.openDefaultSettings": false,
     "workbench.colorCustomizations": {
         "statusBar.background": "#1b455e",
         "statusBar.noFolderBackground": "#0a202c",
@@ -50,47 +50,108 @@
     "keyboard.dispatch": "keyCode",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": ["Y"],
-            "after": ["y", "$"]
+            "before": [
+                "Y"
+            ],
+            "after": [
+                "y",
+                "$"
+            ]
         },
         {
             "before": [
-                "<leader>", ";"],
-            "after": ["A", ";", "<Esc>"]
+                "<leader>",
+                ";"
+            ],
+            "after": [
+                "A",
+                ";",
+                "<Esc>"
+            ]
         },
         {
-            "before": ["<Space>"],
-            "after": ["<leader>", "<leader>", "s"]
+            "before": [
+                "<Space>"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "s"
+            ]
         },
         {
-            "before": ["<leader>", "i"],
-            "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
+            "before": [
+                "<leader>",
+                "i"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "<leader>",
+                "b",
+                "d",
+                "w"
+            ]
         },
         {
-            "before": ["<leader>", "k"],
-            "after": ["<leader>", "<leader>", "<leader>", "b", "d", "e"]
+            "before": [
+                "<leader>",
+                "k"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "<leader>",
+                "b",
+                "d",
+                "e"
+            ]
         },
         {
-            "before": ["<leader>", "j"],
-            "after": ["<leader>", "<leader>", "<leader>", "b", "d", "j", "k"]
+            "before": [
+                "<leader>",
+                "j"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "<leader>",
+                "b",
+                "d",
+                "j",
+                "k"
+            ]
         },
         {
-            "before": ["<leader>", "l"],
-            "after": ["<leader>", "<leader>", "<leader>", "j"]
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "<leader>",
+                "j"
+            ]
         },
         {
-            "before": ["S"],
-            "after": ["<Nop>"]
+            "before": [
+                "S"
+            ],
+            "after": [
+                "<Nop>"
+            ]
         }
     ],
     // Git - Terminal
     "terminal.integrated.rendererType": "canvas",
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
     // Live Server
     "liveServer.settings.donotShowInfoMsg": true,
     "liveServer.settings.donotVerifyTags": true,
     // XAMPP
-    "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    "php.validate.executablePath": "",
+    // Prettier
+    "prettier.tabWidth": 4,
     // Bracket Pair Colorizer 2
     "bracket-pair-colorizer-2.colors": [
         "White",
@@ -122,6 +183,4 @@
     "code-runner.runInTerminal": false,
     // NativeScript
     "nativescript.analytics.enabled": false,
-    // Latex Workshop
-    "latex-workshop.view.pdf.viewer": "tab",
 }
