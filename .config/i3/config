@@ -242,7 +242,7 @@ mode " $mode_system " {
 }
 
 
-#=====# RUN APLICATIONS #=====#
+#=====# RUN APPLICATIONS #=====#
 
 
 # Media Player Controls
@@ -282,6 +282,7 @@ for_window [class="feh"] floating enable border resize set 1280 720
 for_window [class="(?i)sxiv"] floating enable border
 for_window [class="(?i)qalculate-gtk"] floating enable
 for_window [class="(?i)piper"] floating enable
+for_window [class="(?i)blueman-manager"] floating enable
 
 # Switch to Workspace with Urgent Window automatically
 for_window [urgent=latest] focus

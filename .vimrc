@@ -2,7 +2,7 @@
 " vim-surround
 
 " Paths
-set path=.,**
+set path+=**
 
 " General
 set number
