@@ -1,4 +1,4 @@
-"Plug-ins
+" Plug-ins
 " vim-surround
 
 " Paths
@@ -45,9 +45,9 @@ set smartindent
 set smarttab
 
 " Cursor
-let &t_SI.="\<Esc>[5 q"
-let &t_SR.="\<Esc>[3 q"
-let &t_EI.="\<Esc>[1 q"
+let &t_SI.="\<Esc>[5 q"     " insert, blink bar
+let &t_SR.="\<Esc>[3 q"     " replace, blink underscore
+let &t_EI.="\<Esc>[1 q"     " normal, blink block
 
 " Search
 set hlsearch
@@ -56,24 +56,29 @@ set ignorecase
 set smartcase           " type Caps to match A-Z only
 set showmatch           " highlight parens
 
-" Language
-filetype plugin on
-syntax on
-"set spell
-
 " NetRW :Lex
 let g:netrw_banner=0
 let g:netrw_winsize=22
 let g:netrw_liststyle=0         " 0=def, 1=det, 2=list, 3=tree
 let g:netrw_browse_split=4      " open on previous window
 
+" Language
+
+filetype plugin on
+syntax on
+"set spell
+
+" C/C++
+autocmd FileType c call MakeFileMissing('gcc')
+autocmd FileType cpp call MakeFileMissing('g++')
+
 
 "=== Functions ==="
 
 " Alternate between Only Window and split with Alt Buffer
 function AltBOnly()
-    if (bufexists(0) && winnr('$') == 1)      " buf 0 = #
-        if (winwidth(0) >= 170)
+    if (bufexists(0) && winnr('$') == 1)    " buf 0 = #, win $ = last
+        if (winwidth(0) >= 170)             " win 0 = current
             vsplit
             buffer #
         else
@@ -92,6 +97,12 @@ function ToggleLines()
         set colorcolumn=+1
     else
         set colorcolumn=""
+    endif
+endfunction
+
+function MakeFileMissing(compiler)
+    if !filereadable("./Makefile")
+        let &l:makeprg=a:compiler . ' % -o %<'
     endif
 endfunction
 
