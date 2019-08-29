@@ -35,6 +35,7 @@ set statusline+=\ %<%f%R\ %m                " file path [modf]
 set statusline+=%=\ %y\                     " file type
 set statusline+=%2*\ %l-%L\ \:\ %v\ %*      " lines-total : cols
 set statusline+=%3*\ %P\ %*                 " doc percentage
+set showcmd
 
 " Formatting
 set shiftwidth=4        " indent length
@@ -102,7 +103,7 @@ endfunction
 
 function MakeFileMissing(compiler)
     if !filereadable("./Makefile")
-        let &l:makeprg=a:compiler . ' % -o %<'
+        let &l:makeprg=a:compiler . ' $* % -o %<'
     endif
 endfunction
 
@@ -131,7 +132,7 @@ nnoremap <Leader>s :call ToggleLines()<CR>
 nnoremap <Leader>f :find <C-z><S-Tab>
 nnoremap <expr> <Leader>F winwidth(0) >= 170 ? ':vert sf <C-z><S-Tab>' : ':sf <C-z><S-Tab>'
 nnoremap <Leader>- :Lexplore<CR>
-nnoremap <Leader>b jmmk:move $<CR>`m
+nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
 
 inoremap <C-c> <Esc>viwUea

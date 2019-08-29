@@ -67,6 +67,10 @@ hi DiffText         ctermfg=black       ctermbg=3
 " Quickfix
 hi QuickFixLine     ctermfg=3           ctermbg=none        cterm=underline
 
+" Debugging
+hi debugPC          ctermfg=white       ctermbg=cyan
+hi debugBreakpoint  ctermfg=white       ctermbg=darkred
+
 " Popup Menu
 hi Pmenu            ctermfg=gray        ctermbg=black
 hi PmenuSel         ctermfg=white       ctermbg=darkblue
