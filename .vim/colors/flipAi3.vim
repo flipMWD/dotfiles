@@ -16,7 +16,7 @@ let g:colors_name = "flipAi3"
 
 " General
 hi Normal           ctermfg=none        ctermbg=none
-hi Visual                               ctermbg=white
+hi Visual                               ctermbg=black       cterm=reverse
 hi VisualNOS                            ctermbg=white
 hi Search           ctermfg=3           ctermbg=none        cterm=underline
 hi IncSearch        ctermfg=black       ctermbg=3           cterm=bold
@@ -119,7 +119,7 @@ hi SpecialChar      ctermfg=cyan
 hi Tag              ctermfg=red
 hi Delimiter        ctermfg=darkcyan
 hi SpecialComment   ctermfg=darkcyan
-hi Debug            ctermfg=brown
+hi Debug            ctermfg=yellow
 
 hi Underlined       ctermfg=blue                            cterm=underline
 hi Ignore           ctermfg=darkgray

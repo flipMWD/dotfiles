@@ -1,6 +1,3 @@
-" Plug-ins
-" vim-surround
-
 " Paths
 set path+=**
 
@@ -64,7 +61,6 @@ let g:netrw_liststyle=0         " 0=def, 1=det, 2=list, 3=tree
 let g:netrw_browse_split=4      " open on previous window
 
 " Language
-
 filetype plugin on
 syntax on
 "set spell
@@ -131,6 +127,8 @@ nnoremap <Leader>c :source $MYVIMRC<CR>
 nnoremap <Leader>s :call ToggleLines()<CR>
 nnoremap <Leader>f :find <C-z><S-Tab>
 nnoremap <expr> <Leader>F winwidth(0) >= 170 ? ':vert sf <C-z><S-Tab>' : ':sf <C-z><S-Tab>'
+nnoremap <Leader>ee :edit <C-z><S-Tab>
+nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
 nnoremap <Leader>- :Lexplore<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
@@ -153,6 +151,11 @@ nnoremap <Leader>L :wincmd r<CR>
 
 nnoremap <Leader>w- :split<CR>
 nnoremap <Leader>w/ :vsplit<CR>
+nnoremap <Leader>w1 :1wincmd w<CR>
+nnoremap <Leader>w2 :2wincmd w<CR>
+nnoremap <Leader>w3 :3wincmd w<CR>
+nnoremap <Leader>w4 :4wincmd w<CR>
+nnoremap <Leader>w5 :5wincmd w<CR>
 nnoremap <Leader>wj :wincmd J<CR>
 nnoremap <Leader>wk :wincmd K<CR>
 nnoremap <Leader>wh :wincmd H<CR>

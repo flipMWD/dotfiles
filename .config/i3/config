@@ -61,6 +61,7 @@ bar {
     # tray_output primary
     # tray_output eDP1
 
+    bindsym button1 nop
     bindsym button4 nop
     bindsym button5 nop
     # Ignore Ordering Number prepended to Workspace Name
@@ -265,7 +266,8 @@ bindsym XF86Calculator exec qalculate-gtk
 #bindsym XF86Search
 bindsym $mod+F6 exec --no-startup-id compton -b
 bindsym $mod+Shift+F6 exec --no-startup-id pkill compton
-bindsym $mod+F8 exec i3-sensible-terminal -e alsamixer
+bindsym $mod+F7 exec i3-sensible-terminal -e alsamixer
+bindsym $mod+F8 exec qbittorrent
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
