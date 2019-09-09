@@ -19,30 +19,27 @@
 
 # Global properties
 
-# good 72befc bad f44747 deg 404040
-
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=$HOME/.config/i3blocks/$BLOCK_NAME
 separator_block_width=19
 markup=none
 
 # Media Player (spotify, vlc, audacious, xmms2, mplayer, and others)
+[cmusplayer]
+label= 
+interval=5
+signal=10
+
 #[mediaplayer]
 #label= 
 #instance=cmus
 #interval=5
 #signal=10
 
-[cmusplayer]
-label= 
-command=~/.config/i3blocks/cmusplayer
-interval=5
-signal=10
-
 # CPU Usage
 [cpu_usage -c]
-label=
+label= 
 interval=5
 #min_width=CPU: 100.00%
 
@@ -52,8 +49,7 @@ interval=5
 #interval=5
 
 # Memory usage
-[memory]
-command=~/.config/i3blocks/mem-used
+[mem-used]
 label= 
 interval=5
 
@@ -70,13 +66,13 @@ interval=5
 
 # Disk Usage
 [disk]
-label=
+label= 
 #instance=/run/media/flip/Data
 interval=30
 
 # Network interface Monitoring (-4 or -6)
 [iface]
-label=
+label= 
 #instance=wlan0
 interval=15
 separator=false
@@ -90,6 +86,8 @@ separator=false
 [bandwidth]
 #instance=eth0
 instance=enp5s5
+INLABEL= 
+OUTLABEL= 
 interval=1
 
 # OpenVPN support
@@ -111,19 +109,18 @@ interval=1
 signal=10
 
 # Keyboard Layout
-[kblayout]
-command=~/.config/i3blocks/kb-layout
+[kb-layout]
 label= 
 interval=5
 
 # Date Time
 [time]
-label=
+label= 
 command=date '+%a, %d %b'
 separator=false
 interval=60
 
 [time]
-label=
+label= 
 command=date '+%H:%M'
 interval=5
