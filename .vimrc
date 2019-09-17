@@ -163,8 +163,7 @@ nnoremap <Leader>wl :wincmd L<CR>
 nnoremap <Leader>wt :wincmd t<CR>
 nnoremap <Leader>wb :wincmd b<CR>
 nnoremap <Leader>wd :quit<CR>
-nnoremap <Leader>ws :resize<Space>
-nnoremap <Leader>wS :vertical resize<Space>
+nnoremap <Leader>ws :vertical resize<Space>
 nnoremap <Leader>we :wincmd =<CR>
 nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 

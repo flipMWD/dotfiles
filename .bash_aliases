@@ -25,7 +25,7 @@ alias ytm="youtube-dl -x --audio-format mp3 -o '~/Downloads/%(title)s.%(ext)s'"
 
 alias gits='git status'
 alias gita='git add'
-alias gitc='git commit -m'
+alias gitc='git commit'
 alias gitd='git diff'
 alias gitr='git rebase'
 alias gitb='git branch'

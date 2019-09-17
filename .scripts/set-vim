@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Restore the previous VIM configuration
+if [ "$1" == "-r" ]; then
+    if [ -d "$HOME/.backup_vim" ]; then
+        rm -rf $HOME/.vim/
+        rm -f $HOME/.vimrc
+
+        mv -rf $HOME/.backup_vim/.vim/ $HOME/
+        mv -f $HOME/.backup_vim/.vimrc $HOME/
+
+        rmdir $HOME/.backup_vim/
+
+    else
+        echo "There's no VIM backup to be restored."
+    fi
+
+    exit 0
+
+elif [ "$1" != "-r" ] || [ -z "$1" ]; then
+    echo "Invalid argument. Executing default operation."
+fi
+
+# Default operation when no arguments are given.
+mkdir $HOME/.backup_vim
+mv -rf $HOME/.vim/ $HOME/.backup_vim
+mv -f $HOME/.vimrc $HOME/.backup_vim
+
+cp -r ../.vim/ $HOME/
+cp ../.vimrc $HOME/
+
+exit 0

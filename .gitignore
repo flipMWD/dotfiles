@@ -10,6 +10,8 @@
 !.vimrc
 !.Xresources
 
+!.scripts/
+
 !.vim/
 .vim/*
 !.vim/colors/
@@ -32,7 +34,7 @@
 .config/Code\ -\ OSS/User/*
 !.config/Code\ -\ OSS/User/*.json
 
-!.config/mpv
+!.config/mpv/
 
 !.config/i3/
 
