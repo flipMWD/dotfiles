@@ -138,7 +138,7 @@ inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
-nnoremap <Leader>j :ls!<CR>:b<Space>
+nnoremap <Leader>j :ls<CR>:b<Space>
 nnoremap <Leader>k :buffer #<CR>
 nnoremap <Leader>m :marks<CR>:normal `
 

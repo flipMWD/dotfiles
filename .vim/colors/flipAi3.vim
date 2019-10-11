@@ -42,7 +42,7 @@ hi User3            ctermfg=white       ctermbg=darkblue
 
 " Lines
 hi LineNr           ctermfg=gray
-hi CursorLineNr     ctermfg=white
+hi CursorLineNr     ctermfg=white                           cterm=none
 hi FoldColumn       ctermfg=darkblue    ctermbg=black
 hi SignColumn       ctermfg=magenta     ctermbg=black
 hi ColorColumn                          ctermbg=8
