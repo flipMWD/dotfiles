@@ -61,7 +61,6 @@ bar {
     # tray_output primary
     # tray_output eDP1
 
-    bindsym button1 nop
     bindsym button4 nop
     bindsym button5 nop
     # Ignore Ordering Number prepended to Workspace Name
