@@ -28,8 +28,10 @@ colorscheme flipAi3
 set laststatus=2
 set statusline=
 set statusline+=%1*\ \«\ %n\ \»\ %*         " buffer number
-set statusline+=\ %<%f%R\ %m                " file path [modf]
-set statusline+=%=\ %y\                     " file type
+set statusline+=\ %<                        " break status line here
+set statusline+=%{expand('%:p:h:t')}/%t     " parent dir / filename
+set statusline+=%R\ %m                      " Read Only [modified]
+set statusline+=%=\ %y\                     " [file type]
 set statusline+=%2*\ %l-%L\ \:\ %v\ %*      " lines-total : cols
 set statusline+=%3*\ %P\ %*                 " doc percentage
 set showcmd
@@ -37,7 +39,8 @@ set showcmd
 " Formatting
 set shiftwidth=4        " indent length
 set softtabstop=4       " mix space and tab
-set expandtab           " into spaces
+set tabstop=4           " set tab length
+set noexpandtab         " convert tab into spaces
 set autoindent
 set smartindent
 set smarttab
@@ -57,7 +60,7 @@ set showmatch           " highlight parens
 " NetRW :Lex
 let g:netrw_banner=0
 let g:netrw_winsize=22
-let g:netrw_liststyle=0         " 0=def, 1=det, 2=list, 3=tree
+let g:netrw_liststyle=3         " 0=def, 1=det, 2=list, 3=tree
 let g:netrw_browse_split=4      " open on previous window
 
 " Language
