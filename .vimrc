@@ -30,8 +30,8 @@ set statusline=
 set statusline+=%1*\ \«\ %n\ \»\ %*         " buffer number
 set statusline+=\ %<                        " break status line here
 set statusline+=%{expand('%:p:h:t')}/%t     " parent dir / filename
-set statusline+=%R\ %m                      " Read Only [modified]
-set statusline+=%=\ %y\                     " [file type]
+set statusline+=\ %m                        " [modified]
+set statusline+=%=\ %r\ %y\                 " [read only] [file type]
 set statusline+=%2*\ %l-%L\ \:\ %v\ %*      " lines-total : cols
 set statusline+=%3*\ %P\ %*                 " doc percentage
 set showcmd
@@ -76,7 +76,7 @@ autocmd FileType cpp call MakeFileMissing('g++')
 "=== Functions ==="
 
 " Alternate between Only Window and split with Alt Buffer
-function AltBOnly()
+function! AltBOnly()
     if (bufexists(0) && winnr('$') == 1)    " buf 0 = #, win $ = last
         if (winwidth(0) >= 170)             " win 0 = current
             vsplit
@@ -89,7 +89,7 @@ function AltBOnly()
     endif
 endfunction
 
-function ToggleLines()
+function! ToggleLines()
     set list!
     set cursorline!
     set cursorcolumn!
@@ -100,7 +100,7 @@ function ToggleLines()
     endif
 endfunction
 
-function MakeFileMissing(compiler)
+function! MakeFileMissing(compiler)
     if !filereadable("./Makefile")
         let &l:makeprg=a:compiler . ' $* % -o %<'
     endif
@@ -135,6 +135,7 @@ nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
 nnoremap <Leader>- :Lexplore<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
+nnoremap <Leader><Tab> :set et!<CR>
 
 inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
