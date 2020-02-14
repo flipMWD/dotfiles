@@ -47,3 +47,7 @@
 !.config/ranger/colorschemes/
 .config/ranger/colorschemes/*
 !.config/ranger/colorschemes/marine-ranger-Ai3.py
+
+!.elinks/
+.elinks/*
+!.elinks/elinks.conf
