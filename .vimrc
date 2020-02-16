@@ -32,6 +32,8 @@ set statusline+=\ %<                        " break status line here
 set statusline+=%{expand('%:p:h:t')}/%t     " parent dir / filename
 set statusline+=\ %m                        " [modified]
 set statusline+=%=\ %r\ %y\                 " [read only] [file type]
+set statusline+=[%{&fileformat}]\           " [unix] \n [dos] \r\n [mac] \r
+set statusline+=[%{&encoding}]\             " character encoding
 set statusline+=%2*\ %l-%L\ \:\ %v\ %*      " lines-total : cols
 set statusline+=%3*\ %P\ %*                 " doc percentage
 set showcmd
