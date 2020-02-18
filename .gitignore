@@ -17,6 +17,10 @@
 !.vim/colors/
 !.vim/syntax/
 
+!.elinks/
+.elinks/*
+!.elinks/elinks.conf
+
 !.config/
 .config/*
 !.config/compton.conf
@@ -40,6 +44,13 @@
 
 !.config/i3blocks/
 
+!.config/vifm/
+.config/vifm/*
+!.config/vifm/vifmrc
+!.config/vifm/colors/
+.config/vifm/colors/*
+!.config/vifm/colors/flip_Ai3.vifm
+
 !.config/ranger/
 .config/ranger/*
 !.config/ranger/rc.conf
@@ -47,7 +58,3 @@
 !.config/ranger/colorschemes/
 .config/ranger/colorschemes/*
 !.config/ranger/colorschemes/marine-ranger-Ai3.py
-
-!.elinks/
-.elinks/*
-!.elinks/elinks.conf
