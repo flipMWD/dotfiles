@@ -15,6 +15,7 @@ set diffopt+=context:5,foldcolumn:0
 set hidden
 set splitbelow
 set splitright
+set previewpopup=height:10,width:80
 set wildmenu
 set wildmode=longest,full
 set wildcharm=<C-z>
