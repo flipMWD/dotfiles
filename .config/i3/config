@@ -207,8 +207,9 @@ mode " $mode_resize " {
     bindsym f floating enable, resize set 1840 1000, move position center, mode "default"
     bindsym u floating enable, resize set 1280 720, move position center, mode "default"
     bindsym i floating enable, resize set 640 360, move position center, mode "default"
-    bindsym p floating enable, resize set 640 360, move position 1270 710, mode "default"
     bindsym o move position center, mode "default"
+    # Put window in bottom right corner
+    bindsym p exec --no-startup-id ~/.config/i3/move_window
 
     # Exit Resize Mode
     bindsym Return mode "default"
@@ -221,7 +222,6 @@ bindsym $mod+v resize shrink width 40px or 8 ppt
 
 # Reload Config File and Restart i3
 bindsym $mod+Shift+c reload
-#bindsym $mod+Shift+w restart
 bindsym $mod+Shift+w restart
 
 # Mode to Restart, Exit and Shutdown #  sus[P]end,  [H]ibernate
