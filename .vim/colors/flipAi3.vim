@@ -36,7 +36,7 @@ hi Question         ctermfg=darkgreen                       cterm=none
 hi Directory        ctermfg=blue
 hi Title            ctermfg=darkmagenta                     cterm=bold
 
-hi User1            ctermfg=gray        ctermbg=8           cterm=bold
+hi User1            ctermfg=white       ctermbg=8           cterm=bold
 hi User2            ctermfg=black       ctermbg=gray        cterm=bold
 hi User3            ctermfg=white       ctermbg=darkblue
 
