@@ -119,6 +119,7 @@ noremap <Leader>; <Esc>A;<Esc>
 noremap <Leader>d "+d
 noremap <Leader>y "+y
 
+nnoremap q; q:i
 nnoremap Y y$
 nnoremap S <Nop>
 nnoremap K <Nop>
