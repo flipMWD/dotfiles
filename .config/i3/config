@@ -86,13 +86,14 @@ bar {
 
 # Start Terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec st
 
 # Kill Focused Window
 bindsym $mod+y kill
 
 # Start Program Launcher
-bindsym $mod+slash --release exec --no-startup-id rofi -show combi -combi-modi drun#window -modi combi
-bindsym $mod+Shift+slash --release exec --no-startup-id rofi -show run
+bindsym $mod+p --release exec --no-startup-id rofi -show combi -combi-modi drun#window -modi combi
+bindsym $mod+Shift+p --release exec --no-startup-id rofi -show run
 
 # Change Focus
 bindsym $mod+h focus left
@@ -117,7 +118,7 @@ bindsym $mod+Shift+Up move up 40 px
 bindsym $mod+Shift+Right move right 40 px
 
 # Toggle Fullscreen
-bindsym $mod+f fullscreen toggle
+bindsym $mod+slash fullscreen toggle
 
 # Split Orientation
 bindsym $mod+period split h
