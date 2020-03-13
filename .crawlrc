@@ -1,0 +1,79 @@
+###################
+#                 #
+#   DCSS Config   #
+#                 #
+###################
+
+#------------------
+# Options
+#------------------
+
+show_travel_trail = true
+
+#------------------
+# Keybindings
+#------------------
+
+# General
+bindkey = [[] CMD_GO_UPSTAIRS
+bindkey = []] CMD_GO_DOWNSTAIRS
+bindkey = [y] CMD_DISPLAY_INVENTORY
+bindkey = [Y] CMD_DISPLAY_SPELLS
+bindkey = [n] CMD_PICKUP
+bindkey = [b] CMD_DISPLAY_SKILLS
+bindkey = [B] CMD_MEMORISE_SPELL
+bindkey = [s] CMD_RESISTS_SCREEN
+bindkey = [>] CMD_REST
+
+# Movement
+bindkey = [u] CMD_MOVE_UP_LEFT
+bindkey = [i] CMD_MOVE_UP_RIGHT
+bindkey = [m] CMD_MOVE_DOWN_LEFT
+bindkey = [,] CMD_MOVE_DOWN_RIGHT
+
+bindkey = [U] CMD_RUN_UP_LEFT
+bindkey = [I] CMD_RUN_UP_RIGHT
+bindkey = [M] CMD_RUN_DOWN_LEFT
+bindkey = [<] CMD_RUN_DOWN_RIGHT
+
+bindkey = [^U] CMD_ATTACK_UP_LEFT
+bindkey = [^I] CMD_ATTACK_UP_RIGHT
+bindkey = [^M] CMD_ATTACK_DOWN_LEFT
+bindkey = [^,] CMD_ATTACK_DOWN_RIGHT
+
+# Focus X Map
+bindkey = [u] CMD_MAP_MOVE_UP_LEFT
+bindkey = [i] CMD_MAP_MOVE_UP_RIGHT
+bindkey = [m] CMD_MAP_MOVE_DOWN_LEFT
+bindkey = [,] CMD_MAP_MOVE_DOWN_RIGHT
+
+bindkey = [U] CMD_MAP_JUMP_UP_LEFT
+bindkey = [I] CMD_MAP_JUMP_UP_RIGHT
+bindkey = [M] CMD_MAP_JUMP_DOWN_LEFT
+bindkey = [<] CMD_MAP_JUMP_DOWN_RIGHT
+
+bindkey = [[] CMD_MAP_FIND_UPSTAIR
+bindkey = []] CMD_MAP_FIND_DOWNSTAIR
+bindkey = [{] CMD_MAP_PREV_LEVEL
+bindkey = [}] CMD_MAP_NEXT_LEVEL
+bindkey = [Y] CMD_MAP_FIND_STASH
+
+# Targeting
+bindkey = [u] CMD_TARGET_UP_LEFT
+bindkey = [i] CMD_TARGET_UP_RIGHT
+bindkey = [m] CMD_TARGET_DOWN_LEFT
+bindkey = [,] CMD_TARGET_DOWN_RIGHT
+
+bindkey = [U] CMD_TARGET_DIR_UP_LEFT
+bindkey = [I] CMD_TARGET_DIR_UP_RIGHT
+bindkey = [M] CMD_TARGET_DIR_DOWN_LEFT
+bindkey = [<] CMD_TARGET_DIR_DOWN_RIGHT
+
+bindkey = [^Y] CMD_TARGET_FIND_PORTAL
+bindkey = [[] CMD_TARGET_FIND_UPSTAIR
+bindkey = []] CMD_TARGET_FIND_DOWNSTAIR
+
+# Wizard Mode
+bindkey = [b] CMD_TARGET_WIZARD_MOVE
+bindkey = [B] CMD_TARGET_WIZARD_MISCAST
+
