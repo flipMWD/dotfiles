@@ -21,7 +21,7 @@ alias p='sudo pacman'
 alias v='vim'
 alias r='ranger'
 alias f='vifm'
-alias w='elinks'
+alias web='elinks'
 alias ytv="youtube-dl -o '~/Downloads/%(title)s.%(ext)s'"
 alias ytm="youtube-dl -x --audio-format mp3 -o '~/Downloads/%(title)s.%(ext)s'"
 

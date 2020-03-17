@@ -85,7 +85,6 @@ separator=false
 
 [bandwidth]
 #instance=eth0
-instance=enp5s5
 INLABEL= 
 OUTLABEL= 
 interval=1
