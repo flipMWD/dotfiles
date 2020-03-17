@@ -8,6 +8,7 @@
 # Options
 #------------------
 
+travel_delay      = -1
 show_travel_trail = true
 
 #------------------
