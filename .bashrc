@@ -2,31 +2,6 @@
 # ~/.bashrc
 #
 
-### Set Variables ###
-
-ColorReset='\[\033[00m\]'
-Cl='\[\033['    # Color
-
-Rg='00;'        # Regular
-Bd='01;'        # Bold
-Ul='04;'        # Underline
-Bi='05;'        # Blink
-Rv='07;'        # Reverse
-
-FN='3'          # Foreground Normal
-FL='9'          # Foreground Light
-BN='4'          # Background Normal
-BL='10'         # Background Light
-
-Bk='0m\]'       # Black
-Rd='1m\]'       # Red
-Gn='2m\]'       # Green
-Yw='3m\]'       # Yellow
-Be='4m\]'       # Blue
-Mg='5m\]'       # Magenta
-Cy='6m\]'       # Cyan
-Wt='7m\]'       # White
-
 [[ $- != *i* ]] && return
 
 colors() {
@@ -94,10 +69,32 @@ if ${use_color} ; then
         fi
     fi
 
+# ANSI Colors Formatting
+# Octal Escape: \033    Hex Escape: \x1B    Bash Escape: \e
+#
+# Attribute:            Background: 4X      Color:
+# 00 = none             Foreground: 3X      0 = black
+# 01 = bold             Highlight:  9X      1 = red      
+# 04 = underscore                           2 = green
+# 05 = blink                                3 = yellow
+# 07 = reverse                              4 = blue
+# 08 = concealed                            5 = magenta
+#                                           6 = cyan
+# Reset:   \[\033[00m\]                     7 = white
+# Example: \[\033[01;40;34m\]
+
+# Bash Escape Sequences
+# \u = username                     # \d = date (Mon Jan 01)
+# \h = hostname up to '.'           # \t = time (24H)
+# \H = hostname                     # \T = time (12H)
+# \w = full directory path          # \@ = time (AM/PM)
+# \W = current directory            # \j = jobs
+# \$ = root                         # \s = shell
+
     if [[ ${EUID} == 0 ]] ; then
-        PS1=''$Cl$Bd$FN$Rd'\h'$Cl$Bd$FN$Wt' \W'$Cl$Bd$FN$Rd' \$'$ColorReset' '
+        PS1='\[\033[01;31m\]\h\[\033[01;37m\] \W\[\033[01;31m\] \$\[\033[00m\] '
     else
-        PS1=''$Cl$Rg$FN$Wt'\u'$Cl$Rg$FN$Be'::'$Cl$Rg$FN$Wt'\h'$Cl$Bd$FL$Wt' \W '$Cl$Rg$FL$Bk'>'$Cl$Rg$FN$Be'>'$Cl$Rg$FL$Wt'>'$ColorReset' '
+        PS1='\[\033[40;90m\]▌\[\033[01;40;97m\] \W \[\033[00;40;90m\]▐\[\033[07;47;90m\]»\[\033[00;90m\]▌\[\033[00m\] '
     fi
 
     alias ls='ls --color=auto --group-directories-first'
@@ -115,9 +112,8 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases               # source file
-fi
+# Source Aliases
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 xhost +local:root > /dev/null 2>&1
 
@@ -136,40 +132,12 @@ shopt -s expand_aliases
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-# Allow opening files with vim from :term w/o nesting
+# Enable Vim mode in Bash
+set -o vi
+
+# Allow opening files with Vim from :term w/o nesting
 if [ -z "$VIMRUNTIME" ]; then
     alias vs='vim --servername VTERMREADY'
 else
     alias vs="vim --servername $VIM_SERVERNAME --remote"
 fi
-
-# Enable Vim mode in Bash
-set -o vi
-
-#
-# # ex - archive extractor
-# # usage: ex <file>
-ex ()
-{
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)  tar xjf $1      ;;
-            *.tar.gz)   tar xzf $1      ;;
-            *.bz2)      bunzip2 $1      ;;
-            *.rar)      unrar x $1      ;;
-            *.gz)       gunzip $1       ;;
-            *.tar)      tar xf $1       ;;
-            *.tbz2)     tar xjf $1      ;;
-            *.tgz)      tar xzf $1      ;;
-            *.zip)      unzip $1        ;;
-            *.Z)        uncompress $1   ;;
-            *.7z)       7z x $1         ;;
-            *)          echo "'$1' cannot be extracted via ex()" ;;
-            esac
-        else
-        echo "'$1' is not a valid file"
-    fi
-}
-
-# better yaourt colors
-export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
