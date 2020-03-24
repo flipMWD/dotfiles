@@ -12,15 +12,12 @@ set $mod Mod4
 gaps inner 10
 gaps outer 0
 
-bindsym $mod+e gaps outer current plus 40
-bindsym $mod+r gaps outer current minus 40
-
 # Configure Border Style
 default_border pixel 1
 default_floating_border pixel 1
 
 # Font for Window Titles and Bar if not set in bar {}
-font xft:Bitstream-Vera-Sans 10
+font xft:Bitstream Vera Sans 10
 
 # Color Variables from ~/.Xresources
 set_from_resource $term_bg      background
@@ -52,32 +49,31 @@ client.background       $term_c0
 
 # i3 Bar Colors
 bar {
-    i3bar_command i3bar -t
-    status_command i3blocks
-    separator_symbol " | "
-    position top
+	i3bar_command i3bar -t
+	status_command i3blocks
+	separator_symbol " | "
+	position top
 
-    # Set Output Screen - Use: 'xrandr --output eDP1 --primary'
-    # tray_output primary
-    # tray_output eDP1
+	# Set Output Screen - Use: 'xrandr --output eDP1 --primary'
+	# tray_output primary
+	# tray_output eDP1
 
-    bindsym button4 nop
-    bindsym button5 nop
-    # Ignore Ordering Number prepended to Workspace Name
-    strip_workspace_numbers yes
+	bindsym button4 nop
+	bindsym button5 nop
+	strip_workspace_numbers yes
 
-    colors {
-        background "#00000000"
-        statusline $term_c15
-        separator  $term_c7
+	colors {
+		background "#00000000"
+		statusline $term_c15
+		separator  $term_c7
 
-        # class                 border          backgr.         text
-        focused_workspace       "#f8f8f830"     $term_c4        $term_c15
-        active_workspace        $term_c8        $term_c0        $term_c7
-        inactive_workspace      "#f8f8f840"     "#f8f8f890"     $term_c8
-        binding_mode            "#f8f8f840"     "#f8f8f890"     $term_c8
-        urgent_workspace        $term_c8        $term_c3        $term_c15
-    }
+		# class                 border          backgr.         text
+		focused_workspace       "#f8f8f830"     $term_c4        $term_c15
+		active_workspace        $term_c8        $term_c0        $term_c7
+		inactive_workspace      "#f8f8f840"     "#f8f8f890"     $term_c8
+		binding_mode            "#f8f8f840"     "#f8f8f890"     $term_c8
+		urgent_workspace        $term_c8        $term_c3        $term_c15
+	}
 }
 
 
@@ -86,7 +82,6 @@ bar {
 
 # Start Terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec st
 
 # Kill Focused Window
 bindsym $mod+y kill
@@ -125,9 +120,9 @@ bindsym $mod+period split h
 bindsym $mod+comma split v
 
 # Change Container Layout
+bindsym $mod+a layout toggle split
 bindsym $mod+s layout stacking
 bindsym $mod+d layout tabbed
-bindsym $mod+semicolon layout toggle split
 
 # Focus the Parent and Child Container
 bindsym $mod+equal focus parent
@@ -141,7 +136,7 @@ bindsym $mod+n focus mode_toggle
 floating_modifier $mod
 
 # Toggle Sticky Floating Window on all Workspaces
-bindsym $mod+a sticky toggle
+bindsym $mod+apostrophe sticky toggle
 
 # Move the Focused Window to the Scratchpad and alternate between
 bindsym $mod+Shift+o move scratchpad
@@ -174,6 +169,7 @@ bindsym $mod+0 workspace $ws10
 bindsym $mod+u workspace prev
 bindsym $mod+i workspace next
 bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+bracketleft workspace back_and_forth
 
 # Move Focused Container to Workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -187,59 +183,120 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+bindsym $mod+Ctrl+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10; workspace $w10
+
 bindsym $mod+Shift+u move container to workspace prev; workspace prev
 bindsym $mod+Shift+i move container to workspace next; workspace next
+bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Shift+bracketleft move container to workspace back_and_forth; workspace back_and_forth
+
+# Quick Resize for Vim
+bindsym $mod+bracketright resize shrink width 40px or 8 ppt
 
 # Mode to Resize Window
 set $mode_resize   Resize
 bindsym $mod+m mode " $mode_resize "
 mode " $mode_resize " {
-    # Pixels for Floating and Percentage Points for Tilling Container
-    bindsym h resize shrink width 40 px or 8 ppt
-    bindsym j resize grow height 40 px or 8 ppt
-    bindsym k resize shrink height 40 px or 8 ppt
-    bindsym l resize grow width 40 px or 8 ppt
+	# Pixels for Floating and Percentage Points for Tilling Container
+	bindsym h resize shrink width 40 px or 8 ppt
+	bindsym j resize grow height 40 px or 8 ppt
+	bindsym k resize shrink height 40 px or 8 ppt
+	bindsym l resize grow width 40 px or 8 ppt
 
-    bindsym Left resize shrink width 40 px or 8 ppt
-    bindsym Down resize grow height 40 px or 8 ppt
-    bindsym Up resize shrink height 40 px or 8 ppt
-    bindsym Right resize grow width 40 px or 8 ppt
+	bindsym Left resize shrink width 40 px or 8 ppt
+	bindsym Down resize grow height 40 px or 8 ppt
+	bindsym Up resize shrink height 40 px or 8 ppt
+	bindsym Right resize grow width 40 px or 8 ppt
 
-    bindsym f floating enable, resize set 1840 1000, move position center, mode "default"
-    bindsym u floating enable, resize set 1280 720, move position center, mode "default"
-    bindsym i floating enable, resize set 640 360, move position center, mode "default"
-    bindsym o move position center, mode "default"
-    # Put window in bottom right corner
-    bindsym p exec --no-startup-id ~/.config/i3/move_window
+	bindsym u gaps outer current minus 40
+	bindsym i gaps outer current plus 40
+	bindsym o gaps inner current minus 10
+	bindsym p gaps inner current plus 10
+	bindsym Shift+o gaps outer current set 0, gaps inner current set 10, mode "default"
 
-    # Exit Resize Mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+m mode "default"
-    bindsym m mode "default"
+	bindsym comma floating enable, resize set 790 1040, move position center, mode "default"
+	bindsym period floating enable, resize set 1280 720, move position center, mode "default"
+	bindsym slash exec --no-startup-id ~/.config/i3/move_window
+
+	# Exit Resize Mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+m mode "default"
+	bindsym m mode "default"
 }
-# Quick Resize for Vim
-bindsym $mod+v resize shrink width 40px or 8 ppt
+
+set $mode_ws   Workspace
+bindsym $mod+semicolon mode " $mode_ws "
+mode " $mode_ws " {
+	bindsym h workspace $ws1, mode "default"
+	bindsym j workspace $ws2, mode "default"
+	bindsym k workspace $ws3, mode "default"
+	bindsym l workspace $ws4, mode "default"
+	bindsym semicolon workspace $ws5, mode "default"
+	bindsym y workspace $ws6, mode "default"
+	bindsym u workspace $ws7, mode "default"
+	bindsym i workspace $ws8, mode "default"
+	bindsym o workspace $ws9, mode "default"
+	bindsym p workspace $ws10, mode "default"
+
+	bindsym Shift+h move container to workspace $ws1, mode "default"
+	bindsym Shift+j move container to workspace $ws2, mode "default"
+	bindsym Shift+k move container to workspace $ws3, mode "default"
+	bindsym Shift+l move container to workspace $ws4, mode "default"
+	bindsym Shift+semicolon move container to workspace $ws5, mode "default"
+	bindsym Shift+y move container to workspace $ws6, mode "default"
+	bindsym Shift+u move container to workspace $ws7, mode "default"
+	bindsym Shift+i move container to workspace $ws8, mode "default"
+	bindsym Shift+o move container to workspace $ws9, mode "default"
+	bindsym Shift+p move container to workspace $ws10, mode "default"
+
+	bindsym Ctrl+h move container to workspace $ws1, workspace $ws1, mode "default"
+	bindsym Ctrl+j move container to workspace $ws2, workspace $ws2, mode "default"
+	bindsym Ctrl+k move container to workspace $ws3, workspace $ws3, mode "default"
+	bindsym Ctrl+l move container to workspace $ws4, workspace $ws4, mode "default"
+	bindsym Ctrl+semicolon move container to workspace $ws5, workspace $ws5, mode "default"
+	bindsym Ctrl+y move container to workspace $ws6, workspace $ws6, mode "default"
+	bindsym Ctrl+u move container to workspace $ws7, workspace $ws7, mode "default"
+	bindsym Ctrl+i move container to workspace $ws8, workspace $ws8, mode "default"
+	bindsym Ctrl+o move container to workspace $ws9, workspace $ws9, mode "default"
+	bindsym Ctrl+p move container to workspace $ws10, workspace $ws10, mode "default"
+
+	# Exit Workspace Mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+semicolon mode "default"
+	bindsym m mode "default"
+}
 
 # Reload Config File and Restart i3
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e reload
 bindsym $mod+Shift+w restart
 
 # Mode to Restart, Exit and Shutdown #  sus[P]end,  [H]ibernate
 set $mode_system  L  |   U  |   E  |   R  |   S
 bindsym $mod+Shift+q mode " $mode_system "
+bindsym $mod+Shift+y mode " $mode_system "
 mode " $mode_system " {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    # bindsym p exec --no-startup-id i3exit suspend, mode "default"
-    # bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+	bindsym l exec --no-startup-id i3exit lock, mode "default"
+	bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+	bindsym e exec --no-startup-id i3exit logout, mode "default"
+	# bindsym p exec --no-startup-id i3exit suspend, mode "default"
+	# bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+	bindsym r exec --no-startup-id i3exit reboot, mode "default"
+	bindsym s exec --no-startup-id i3exit shutdown, mode "default"
 
-    # Exit System Mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+	# Exit System Mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 
@@ -259,7 +316,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/pactl-find-sink -
 #bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Launch Applications
-bindsym XF86Explorer exec i3-sensible-terminal -e vifm
+bindsym XF86Explorer exec i3-sensible-terminal -e vifm . /
 bindsym XF86Calculator exec qalculate-gtk
 #bindsym XF86HomePage
 #bindsym XF86Mail
@@ -275,16 +332,15 @@ bindsym $mod+Shift+x --release exec --no-startup-id xkill
 
 # Open specific Applications in Floating Mode - Use: 'xprop'
 for_window [title="alsamixer"] floating enable
-for_window [class="GParted"] floating enable
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="qt5ct"] floating enable
-for_window [class="feh"] floating enable border resize set 1280 720
-for_window [class="(?i)sxiv"] floating enable border
-for_window [class="(?i)qalculate-gtk"] floating enable
-for_window [class="(?i)piper"] floating enable
-for_window [class="(?i)blueman-manager"] floating enable
+for_window [class="Feh"] floating enable border resize set 1280 720
+for_window [class="Sxiv"] floating enable border
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Piper"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 # Switch to Workspace with Urgent Window automatically
 for_window [urgent=latest] focus
@@ -295,7 +351,6 @@ exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-#exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id xset -b
 exec --no-startup-id udisksctl mount -b /dev/sdc1
 exec --no-startup-id udisksctl mount -b /dev/sdb1
