@@ -27,6 +27,11 @@
 .config/*
 !.config/compton.conf
 
+!.config/cataclysm-dda/
+.config/cataclysm-dda/*
+!.config/cataclysm-dda/keybindings.json
+!.config/cataclysm-dda/auto_pickup.json
+
 !.config/cmus/
 .config/cmus/*
 !.config/cmus/autosave.backup
