@@ -108,6 +108,15 @@ function! MakeFileMissing(compiler)
     endif
 endfunction
 
+function! InsertTabSpace()
+	if (&expandtab)
+		set noexpandtab
+	else
+		set expandtab
+		execute "normal Ea\<Tab>"
+	endif
+endfunction
+
 
 "=== Keybindings ==="
 
@@ -138,7 +147,8 @@ nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
 nnoremap <Leader>- :Lexplore<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
-nnoremap <Leader><Tab> :set et!<CR>
+"nnoremap <Leader><Tab> :set et!<CR>
+nnoremap <Leader><Tab> :call InsertTabSpace()<CR>
 
 inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
@@ -175,9 +185,8 @@ nnoremap <Leader>we :wincmd =<CR>
 nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 
 " gt|T :tabe|f :tabo :tabn|p :tabm -|+
-nnoremap <Leader>u :tab h<Space>
 nnoremap <Leader>i :tab sb %
-nnoremap <Leader>U :tabclose<CR>
+nnoremap <Leader>u :tabclose<CR>
 
 nnoremap <Leader>tw :wincmd T<CR>
 nnoremap <Leader>tj :tabprevious<CR>

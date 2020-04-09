@@ -1,4 +1,8 @@
 [
   { "rule": "*id card*", "active": true, "exclude": false
+  },
+  { "rule": "*casing*", "active": true, "exclude": false
+  },
+  { "rule": "*shotgun*hull*", "active": true, "exclude": false
   }
 ]

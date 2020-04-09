@@ -183,7 +183,7 @@
   },
   { "id": "help", "category": "DEFAULTMODE", "bindings": [ { "input_method": "keyboard", "key": [ "0" ] } ]
   },
-  { "id": "ignore_enemy", "category": "DEFAULTMODE", "bindings": [ { "input_method": "keyboard", "key": [ "'" ] } ]
+  { "id": "ignore_enemy", "category": "DEFAULTMODE", "bindings": [ { "input_method": "keyboard", "key": [ "'" ] }, { "input_method": "keyboard", "key": [ "SPACE" ] } ]
   },
   { "id": "inventory", "category": "DEFAULTMODE", "bindings": [ { "input_method": "keyboard", "key": [ "o" ] } ]
   },
@@ -299,7 +299,7 @@
   },
   { "id": "toggle_pixel_minimap", "category": "DEFAULTMODE", "bindings": [ { "input_method": "keyboard", "key": [ "N" ] } ]
   },
-  { "id": "toggle_sidebar_style", "category": "DEFAULTMODE", "bindings": [  ]
+  { "id": "toggle_sidebar_style", "category": "DEFAULTMODE", "bindings": [ { "input_method": "keyboard", "key": [ "F10" ] } ]
   },
   { "id": "unload", "category": "DEFAULTMODE", "bindings": [ { "input_method": "keyboard", "key": [ "U" ] } ]
   },
@@ -645,9 +645,9 @@
   },
   { "id": "FUEL_LIST_UP", "category": "VEH_INTERACT", "bindings": [ { "input_method": "keyboard", "key": [ "[" ] } ]
   },
-  { "id": "INSTALL", "category": "VEH_INTERACT", "bindings": [ { "input_method": "keyboard", "key": [ "i" ] } ]
+  { "id": "INSTALL", "category": "VEH_INTERACT", "bindings": [ { "input_method": "keyboard", "key": [ "t" ] } ]
   },
-  { "id": "MEND", "category": "VEH_INTERACT", "bindings": [ { "input_method": "keyboard", "key": [ "m" ] } ]
+  { "id": "MEND", "category": "VEH_INTERACT", "bindings": [ { "input_method": "keyboard", "key": [ "x" ] } ]
   },
   { "id": "NEXT_TAB", "category": "VEH_INTERACT", "bindings": [ { "input_method": "keyboard", "key": [ "TAB" ] } ]
   },
