@@ -43,6 +43,11 @@ label=
 interval=5
 #min_width=CPU: 100.00%
 
+# CPU Fan Speed
+[cpu_fan]
+label=  
+interval=1
+
 # Temperature
 #[temperature]
 #label= 
