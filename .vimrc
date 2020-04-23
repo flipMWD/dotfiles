@@ -108,16 +108,6 @@ function! MakeFileMissing(compiler)
     endif
 endfunction
 
-function! InsertTabSpace()
-	if (&expandtab)
-		set noexpandtab
-	else
-		set expandtab
-		execute "normal Ea\<Tab>"
-	endif
-endfunction
-
-
 "=== Keybindings ==="
 
 let mapleader="\<Space>"
@@ -147,8 +137,7 @@ nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
 nnoremap <Leader>- :Lexplore<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
-"nnoremap <Leader><Tab> :set et!<CR>
-nnoremap <Leader><Tab> :call InsertTabSpace()<CR>
+nnoremap <Leader><Tab> :set et!<CR>
 
 inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
