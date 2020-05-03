@@ -46,7 +46,7 @@ interval=5
 # CPU Fan Speed
 [cpu_fan]
 label=  
-interval=1
+interval=5
 
 # Temperature
 #[temperature]
