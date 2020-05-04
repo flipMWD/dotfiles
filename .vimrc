@@ -48,9 +48,16 @@ set smartindent
 set smarttab
 
 " Cursor
-let &t_SI.="\<Esc>[5 q"     " insert, blink bar
-let &t_SR.="\<Esc>[3 q"     " replace, blink underscore
-let &t_EI.="\<Esc>[1 q"     " normal, blink block
+if exists('$TMUX')
+	let &t_SI.="\<Esc>Ptmux;\<Esc>\<Esc>[5 q\<Esc>\\"
+	let &t_SR.="\<Esc>Ptmux;\<Esc>\<Esc>[3 q\<Esc>\\"
+	let &t_EI.="\<Esc>Ptmux;\<Esc>\<Esc>[1 q\<Esc>\\"
+	autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
+else
+	let &t_SI.="\<Esc>[5 q"     " insert, blink bar
+	let &t_SR.="\<Esc>[3 q"     " replace, blink underscore
+	let &t_EI.="\<Esc>[1 q"     " normal, blink block
+endif
 
 " Search
 set hlsearch
