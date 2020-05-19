@@ -2,43 +2,44 @@
 *foreground:                #d4d4d4
 *fading:                    10
 *fadeColor:                 #000010
-*cursorColor:               #007acc
+*cursorColor:               #87b2e0
 *pointerColorBackground:    #2c2b2c
 *pointerColorForeground:    #1667a0
 
-! Black
-*color0:    #252526
-*color8:    #505050
+! black
+*.color0:       #263238
+*.color8:       #37474f
 
-! Red
-*color1:    #f44747
-*color9:    #d07563
+! red
+*.color1:       #FB7C79
+*.color9:       #e53935
 
-! Green
-*color2:    #1c903d
-*color10:   #25c032
+! green
+*.color2:       #8ae234
+*.color10:      #5e9a23
 
-! Yellow
-*color3:    #cd9731
-*color11:   #dfb565
+! yellow
+*.color3:       #fce94f
+*.color11:      #f57900
 
-! Blue
-*color4:    #007acc
-*color12:   #5fa3dc
+! blue
+*.color4:       #87b2e0
+*.color12:      #5c84b6
 
-! Magenta
-*color5:    #8264cc
-*color13:   #c586c0
+! magenta
+*.color5:       #c195bc
+*.color13:      #836188
 
-! Cyan
-*color6:    #09dbde
+! cyan
+*.color6:       #5be0df
+*.color14:      #378686
 
-! Orange
-*color14:   #f5670e
+! white
+*.color7:       #78909c
+*.color15:      #f5f5f5
 
-! White
-*color7:    #a8a8a8
-*color15:   #f8f8ff
+Xcursor.theme:              xcursor-breeze
+Xcursor.size:               0
 
 Xft.dpi:                    96
 Xft.antialias:              true
@@ -48,20 +49,26 @@ Xft.autohint:               false
 Xft.hintstyle:              hintslight
 Xft.lcdfilter:              lcddefault
 
-Xcursor.theme:              xcursor-breeze
-Xcursor.size:               0
+! Source Code Pro
+URxvt*font:                 xft:source code pro:medium:pixelsize=15,9x15
+URxvt*boldFont:             xft:source code pro:bold:pixelsize=15
+URxvt*italicFont:           xft:source code pro:italic:pixelsize=15
+URxvt*boldItalicFont:       xft:source code pro:bold:italic:pixelsize=15
 
-URxvt*font:                 9x15,xft:TerminessTTFNerdFontMono:size=10,xft:Inconsolata:size=11
+! Inconsolata
+!URxvt*font:                 xft:inconsolata:size=12,9x15
+!URxvt*font:                 xft:inconsolata:bold:size=12,9x15
+
 URxvt*geometry:             120x40
 URxvt*internalBorder:       10
 URxvt.depth:                32
 ! URxvt.background:           [85]#000000
-URxvt*background:           #0e0e0e
-URxvt*foreground:           #d4d4d4
+URxvt*background:           #191b1c
+URxvt*foreground:           #b0bec5
 URxvt.intensityStyles:      false
 URxvt*scrollBar:            false
 URxvt*cursorBlink:          true
-URxvt*letterSpace:          0
+URxvt*letterSpace:          -1
 URxvt*lineSpace:            0
 URxvt*saveLines:            4000
 
