@@ -87,7 +87,7 @@ hi PmenuThumb                           ctermbg=7
 " Tab Pages
 hi TabLine          ctermfg=gray        ctermbg=8           cterm=none
 hi TabLineFill      ctermfg=black       ctermbg=black       cterm=none
-hi TabLineSel       ctermfg=white       ctermbg=darkblue    cterm=bold
+hi TabLineSel       ctermfg=white       ctermbg=blue        cterm=bold
 
 " Syntax
 hi Comment          ctermfg=7

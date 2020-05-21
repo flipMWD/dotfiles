@@ -1,3 +1,6 @@
+" Plugins
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 " Paths
 set path+=**
 

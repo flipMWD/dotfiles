@@ -41,10 +41,10 @@ set_from_resource $term_c15     color15
 
 # Window Title Colors
 # class                 border          backgr.         text            indic.          child_border
-client.focused          $term_c0        $term_bg        $term_c4        $term_c4        $term_c12
+client.focused          $term_c0        $term_bg        $term_c4        $term_c12       $term_c4
 client.focused_inactive $term_c8        $term_c8        $term_c15       $term_c7        $term_c8
 client.unfocused        $term_c8        $term_c8        $term_c7        $term_c7        $term_c8
-client.urgent           $term_c0        $term_c3        $term_c15       $term_c7        $term_c3
+client.urgent           $term_c0        $term_c11       $term_c15       $term_c7        $term_c3
 client.background       $term_c0
 
 # i3 Bar Colors
@@ -64,15 +64,15 @@ bar {
 
 	colors {
 		background "#00000000"
-		statusline $term_c15
+		statusline $term_fg
 		separator  $term_c7
 
 		# class                 border          backgr.         text
-		focused_workspace       "#f8f8f830"     $term_c4        $term_c15
-		active_workspace        $term_c8        $term_c0        $term_c7
-		inactive_workspace      "#f8f8f840"     "#f8f8f890"     $term_c8
-		binding_mode            "#f8f8f840"     "#f8f8f890"     $term_c8
-		urgent_workspace        $term_c8        $term_c3        $term_c15
+		focused_workspace       $term_c4        $term_c12       $term_c15
+		active_workspace        $term_c7        $term_c0        $term_c15
+		inactive_workspace      $term_c4        $term_fg        $term_c8
+		binding_mode            $term_c4        $term_fg        $term_c8
+		urgent_workspace        $term_fg        $term_c11       $term_c15
 	}
 }
 

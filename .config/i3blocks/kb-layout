@@ -1,4 +1,4 @@
 #!/bin/sh
-# Check which setxkbmod -layout is set
+# man xkeyboard-config, setxkbmod -layout
 
-[ "$(xset -q | grep LED | awk '{ print $10 }')" -lt "1000" ] && echo "US" || echo "BR"
+[ "$(xset -q | awk '/LED/ {print $10}')" -lt "1000" ] && echo "US" || echo "BR"
