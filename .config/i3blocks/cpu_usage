@@ -49,7 +49,7 @@ if ($cpu_usage >= $t_crit) {
     print "#F44747\n";
     exit 33;
 } elsif ($cpu_usage >= $t_warn) {
-    print "#CD9731\n";
+    print "#FCE94F\n";
 }
 
 exit 0;

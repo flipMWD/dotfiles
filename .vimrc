@@ -14,6 +14,7 @@ set formatoptions-=o
 set linebreak
 set showbreak=»
 set listchars=eol:¬,tab:\|->,space:·,trail:X
+set fillchars=vert:│
 set diffopt+=context:5,foldcolumn:0
 set hidden
 set splitbelow
@@ -22,7 +23,7 @@ set previewpopup=height:10,width:80
 set wildmenu
 set wildmode=longest,full
 set wildcharm=<C-z>
-set wildignore=*.bak,*.tar.*,*.cache
+set wildignore+=*.bak,*.tar.*,*.cache,*.o
 set wildignore+=*/.git/**,*/node_modules/**
 set wildignorecase
 set timeout timeoutlen=3000 ttimeoutlen=50  " deal with term esc
@@ -72,7 +73,8 @@ set showmatch           " highlight parens
 " NetRW :Lex
 let g:netrw_banner=0
 let g:netrw_winsize=22
-let g:netrw_liststyle=3         " 0=def, 1=det, 2=list, 3=tree
+let g:netrw_liststyle=0         " 0=thin, 1=detail, 2=column, 3=tree
+let g:netrw_sizestyle="H"       " human-readable
 let g:netrw_browse_split=4      " open on previous window
 
 " Language

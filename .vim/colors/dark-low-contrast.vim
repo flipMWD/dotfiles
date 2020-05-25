@@ -63,7 +63,7 @@ hi Cursor           ctermfg=black       ctermbg=3
 hi lCursor          ctermfg=black       ctermbg=white
 hi CursorLine                           ctermbg=black       cterm=none
 hi CursorColumn                         ctermbg=black
-hi MatchParen       ctermfg=white       ctermbg=yellow
+hi MatchParen       ctermfg=yellow      ctermbg=none        cterm=bold
 
 " Diff Mode
 hi DiffAdd          ctermfg=white       ctermbg=darkgreen
@@ -138,5 +138,8 @@ hi SpellBad         ctermfg=red         ctermbg=none        cterm=underline
 hi SpellCap         ctermfg=darkred     ctermbg=none        cterm=underline
 hi SpellLocal       ctermfg=darkred     ctermbg=none        cterm=underline
 hi SpellRare        ctermfg=red         ctermbg=none        cterm=underline
+
+" Plugins
+hi CtrlPMatch       ctermfg=yellow
 
 " vim:sw=4:sts=4:ts=4:et
