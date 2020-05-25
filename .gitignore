@@ -11,8 +11,6 @@
 !.tmux.conf
 !.Xresources
 
-!.crawlrc
-
 !.scripts/
 
 !.vim/
@@ -27,11 +25,6 @@
 !.config/
 .config/*
 !.config/compton.conf
-
-!.config/cataclysm-dda/
-.config/cataclysm-dda/*
-!.config/cataclysm-dda/keybindings.json
-!.config/cataclysm-dda/auto_pickup.json
 
 !.config/cmus/
 .config/cmus/*
@@ -56,8 +49,6 @@
 .config/vifm/*
 !.config/vifm/vifmrc
 !.config/vifm/colors/
-.config/vifm/colors/*
-!.config/vifm/colors/flip_Ai3.vifm
 
 !.config/ranger/
 .config/ranger/*
