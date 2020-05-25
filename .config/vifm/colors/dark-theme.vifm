@@ -52,9 +52,9 @@ highlight Win           cterm=none      ctermfg=white       ctermbg=default
 highlight OtherWin      cterm=none      ctermfg=default     ctermbg=default
 highlight TopLineSel    cterm=bold      ctermfg=255         ctermbg=black
 highlight TopLine       cterm=bold      ctermfg=white       ctermbg=black
-highlight StatusLine    cterm=bold      ctermfg=15          ctermbg=black
+highlight StatusLine    cterm=bold      ctermfg=blue        ctermbg=black
 highlight WildMenu      cterm=reverse   ctermfg=yellow      ctermbg=black
-highlight CmdLine       cterm=none      ctermfg=white       ctermbg=black
+highlight CmdLine       cterm=none      ctermfg=white       ctermbg=default
 highlight ErrorMsg      cterm=none      ctermfg=red         ctermbg=black
 highlight Border        cterm=none      ctermfg=white       ctermbg=black
 highlight JobLine       cterm=bold,reverse ctermfg=black    ctermbg=white

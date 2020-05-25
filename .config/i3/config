@@ -225,7 +225,7 @@ mode " $mode_resize " {
 
 	bindsym comma floating enable, resize set 790 1040, move position center, mode "default"
 	bindsym period floating enable, resize set 1280 720, move position center, mode "default"
-	bindsym slash exec --no-startup-id ~/.config/i3/move_window
+	bindsym slash exec --no-startup-id ~/.config/i3/move_window.sh
 
 	# Exit Resize Mode
 	bindsym Return mode "default"
@@ -295,9 +295,9 @@ mode " $mode_system " {
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/pactl-find-sink
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/pactl-find-sink -m
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/pactl-find-sink -p
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/pactl-find-sink.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/pactl-find-sink.sh -m
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/pactl-find-sink.sh -p
 
 # Screen Brightness Controls
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"

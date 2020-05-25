@@ -3,6 +3,7 @@
 !.gitignore
 !README.md
 
+!.bash_profile
 !.bashrc
 !.bash_aliases
 !.dir_colors
@@ -28,16 +29,9 @@
 
 !.config/cmus/
 .config/cmus/*
-!.config/cmus/autosave.backup
-!.config/cmus/flip.theme
+!.config/cmus/dark.theme
 !.config/cmus/config.backup
-!.config/cmus/update-lib
-
-!.config/Code\ -\ OSS/
-.config/Code\ -\ OSS/*
-!.config/Code\ -\ OSS/User/
-.config/Code\ -\ OSS/User/*
-!.config/Code\ -\ OSS/User/*.json
+!.config/cmus/update-lib.sh
 
 !.config/mpv/
 
@@ -55,5 +49,5 @@
 !.config/ranger/rc.conf
 !.config/ranger/rifle.conf
 !.config/ranger/colorschemes/
-.config/ranger/colorschemes/*
-!.config/ranger/colorschemes/marine-ranger-Ai3.py
+.config/ranger/colorschemes/__pycache__/
+.config/ranger/colorschemes/__init__.py
