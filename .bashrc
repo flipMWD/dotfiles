@@ -141,3 +141,19 @@ if [ -z "$VIMRUNTIME" ]; then
 else
     alias vs="vim --servername $VIM_SERVERNAME --remote"
 fi
+
+# FZF Function
+fzf_cd() {
+    dir="$HOME"
+
+    case $1 in
+        m)	dir="/run/media/$USER"	;;
+        .)	dir="$PWD"				;;
+    esac
+
+    fzf_col='--color=16,gutter:0,fg+:15,bg+:-1,hl:11,hl+:11'
+	#fzf_pvw='--preview="tree -L 1 {}" --preview-window=up'
+	fzf_opt='--height=40% --reverse'
+
+    cd "$(find "$dir" -type d | fzf $fzf_col $fzf_opt)"
+}

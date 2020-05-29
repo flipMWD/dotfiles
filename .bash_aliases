@@ -7,24 +7,26 @@ alias sb='. ~/.bashrc'
 
 alias ..='cd ..'
 alias ...='cd ../..'
-alias cm="cd /run/media/$USER/ && pwd && ls"
+alias f='fzf_cd'
+alias fm='fzf_cd m'
+alias f.='fzf_cd .'
 
 alias la='ls -AlhN'
 alias cp='cp -i'
 alias mv='mv -i'
-alias free='free -m'
 alias df='df -h'
 alias du='du -h'
+alias free='free -m'
 alias :q='exit'
 
-alias more=less
+alias d='vifm .'
+alias r='ranger'
 alias p='sudo pacman'
 alias v='vim'
-alias r='ranger'
-alias f='vifm .'
 alias web='elinks'
 alias ytv="youtube-dl -o '~/Downloads/%(title)s.%(ext)s'"
 alias ytm="youtube-dl -x --audio-format mp3 -o '~/Downloads/%(title)s.%(ext)s'"
+alias more=less
 
 alias gs='git status'
 alias ga='git add'
