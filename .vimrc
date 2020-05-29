@@ -153,6 +153,8 @@ nnoremap <Leader><Tab> :set et!<CR>
 
 inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
+autocmd FileType html inoremap <buffer> > ></<C-x><C-o><Esc>%i
+autocmd FileType html inoremap <buffer> ><CR> ><CR></<C-x><C-o><Esc>%O<Tab>
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]

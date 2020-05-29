@@ -1,1 +1,5 @@
-source ~/.bashrc
+#
+# ~/.bash_profile
+#
+
+source $HOME/.bashrc
