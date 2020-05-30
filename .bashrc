@@ -143,17 +143,35 @@ else
 fi
 
 # FZF Function
-fzf_cd() {
-    dir="$HOME"
+export FZF_DEFAULT_OPTS="--color=16,gutter:0,fg+:15,bg+:-1,hl:11,hl+:11 \
+--height=40% --layout=reverse"
 
-    case $1 in
-        m)	dir="/run/media/$USER"	;;
-        .)	dir="$PWD"				;;
-    esac
+fzf_util() {
+    dir_fd="$PWD"
+    find_t="d"
 
-    fzf_col='--color=16,gutter:0,fg+:15,bg+:-1,hl:11,hl+:11'
-	#fzf_pvw='--preview="tree -L 1 {}" --preview-window=up'
-	fzf_opt='--height=40% --reverse'
+    for arg in "$@"; do
+        case $arg in
+            h)  dir_fd="$HOME"              ;;
+            m)  dir_fd="/run/media/$USER"   ;;
+            f)  find_t="f"                  ;;
+            *)  ;;
+        esac
+    done
 
-    cd "$(find "$dir" -type d | fzf $fzf_col $fzf_opt)"
+    if [ "$find_t" = "d" ]; then
+        cd "$(find "$dir_fd" -type $find_t | fzf)"
+    else
+        open_f="$(find "$dir_fd" -type $find_t | fzf)"
+        path_n="$(sed -E 's|(/.*)/.*?|\1|g' <<< "$open_f")"
+        file_n="$(sed -E 's|/.*/(.*?)|\1|g' <<< "$open_f")"
+        cd "$path_n"
+        ls -AlhN --color=always "$file_n" | \
+        awk -vpn="$path_n" '{print "\033[37mFile:\033[00m " $9 \
+        "\n\033[37mPath:\033[00m " pn \
+        "\n\033[37mSize:\033[00m " $5 \
+        "\t\033[37mLast Edited:\033[00m " $6, $7, $8}'
+    fi
 }
+
+# vim:sw=4:et
