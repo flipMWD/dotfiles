@@ -2,35 +2,10 @@
 # ~/.bashrc
 #
 
+# Check shell options, if one of them is not i[nteractive], return
 [[ $- != *i* ]] && return
 
-colors() {
-    local fgc bgc vals seq0
-
-    printf "Color escapes are %s\n" '\e[${value};...;${value}m'
-    printf "Values 30..37 are \e[33mforeground colors\e[m\n"
-    printf "Values 40..47 are \e[43mbackground colors\e[m\n"
-    printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
-
-    # foreground colors
-    for fgc in {30..37}; do
-        # background colors
-        for bgc in {40..47}; do
-            fgc=${fgc#37} # white
-            bgc=${bgc#40} # black
-
-            vals="${fgc:+$fgc;}${bgc}"
-            vals=${vals%%;}
-
-            seq0="${vals:+\e[${vals}m}"
-            printf "  %-9s" "${seq0:-(default)}"
-            printf " ${seq0}TEXT\e[m"
-            printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
-        done
-        echo; echo
-    done
-}
-
+# Source bash-completion if available
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
 # Change the window title of X terminals
@@ -112,11 +87,15 @@ fi
 
 unset use_color safe_term match_lhs sh
 
+# Enable Alias Expansion
+shopt -s expand_aliases
+
 # Source Aliases
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 xhost +local:root > /dev/null 2>&1
 
+# Tab complete sudo commands
 complete -cf sudo
 
 # Bash won't get SIGWINCH if another process is in the foreground.
@@ -124,10 +103,6 @@ complete -cf sudo
 # it regains control.  #65623
 # http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
 shopt -s checkwinsize
-
-shopt -s expand_aliases
-
-# export QT_SELECT=4
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
@@ -143,9 +118,6 @@ else
 fi
 
 # FZF Function
-export FZF_DEFAULT_OPTS="--color=16,gutter:0,fg+:15,bg+:-1,hl:11,hl+:11 \
---height=40% --layout=reverse"
-
 fzf_util() {
     dir_fd="$PWD"
     find_t="d"
@@ -172,6 +144,9 @@ fzf_util() {
         "\n\033[37mSize:\033[00m " $5 \
         "\t\033[37mLast Edited:\033[00m " $6, $7, $8}'
     fi
+
+    unset dir_fd find_t open_f path_n file_n
 }
+
 
 # vim:sw=4:et
