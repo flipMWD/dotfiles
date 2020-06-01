@@ -18,6 +18,9 @@
 .vim/*
 !.vim/colors/
 !.vim/syntax/
+!.vim/pack/
+.vim/pack/*
+!.vim/pack/install-pkg.sh
 
 !.elinks/
 .elinks/*

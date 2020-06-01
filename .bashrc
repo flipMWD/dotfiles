@@ -109,6 +109,7 @@ shopt -s histappend
 
 # Enable Vim mode in Bash
 set -o vi
+bind -m vi-insert -x '"\C-l":"clear"'
 
 # Allow opening files with Vim from :term w/o nesting
 if [ -z "$VIMRUNTIME" ]; then
@@ -118,35 +119,40 @@ else
 fi
 
 # FZF Function
+bind -m vi '"\C-f":"fzf_util\n"'
+bind -m vi-insert '"\C-f":"fzf_util\n"'
+
 fzf_util() {
-    dir_fd="$PWD"
-    find_t="d"
+    local dir_fd found
 
-    for arg in "$@"; do
-        case $arg in
-            h)  dir_fd="$HOME"              ;;
-            m)  dir_fd="/run/media/$USER"   ;;
-            f)  find_t="f"                  ;;
-            *)  ;;
-        esac
-    done
-
-    if [ "$find_t" = "d" ]; then
-        cd "$(find "$dir_fd" -type $find_t | fzf)"
-    else
-        open_f="$(find "$dir_fd" -type $find_t | fzf)"
-        path_n="$(sed -E 's|(/.*)/.*?|\1|g' <<< "$open_f")"
-        file_n="$(sed -E 's|/.*/(.*?)|\1|g' <<< "$open_f")"
-        cd "$path_n"
-        ls -AlhN --color=always "$file_n" | \
-        awk -vpn="$path_n" '{print "\033[37mFile:\033[00m " $9 \
-        "\n\033[37mPath:\033[00m " pn \
-        "\n\033[37mSize:\033[00m " $5 \
-        "\t\033[37mLast Edited:\033[00m " $6, $7, $8}'
+    dir_fd="."  # $PWD
+    if [ "${1,,}" = "h" ]; then
+        dir_fd="$HOME"
+        shift
+    elif [ "${1,,}" = "m" ]; then
+        dir_fd="/run/media/$USER"
+        shift
+    elif [ -d "$1" ]; then
+        if [ "${1::1}" = "/" ]; then
+            dir_fd="$1"
+        else
+            cd "${dir_fd}/$1"
+        fi
+        shift
     fi
 
-    unset dir_fd find_t open_f path_n file_n
-}
+    found="$(find "${dir_fd}" | fzf -m)"
+    if [ $(wc -l <<< "$found") -eq 1 -a -z "$1" ]; then
+        [ -d "${found}" ] && cd "${found}" && return
+        [ -d "${found%/*}" ] && cd "${found%/*}" && return
+    fi
 
+    if [ $# -gt 0 ]; then
+        $@ $(echo "$found")
+        return
+    fi
+
+    echo "$found"
+}
 
 # vim:sw=4:et

@@ -5,6 +5,7 @@
 # Terminal
 export TERM=rxvt-unicode-256color
 export EDITOR=/usr/bin/vim
+export FZF_DEFAULT_COMMAND="find ."
 export FZF_DEFAULT_OPTS="--color=16,gutter:0,fg+:15,bg+:-1,hl:11,hl+:11 \
 --height=40% --layout=reverse"
 

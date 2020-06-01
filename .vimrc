@@ -1,5 +1,5 @@
-" Plugins
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" Plugins ~/.vim/pack/install-pkg.sh
+" fzf.vim
 
 " Paths
 set path+=**
@@ -142,8 +142,9 @@ nnoremap <Leader>N :let @/=""<CR>
 nnoremap <Leader>C :split $MYVIMRC<CR>
 nnoremap <Leader>c :source $MYVIMRC<CR>
 nnoremap <Leader>s :call ToggleLines()<CR>
-nnoremap <Leader>f :find <C-z><S-Tab>
-nnoremap <expr> <Leader>F winwidth(0) >= 170 ? ':vert sf <C-z><S-Tab>' : ':sf <C-z><S-Tab>'
+"nnoremap <Leader>f :find <C-z><S-Tab>
+"nnoremap <expr> <Leader>F winwidth(0) >= 170 ? ':vert sf <C-z><S-Tab>' : ':sf <C-z><S-Tab>'
+nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>ee :edit <C-z><S-Tab>
 nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
 nnoremap <Leader>- :Lexplore<CR>
