@@ -141,10 +141,20 @@ fzf_util() {
         shift
     fi
 
-    found="$(find "${dir_fd}" | fzf -m)"
+    found="$(find "$dir_fd" | fzf -m)"
     if [ $(wc -l <<< "$found") -eq 1 -a -z "$1" ]; then
-        [ -d "${found}" ] && cd "${found}" && return
-        [ -d "${found%/*}" ] && cd "${found%/*}" && return
+        if [ -d "$found" ]; then
+            cd "$found"
+            return
+        elif [ -d "${found%/*}" ]; then
+            cd "${found%/*}"
+            ls -AlhN --color=always "${found##*/}" |
+            awk -vpn="${found%/*}" '{print "\033[37mFile:\033[00m " $9 \
+                "\n\033[37mPath:\033[00m " pn \
+                "\n\033[37mSize:\033[00m " $5 \
+                "\t\033[37mLast Edited:\033[00m " $6, $7, $8}'
+            return
+        fi
     fi
 
     if [ $# -gt 0 ]; then

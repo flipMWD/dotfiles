@@ -21,6 +21,9 @@
 !.vim/pack/
 .vim/pack/*
 !.vim/pack/install-pkg.sh
+!.vim/after/
+.vim/after/*
+!.vim/after/ftplugin/
 
 !.elinks/
 .elinks/*
