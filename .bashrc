@@ -145,7 +145,6 @@ fzf_util() {
     if [ $(wc -l <<< "$found") -eq 1 -a -z "$1" ]; then
         if [ -d "$found" ]; then
             cd "$found"
-            return
         elif [ -d "${found%/*}" ]; then
             cd "${found%/*}"
             ls -AlhN --color=always "${found##*/}" |
@@ -153,8 +152,8 @@ fzf_util() {
                 "\n\033[37mPath:\033[00m " pn \
                 "\n\033[37mSize:\033[00m " $5 \
                 "\t\033[37mLast Edited:\033[00m " $6, $7, $8}'
-            return
         fi
+        return
     fi
 
     if [ $# -gt 0 ]; then
@@ -162,7 +161,7 @@ fzf_util() {
         return
     fi
 
-    echo "$found"
+    [ ! -z "$found" ] && echo "$found"
 }
 
 # vim:sw=4:et
