@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+# NoteTaker (github.com/flipMWD/notetaker)
+
+# Exit script if command or pipeline error is found
+set -e
+
+# User Variables
+notes_editor="vim -c \"normal G$\""
+notes_directory="${NOTES_DIRECTORY:-$XDG_DOCUMENTS_DIR/notes}"
+notes_suffix=".notes"
+
+if [ ! -d "$notes_directory" ]; then
+	if [ "$1" = "-i" -o "$1" = "--init" ]; then
+		mkdir -p "$notes_directory"
+		echo -e "Notes Directory created:\n${notes_directory}"
+		exit 0
+	fi
+	echo -e "Notes Directory not found:\n${notes_directory}"
+	echo '1) Export $NOTES_DIRECTORY in your ~/.bashrc or ~/.profile.'
+	echo '2) Run' "${0} --init or ${0} -i."
+	exit 101
+elif [ "$1" = "-i" -o "$1" = "--init" ]; then
+	echo -e "Notes Directory already exists:\n${notes_directory}"
+	exit 102
+fi
+
+# Help Menu
+if [ "$1" = "-h" -o "$1" = "--help" ]; then
+	echo "${0} [-h|-i|-s] [message]"
+	echo -e "\t-h, --help\t\tShow this help menu."
+	echo -e "\t-i, --init\t\tCreate directory set in" '$NOTES_DIRECTORY.'
+	echo -e "\t-s, --search\t\tSearch notes for date, word or pattern."
+	exit 0
+fi
+
+# Filename Variables
+notes_file="$(date '+%b%Y')${notes_suffix}"
+notes_path="${notes_directory}/${notes_file,}"
+
+# Note Searching [alias ns="notetaker -s"]
+if [ "$1" = "-s" -o "$1" = "--search" ]; then
+	shift
+	if command -v fzf >/dev/null 2>&1; then
+		grep_opt="--line-number --no-heading --smart-case"
+		grep_ret="$(eval \
+			rg "$grep_opt" "${*:-.}" "$notes_directory" 2>/dev/null |
+			sed -E -e '/[└┌]/d; s/ *│ *//g' \
+				-e "s#^${notes_directory}/(.*)${notes_suffix}:([[:digit:]]+):#\1 \2 #" |
+			fzf --ansi |
+			awk '{print $1, $2}')"
+
+		[ -n "$grep_ret" ] && eval "${notes_editor//G$/${grep_ret##* }G}" \
+			"${notes_directory}/${grep_ret% *}${notes_suffix}"
+	fi
+	exit 0
+fi
+
+# Date Header
+date_stamp="$(date '+%A, %d %B %Y')"
+
+if ! grep -q "$date_stamp" "$notes_path" 2>/dev/null; then
+	bar_top="┌─${date_stamp//?/─}─┐"
+	bar_bot="└─${date_stamp//?/─}─┘"
+
+	printf "%s\n│ %s │\n%s\n\n" \
+		"$bar_top" "$date_stamp" "$bar_bot" >> "$notes_path"
+fi
+
+# Note Creation [alias n="notetaker"]
+time_stamp="[$(date '+%H:%M')] "
+printf "%s" "$time_stamp" >> "$notes_path"
+
+if [ $# -eq 0 ]; then
+	if [ -p "/dev/stdin" ]; then
+		(cat; printf "\n\n") >> "$notes_path"
+	else
+		eval "$notes_editor" "$notes_path"
+		[ -n "$(tail -n1 "$notes_path")" ] && printf "\n\n" >> "$notes_path"
+	fi
+else
+	printf "%s\n\n" "$*" >> "$notes_path"
+fi
+
+# Note Archiving
+# TODO

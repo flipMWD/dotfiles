@@ -11,10 +11,10 @@
 # Change the window title of X terminals
 case ${TERM} in
     xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}::${HOSTNAME%%.*} ${PWD/#$HOME/\~}\007"'
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD/#$HOME/\~}\007"'
         ;;
     screen*)
-        PROMPT_COMMAND='echo -ne "\033_${USER}::${HOSTNAME%%.*} ${PWD/#$HOME/\~}\033\\"'
+        PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*} ${PWD/#$HOME/\~}\033\\"'
         ;;
 esac
 
@@ -79,9 +79,9 @@ if ${use_color} ; then
 else
     if [[ ${EUID} == 0 ]] ; then
         # show root@ when we don't have colors
-        PS1='\u::\h \W \$ '
+        PS1='\u@\h \W \$ '
     else
-        PS1='\u::\h \w \$ '
+        PS1='\u@\h \w \$ '
     fi
 fi
 
@@ -92,6 +92,9 @@ shopt -s expand_aliases
 
 # Source Aliases
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+# Source Private Environmentals
+[ -f ~/.private_env ] && . ~/.private_env
 
 xhost +local:root > /dev/null 2>&1
 

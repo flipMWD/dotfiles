@@ -1,5 +1,6 @@
 " Plugins ~/.vim/pack/install-pkg.sh
 " fzf.vim
+" AutoComplPop
 
 " Paths
 set path+=**
@@ -13,7 +14,7 @@ set formatoptions+=ljr
 set formatoptions-=o
 set linebreak
 set showbreak=»
-set listchars=eol:¬,tab:\|->,space:·,trail:X
+set listchars=eol:¬,tab:│\ ,space:·,trail:X
 set fillchars=vert:│
 set diffopt+=context:5,foldcolumn:0
 set hidden
