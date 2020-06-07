@@ -1,12 +1,45 @@
-#
+#------------------------------
 # ~/.bashrc
-#
+#------------------------------
 
-# Check shell options, if one of them is not i[nteractive], return
+#------------------------------
+# Options
+#------------------------------
+
+# Check all shell options, return if none of them is i[nteractive]
 [[ $- != *i* ]] && return
 
-# Source bash-completion if available
+# Bash won't get SIGWINCH if another process is in the foreground.
+# Enable checkwinsize so that bash will check the terminal size when
+# it regains control.  #65623
+# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
+shopt -s checkwinsize
+shopt -s histappend
+shopt -s expand_aliases
+
+complete -cf sudo
+
+set -o vi
+
+#------------------------------
+# Sourcing
+#------------------------------
+
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+[ -r ~/.bash_aliases ] && . ~/.bash_aliases
+[ -r ~/.private_env ] && . ~/.private_env
+
+#------------------------------
+# Bindings
+#------------------------------
+
+bind -m vi-insert -x '"\C-l":"clear"'
+bind -m vi '"\C-f":"fzf_util\n"'
+bind -m vi-insert '"\C-f":"fzf_util\n"'
+
+#------------------------------
+# Misc
+#------------------------------
 
 # Change the window title of X terminals
 case ${TERM} in
@@ -18,13 +51,14 @@ case ${TERM} in
         ;;
 esac
 
-use_color=true
+xhost +local:root > /dev/null 2>&1
 
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database
 # instead of using /etc/DIR_COLORS.  Try to use the external file
 # first to take advantage of user additions.  Use internal bash
 # globbing instead of external grep binary.
+use_color=true
 safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
 match_lhs=""
 [[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
@@ -44,27 +78,15 @@ if ${use_color} ; then
         fi
     fi
 
-# ANSI Colors Formatting
-# Octal Escape: \033    Hex Escape: \x1B    Bash Escape: \e
-#
-# Attribute:            Background: 4X      Color:
-# 00 = none             Foreground: 3X      0 = black
-# 01 = bold             Highlight:  9X      1 = red      
-# 04 = underscore                           2 = green
-# 05 = blink                                3 = yellow
-# 07 = reverse                              4 = blue
-# 08 = concealed                            5 = magenta
-#                                           6 = cyan
-# Reset:   \[\033[00m\]                     7 = white
-# Example: \[\033[01;40;34m\]
+# ANSI Colors Formatting: \[\033|\x1b|\e[attr;bg;fgm\]
+# Attribute: 0=none, 1=bold, 4=underscore, 5=blink, 7=reverse, 8=concealed
+# Group: 3X=fg, 4X=bg, 9X=hifg, 10X=hibg
+# Color: 0=black, 1=red, 2=green, 3=yellow, 4=blue, 5=magenta, 6=cyan, 7=white
 
-# Bash Escape Sequences
-# \u = username                     # \d = date (Mon Jan 01)
-# \h = hostname up to '.'           # \t = time (24H)
-# \H = hostname                     # \T = time (12H)
-# \w = full directory path          # \@ = time (AM/PM)
-# \W = current directory            # \j = jobs
-# \$ = root                         # \s = shell
+# Bash Escape Sequences:
+# \u[sername], \h[ostname].tld, \H[ostname full], \w[orking dir path],
+# \W[orking dir current], \d[ate], \t[ime (24)], \T[ime (12], \@ [time (AM/PM)],
+# \j[obs], \$ [root], \s[hell]
 
     if [[ ${EUID} == 0 ]] ; then
         PS1='\[\033[01;31m\]\h\[\033[01;37m\] \W\[\033[01;31m\] \$\[\033[00m\] '
@@ -87,43 +109,16 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-# Enable Alias Expansion
-shopt -s expand_aliases
-
-# Source Aliases
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
-# Source Private Environmentals
-[ -f ~/.private_env ] && . ~/.private_env
-
-xhost +local:root > /dev/null 2>&1
-
-# Tab complete sudo commands
-complete -cf sudo
-
-# Bash won't get SIGWINCH if another process is in the foreground.
-# Enable checkwinsize so that bash will check the terminal size when
-# it regains control.  #65623
-# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
-shopt -s checkwinsize
-
-# Enable history appending instead of overwriting.  #139609
-shopt -s histappend
-
-# Enable Vim mode in Bash
-set -o vi
-bind -m vi-insert -x '"\C-l":"clear"'
-
 # Allow opening files with Vim from :term w/o nesting
 if [ -z "$VIMRUNTIME" ]; then
     alias vs='vim --servername VTERMREADY'
 else
-    alias vs="vim --servername $VIM_SERVERNAME --remote"
+    alias vs="vim --servername ${VIM_SERVERNAME} --remote"
 fi
 
-# FZF Function
-bind -m vi '"\C-f":"fzf_util\n"'
-bind -m vi-insert '"\C-f":"fzf_util\n"'
+#------------------------------
+# Functions
+#------------------------------
 
 fzf_util() {
     local dir_fd found
