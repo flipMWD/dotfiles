@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Source Environmental Variables for Cronjob
+. ~/.private_env
+
+# User Variables
+backup_directory="${BACKUP_DIRECTORY:-${HOME}/Documents/backup}"
+backup_list="${BACKUP_DIRECTORY}/backup_list"
+
+if [ ! -d "$backup_directory" ]; then
+	echo -e "Backup Directory does not exist:\n${backup_directory}"
+	exit 1
+else
+	date_directory="$(date -I)_backup"
+	if [ ! -d "${backup_directory}/${date_directory}" ]; then
+		mkdir "${backup_directory}/${date_directory}"
+	fi
+fi
+
+if [ ! -f "$backup_list" ]; then
+	echo "Backup List could not be found."
+	exit 101
+fi
+
+# Default
+while IFS='' read -r line; do
+	case "$line" in
+		''|\#*) continue ;;
+	esac
+	cp -u "$line" "${backup_directory}/${date_directory}"
+done < "$backup_list"
+
+cp -u "$backup_list" "${backup_directory}/${date_directory}"
+tar -C "$backup_directory" \
+	-zcf "${backup_directory}/${date_directory}.tar.gz" "$date_directory"
+rm -rf "${backup_directory}/${date_directory}"

@@ -12,7 +12,7 @@
 !.tmux.conf
 !.Xresources
 
-!.scripts/
+!scripts/
 
 !.vim/
 .vim/*

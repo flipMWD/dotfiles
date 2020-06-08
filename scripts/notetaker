@@ -6,7 +6,7 @@ set -e
 
 # User Variables
 notes_editor="vim -c \"normal G$\""
-notes_directory="${NOTES_DIRECTORY:-$XDG_DOCUMENTS_DIR/notes}"
+notes_directory="${NOTES_DIRECTORY:-${HOME}/Documents/notes}"
 notes_suffix=".notes"
 
 if [ ! -d "$notes_directory" ]; then
