@@ -44,14 +44,14 @@ if [ "$1" = "-s" -o "$1" = "--search" ]; then
 		grep_opt="--line-number --no-heading --smart-case"
 		grep_ret="$(eval \
 			rg "$grep_opt" "${*:-.}" "$notes_directory" 2>/dev/null |
-			sed -E -e '/[└┌]/d; s/ *│ *//g' \
+			sed -E -e '/[┌└]/d; s/ *│ *//g' \
 				-e "s#^${notes_directory}/(.*)${notes_suffix}:([[:digit:]]+):#\1 \2 #" |
-			fzf --ansi |
-			awk '{print $1, $2}')"
+			fzf | awk '{print $1, $2}')"
 
 		[ -n "$grep_ret" ] && eval "${notes_editor//G$/${grep_ret##* }G}" \
 			"${notes_directory}/${grep_ret% *}${notes_suffix}"
 	fi
+	# TODO no fzf
 	exit 0
 fi
 
