@@ -94,8 +94,10 @@ URxvt.keysym.Shift-Control-Up:      \033[1;6A
 URxvt.keysym.Control-Down:          \033[1;5B
 URxvt.keysym.Shift-Control-Down:    \033[1;6B
 
-!=====! ROFI !=====!
+!-----------------------------
+! Rofi 
 ! rofi -dump-Xresources to see all available options
+!-----------------------------
 
 !                       1 2 3
 ! Location on screen    8 0 4

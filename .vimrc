@@ -1,3 +1,7 @@
+"-----------------------------
+" General
+"-----------------------------
+
 " Plugins ~/.vim/pack/install-pkg.sh
 " fzf.vim
 " AutoComplPop
@@ -87,8 +91,9 @@ syntax on
 autocmd FileType c call MakeFileMissing('gcc')
 autocmd FileType cpp call MakeFileMissing('g++')
 
-
-"=== Functions ==="
+"-----------------------------
+" Functions
+"-----------------------------
 
 " Alternate between Only Window and split with Alt Buffer
 function! AltBOnly()
@@ -121,7 +126,9 @@ function! MakeFileMissing(compiler)
     endif
 endfunction
 
-"=== Keybindings ==="
+"-----------------------------
+" Keybindings
+"-----------------------------
 
 let mapleader="\<Space>"
 let maplocalleader="\<Bslash>"
@@ -178,6 +185,7 @@ nnoremap <Leader>w2 :2wincmd w<CR>
 nnoremap <Leader>w3 :3wincmd w<CR>
 nnoremap <Leader>w4 :4wincmd w<CR>
 nnoremap <Leader>w5 :5wincmd w<CR>
+nnoremap <Leader>w6 :6wincmd w<CR>
 nnoremap <Leader>wj :wincmd J<CR>
 nnoremap <Leader>wk :wincmd K<CR>
 nnoremap <Leader>wh :wincmd H<CR>

@@ -1,12 +1,14 @@
+#--------------------------------------------------
 # Reset to Default: i3-config-wizard(1)
 # Fonts: awesome-terminal-fonts, icons-in-terminal
+#--------------------------------------------------
 
 # Set Mod Key (Mod1 = Alt, Mod4 = System)
 set $mod Mod4
 
-
-#=====# APPEARANCE #=====#
-
+#-----------------------------
+# Appearance
+#-----------------------------
 
 # Set Gaps
 gaps inner 10
@@ -76,9 +78,9 @@ bar {
 	}
 }
 
-
-#=====# KEYBINDINGS #=====#
-
+#-----------------------------
+# Keybindings
+#-----------------------------
 
 # Start Terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -287,9 +289,9 @@ mode " $mode_system " {
 	bindsym Escape mode "default"
 }
 
-
-#=====# RUN APPLICATIONS #=====#
-
+#-----------------------------
+# Run Programs
+#-----------------------------
 
 # Media Player Controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
