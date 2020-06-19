@@ -1,6 +1,6 @@
-#
+#-----------------------------
 # ~/.bash_aliases
-#
+#-----------------------------
 
 alias aliases='vim ~/.bash_aliases && . ~/.bash_aliases'
 alias sb='. ~/.bashrc'
