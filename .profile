@@ -2,6 +2,10 @@
 # ~/.profile
 #-----------------------------
 
+# XDG_CONFIG_HOME
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+
 # Terminal
 export TERM=rxvt-unicode-256color
 export EDITOR=/usr/bin/vim

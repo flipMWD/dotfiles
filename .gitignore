@@ -40,6 +40,9 @@
 !.config/cmus/update-lib.sh
 
 !.config/mpv/
+.config/mpv/*
+!.config/mpv/input.conf
+!.config/mpv/mpv.conf
 
 !.config/i3/
 
