@@ -25,6 +25,7 @@ alias p='sudo pacman'
 alias v='vim'
 alias n='~/scripts/notetaker'
 alias ns='~/scripts/notetaker -s'
+alias pn='python ~/scripts/arch_latest_news.py'
 alias web='elinks'
 alias ytv="youtube-dl -o '~/Downloads/%(title)s.%(ext)s'"
 alias ytm="youtube-dl -x --audio-format mp3 -o '~/Downloads/%(title)s.%(ext)s'"
