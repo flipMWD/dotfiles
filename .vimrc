@@ -150,17 +150,23 @@ nnoremap <Leader>N :let @/=""<CR>
 nnoremap <Leader>C :split $MYVIMRC<CR>
 nnoremap <Leader>c :source $MYVIMRC<CR>
 nnoremap <Leader>s :call ToggleLines()<CR>
+nnoremap <Leader>b jmzk:move $<CR>`z
+nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
+nnoremap <Leader><Tab> :set et!<CR>
+
+nnoremap <Leader>ee :edit <C-z><S-Tab>
+nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
+nnoremap <Leader>- :Lexplore<CR>
+
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fd :Files ..
 nnoremap <Leader>fg :Rg<CR>
 nnoremap <Leader>fj :Buffer<CR>
 nnoremap <Leader>fl :Lines<CR>
-nnoremap <Leader>ee :edit <C-z><S-Tab>
-nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
-nnoremap <Leader>- :Lexplore<CR>
-nnoremap <Leader>b jmzk:move $<CR>`z
-nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
-nnoremap <Leader><Tab> :set et!<CR>
+nnoremap <Leader>ft :Tags<CR>
+nnoremap <Leader>fk :BTags<CR>
+nnoremap <Leader>fc :Commits<CR>
+nnoremap <Leader>fb :BCommits<CR>
 
 inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
