@@ -52,6 +52,7 @@
 .config/vifm/*
 !.config/vifm/vifmrc
 !.config/vifm/colors/
+!.config/vifm/scripts/
 
 !.config/ranger/
 .config/ranger/*

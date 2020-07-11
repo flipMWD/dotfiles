@@ -19,13 +19,14 @@ alias du='du -h'
 alias free='free -m'
 alias :q='exit'
 
-alias d='vifm .'
+#alias d='vifm .'
+alias d='~/.config/vifm/scripts/vifmrun .'
 alias r='ranger'
 alias p='sudo pacman'
 alias v='vim'
 alias n='~/scripts/notetaker'
 alias ns='~/scripts/notetaker -s'
-alias pn='python ~/scripts/arch_latest_news.py'
+alias pn='~/scripts/arch_latest_news.py'
 alias web='elinks'
 alias ytv="youtube-dl -o '~/Downloads/%(title)s.%(ext)s'"
 alias ytm="youtube-dl -x --audio-format mp3 -o '~/Downloads/%(title)s.%(ext)s'"
