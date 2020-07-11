@@ -16,7 +16,7 @@ if [ ! -f "$backup_list" ]; then
 	exit 101
 fi
 
-date_directory="$(date -I)_backup"
+date_directory="backup_system_$(date -I)"
 if [ ! -d "${backup_directory}/${date_directory}" ]; then
 	mkdir "${backup_directory}/${date_directory}"
 fi

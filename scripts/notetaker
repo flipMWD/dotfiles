@@ -34,8 +34,8 @@ if [ "$1" = "-h" -o "$1" = "--help" ]; then
 fi
 
 # Filename Variables
-notes_file="$(date '+%b%Y')${notes_suffix}"
-notes_path="${notes_directory}/${notes_file,}"
+notes_file="$(date '+%Y-%m')${notes_suffix}"
+notes_path="${notes_directory}/${notes_file}"
 
 # Note Searching [alias ns="notetaker -s"]
 if [ "$1" = "-s" -o "$1" = "--search" ]; then
