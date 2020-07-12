@@ -201,34 +201,31 @@ fileviewer *.mp3 mp3info
 fileviewer *.flac soxi
 
 " Video
-filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-         \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-         \*.as[fx]
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.divx,
+        \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.as[fx]
         \ {View using mpv}
         \ setsid -f mpv --no-terminal %f,
         \ {View using ffplay}
         \ ffplay -fs -autoexit %f,
-        \ {View using Dragon}
-        \ dragon %f:p,
         \ {View using mplayer}
         \ mplayer %f,
-"fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-"        \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-"        \*.as[fx]
+"fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.divx,
+"        \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.as[fx]
 "        \ ffprobe -pretty %c 2>&1
-fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-        \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-        \*.as[fx]
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.divx,
+        \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.as[fx]
         \ vifmimg videopreview %px %py %pw %ph %c
         \ %pc
         \ vifmimg clear
 
 " Web
 filextype *.html,*.htm
-        \ {Open with dwb}
-        \ dwb %f %i &,
+        \ {Open with vim}
+        \ vim %f,
         \ {Open with firefox}
         \ firefox %f &,
+        \ {Open with dwb}
+        \ dwb %f %i &,
         \ {Open with uzbl}
         \ uzbl-browser %f %i &,
 filetype *.html,*.htm links, lynx
@@ -243,7 +240,7 @@ fileviewer *.[1-8] man ./%c | col -b
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in sxiv}
-        \ setsid -f sxiv -a -b -g 1280x720 %d,
+        \ sxiv_files %f,
         \ {View in gpicview}
         \ gpicview %c,
         \ {View in shotwell}
@@ -295,7 +292,11 @@ filetype *.asc
        \ !!gpg --verify %c,
 
 " Torrent
-filetype *.torrent ktorrent %f &
+filetype *.torrent
+        \ {Open with qbittorrent}
+        \ qbittorrent %f &,
+        \ {Open with ktorrent}
+        \ ktorrent %f &,
 fileviewer *.torrent dumptorrent -v %c
 
 " FuseZipMount
