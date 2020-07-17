@@ -1,0 +1,13 @@
+#!/bin/sh
+
+dir="${HOME}/scripts"
+file="${dir}/${*}" 
+
+if [ -f "$file" ]; then
+	exec ${EDITOR:-vim} "$file"
+else
+	echo -e "#!/bin/sh\n\n" > "$file"
+	${EDITOR:-vim} "$file"
+	exec sudo chmod +x "$file"
+fi
+
