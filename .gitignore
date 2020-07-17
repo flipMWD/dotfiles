@@ -39,6 +39,9 @@
 !.config/cmus/config.backup
 !.config/cmus/update-lib.sh
 
+!.config/dunst/
+.config/dunst/dunstrc
+
 !.config/mpv/
 .config/mpv/*
 !.config/mpv/input.conf
