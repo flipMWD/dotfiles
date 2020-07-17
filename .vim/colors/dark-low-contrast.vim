@@ -76,7 +76,7 @@ hi QuickFixLine     ctermfg=3           ctermbg=none        cterm=underline
 
 " Debugging
 hi debugPC          ctermfg=white       ctermbg=cyan
-hi debugBreakpoint  ctermfg=white       ctermbg=darkred
+hi debugBreakpoint  ctermfg=white       ctermbg=red
 
 " Popup Menu
 hi Pmenu            ctermfg=gray        ctermbg=black
