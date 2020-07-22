@@ -83,7 +83,7 @@ let g:netrw_sizestyle="H"       " human-readable
 let g:netrw_browse_split=4      " open on previous window
 
 " Language
-filetype plugin on
+filetype plugin indent on
 syntax on
 "set spell
 
