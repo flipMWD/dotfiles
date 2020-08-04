@@ -72,7 +72,7 @@ hi DiffChange       ctermfg=3           ctermbg=black
 hi DiffText         ctermfg=black       ctermbg=3
 
 " Quickfix
-hi QuickFixLine     ctermfg=3           ctermbg=none        cterm=underline
+hi QuickFixLine     ctermfg=1           ctermbg=none        cterm=none
 
 " Debugging
 hi debugPC          ctermfg=white       ctermbg=cyan

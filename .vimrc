@@ -51,7 +51,7 @@ set showcmd
 set shiftwidth=4        " indent length
 set softtabstop=4       " mix space and tab
 set tabstop=4           " set tab length
-set noexpandtab         " convert tab into spaces
+set expandtab           " convert tab into spaces
 set autoindent
 set smartindent
 set smarttab
@@ -126,6 +126,14 @@ function! MakeFileMissing(compiler)
     endif
 endfunction
 
+function! GenerateTags()
+    if filereadable("./tags")
+        silent !ctags -R
+        redraw!
+    endif
+    Tags
+endfunction
+
 "-----------------------------
 " Keybindings
 "-----------------------------
@@ -160,11 +168,7 @@ nnoremap <Leader>- :Lexplore<CR>
 
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fd :Files ..
-nnoremap <Leader>fg :Rg<CR>
-nnoremap <Leader>fj :Buffer<CR>
 nnoremap <Leader>fl :Lines<CR>
-nnoremap <Leader>ft :Tags<CR>
-nnoremap <Leader>fk :BTags<CR>
 nnoremap <Leader>fc :Commits<CR>
 nnoremap <Leader>fb :BCommits<CR>
 
@@ -173,9 +177,12 @@ inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
-nnoremap <Leader>j :ls<CR>:b<Space>
-nnoremap <Leader>k :buffer #<CR>
-nnoremap <Leader>m :marks<CR>:normal `
+nnoremap <Leader>j :Buffer<CR>
+nnoremap <Leader>k :BTags<CR>
+nnoremap <Leader>m :Marks<CR>
+nnoremap <Leader>g :Rg<CR>
+nnoremap <Leader>t :call GenerateTags()<CR>
+nnoremap <Leader>/ :Lines<CR>
 
 " :sp :vs <C-w>{nr}| z{nr} <C-\><C-n>|<C-w>N
 nnoremap <Leader>o :call AltBOnly()<CR>
@@ -207,11 +214,11 @@ nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 nnoremap <Leader>i :tab sb %
 nnoremap <Leader>u :tabclose<CR>
 
-nnoremap <Leader>tw :wincmd T<CR>
-nnoremap <Leader>tj :tabprevious<CR>
-nnoremap <Leader>tk :tabnext<CR>
-nnoremap <Leader>th :tabfirst<CR>
-nnoremap <Leader>tl :tabs<CR>:tabn<Space>
-nnoremap <Leader>td :tabclose<CR>
-nnoremap <Leader>to :tabonly<CR>
-nnoremap <Leader>tm :tabmove +
+"nnoremap <Leader>tw :wincmd T<CR>
+"nnoremap <Leader>tj :tabprevious<CR>
+"nnoremap <Leader>tk :tabnext<CR>
+"nnoremap <Leader>th :tabfirst<CR>
+"nnoremap <Leader>tl :tabs<CR>:tabn<Space>
+"nnoremap <Leader>td :tabclose<CR>
+"nnoremap <Leader>to :tabonly<CR>
+"nnoremap <Leader>tm :tabmove +

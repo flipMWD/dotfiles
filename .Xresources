@@ -50,10 +50,10 @@ Xft.hintstyle:              hintslight
 Xft.lcdfilter:              lcddefault
 
 ! Source Code Pro
-URxvt*font:                 xft:source code pro:medium:pixelsize=15,9x15
-URxvt*boldFont:             xft:source code pro:bold:pixelsize=15
-URxvt*italicFont:           xft:source code pro:italic:pixelsize=15
-URxvt*boldItalicFont:       xft:source code pro:bold:italic:pixelsize=15
+URxvt*font:                 xft:source code pro:medium:pixelsize=14,9x15
+URxvt*boldFont:             xft:source code pro:bold:pixelsize=14
+URxvt*italicFont:           xft:source code pro:italic:pixelsize=14
+URxvt*boldItalicFont:       xft:source code pro:bold:italic:pixelsize=14
 
 ! Inconsolata
 !URxvt*font:                 xft:inconsolata:size=12,9x15
