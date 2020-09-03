@@ -38,13 +38,13 @@ colorscheme dark-low-contrast
 set laststatus=2
 set statusline=
 set statusline+=%1*\ \«\ %n\ \»\ %*\            " buffer number
-set statusline+=\ %<%{expand('%:p:h:t')}/%t\ %m " break, dir / filename [m]
+set statusline+=%<%{expand('%:p:h:t')}/%t\ %m   " break, dir / filename [m]
 set statusline+=%=\ %r\ %y\                     " [read only] [file type]
 set statusline+=%{&ff==\"dos\"?\"[CRLF]\ \":&ff==\"mac\"?\"[CR]\ \":\"\"}
 set statusline+=%{&enc!=\"utf-8\"?\"[\".&enc.\"]\ \":\"\"}
 set statusline+=%1*\ %{&et?\"S\":\"T\"}%{&sw}\ %*
-set statusline+=%2*\ %l-%L\ \:\ %v\ %*          " lines-total : cols
-set statusline+=\ %P\                           " doc percentage
+set statusline+=%2*\ %l-%L\ \:\ %v\ %*\         " lines-total : cols
+set statusline+=%P\                             " doc percentage
 set showcmd
 
 " Formatting
