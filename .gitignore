@@ -65,3 +65,6 @@
 !.config/ranger/colorschemes/
 .config/ranger/colorschemes/__pycache__/
 .config/ranger/colorschemes/__init__.py
+
+!.config/zathura/
+

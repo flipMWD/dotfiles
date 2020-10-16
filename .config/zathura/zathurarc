@@ -1,0 +1,4 @@
+# Zathura Configuration #
+
+set guioptions none
+map b toggle_statusbar
