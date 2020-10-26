@@ -29,7 +29,9 @@ while IFS='' read -r line; do
 	eval cp -ru "$line" "${backup_directory}/${date_directory}"
 done < "$backup_list"
 
+pacman -Qeq > "${backup_directory}/${date_directory}/arch-installed-packages"
 cp -u "$backup_list" "${backup_directory}/${date_directory}"
+
 tar -C "$backup_directory" \
 	-czf "${backup_directory}/${date_directory}.tar.gz" "$date_directory"
 rm -rf "${backup_directory}/${date_directory}"
