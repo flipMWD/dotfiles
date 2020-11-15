@@ -11,10 +11,11 @@ set $mod Mod4
 #-----------------------------
 
 # Set Gaps
-gaps inner 10
-gaps outer 0
+#gaps inner 0
+#gaps outer 0
 
 # Configure Border Style
+hide_edge_borders smart
 default_border pixel 1
 default_floating_border pixel 1
 
@@ -65,7 +66,7 @@ bar {
 	strip_workspace_numbers yes
 
 	colors {
-		background "#00000000"
+		background $term_c0 #"#00000000"
 		statusline $term_fg
 		separator  $term_c7
 
@@ -337,7 +338,7 @@ for_window [urgent=latest] focus
 
 # Autostart Applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always --no-startup-id ~/.fehbg
+#exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet

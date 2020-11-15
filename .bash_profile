@@ -2,4 +2,8 @@
 # ~/.bash_profile
 #
 
-source $HOME/.bashrc
+source ~/.profile
+
+if [[ $- = *i* ]]; then
+    source ~/.bashrc
+fi

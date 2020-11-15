@@ -11,6 +11,8 @@
 !.vimrc
 !.tmux.conf
 !.Xresources
+!.xinitrc
+!.zshrc
 
 !scripts/
 
@@ -31,7 +33,6 @@
 
 !.config/
 .config/*
-!.config/compton.conf
 
 !.config/cmus/
 .config/cmus/*
@@ -43,14 +44,18 @@
 .config/dunst/*
 !.config/dunst/dunstrc
 
+!.config/i3/
+
+!.config/i3blocks/
+
 !.config/mpv/
 .config/mpv/*
 !.config/mpv/input.conf
 !.config/mpv/mpv.conf
 
-!.config/i3/
-
-!.config/i3blocks/
+!.config/picom/
+.config/picom/*
+!.config/picom/picom.conf
 
 !.config/vifm/
 .config/vifm/*
@@ -67,4 +72,10 @@
 .config/ranger/colorschemes/__init__.py
 
 !.config/zathura/
+.config/zathura/*
+!.config/zathura/zathurarc
+
+!.config/Zeal/
+.config/Zeal/*
+!.config/Zeal/Zeal.conf
 
