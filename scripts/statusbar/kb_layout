@@ -1,0 +1,10 @@
+#!/bin/sh
+# man xkeyboard-config, setxkbmod -layout
+
+icon=" "
+
+if [ "$(xset -q | awk '/LED/ {print $10}')" -lt "1000" ]; then
+    echo "${icon}US"
+else
+    echo "${icon}BR"
+fi

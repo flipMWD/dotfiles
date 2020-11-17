@@ -41,19 +41,8 @@ fi
 # Disable beeping on Backspace and moving past limits of file
 xset -b
 
-# Load Profile settings
-if [ -f ~/.profile ]; then
-    source ~/.profile
-fi
-
-# Temporary statusbar for DWM
-while true; do
-    xsetroot -name " \
-$(sensors | grep 'fan1' | awk '{ printf "  %d ", $2 }') \
-$(free -m | awk 'NR == 2 { printf " %.1fG ", $3/1024 }') \
-$(date +" %a, %d %b   %H:%M ")"
-    sleep 5s
-done &
+# Start statusbar
+dwmblocks &
 
 # Disable shadow effects, run as background process
 picom -CGb
