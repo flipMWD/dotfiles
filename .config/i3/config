@@ -337,11 +337,11 @@ for_window [class="Blueman-manager"] floating enable
 for_window [urgent=latest] focus
 
 # Autostart Applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec_always --no-startup-id ~/.fehbg
-exec --no-startup-id compton -b
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec_always --no-startup-id xset -b
-exec --no-startup-id udisksctl mount -b /dev/sdc1
-exec --no-startup-id udisksctl mount -b /dev/sdb1
+#exec --no-startup-id compton -b
+#exec --no-startup-id nm-applet
+#exec --no-startup-id blueman-applet
+#exec_always --no-startup-id xset -b
+#exec --no-startup-id udisksctl mount -b /dev/sdc1
+#exec --no-startup-id udisksctl mount -b /dev/sdb1

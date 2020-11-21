@@ -41,6 +41,12 @@ fi
 # Disable beeping on Backspace and moving past limits of file
 xset -b
 
+# Set wallpaper
+~/.fehbg
+
+# Hide cursor
+unclutter &
+
 # Start statusbar
 dwmblocks &
 

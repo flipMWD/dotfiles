@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+clipboard=$(xclip -o -selection clipboard)
+
+if [[ $clipboard =~ ^(https?:\/\/)|(magnet:\?) ]]; then
+    case $clipboard in
+        magnet*)
+            if ! pgrep -x transmission-daemon; then
+                transmission-daemon
+                sleep 3
+            fi
+            transmission-remote -a $clipboard
+        ;;
+
+        *.png|*.jpg|*.jpeg|*.gif)
+            wget --directory-prefix=$HOME/Downloads/ $clipboard
+        ;;
+
+        *) echo "Something went wrong." ;;
+    esac
+fi
