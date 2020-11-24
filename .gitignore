@@ -75,7 +75,3 @@
 .config/zathura/*
 !.config/zathura/zathurarc
 
-!.config/Zeal/
-.config/Zeal/*
-!.config/Zeal/Zeal.conf
-
