@@ -1,4 +1,0 @@
-#!/bin/sh
-# man xkeyboard-config, setxkbmod -layout
-
-[ "$(xset -q | awk '/LED/ {print $10}')" -lt "1000" ] && echo "US" || echo "BR"

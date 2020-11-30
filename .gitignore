@@ -7,10 +7,7 @@
 !.bashrc
 !.bash_aliases
 !.dir_colors
-!.fehbg
 !.profile
-!.vimrc
-!.tmux.conf
 !.Xresources
 !.xinitrc
 !.zshrc
@@ -19,6 +16,7 @@
 
 !.vim/
 .vim/*
+!.vim/vimrc
 !.vim/colors/
 !.vim/syntax/
 !.vim/pack/
@@ -28,12 +26,9 @@
 .vim/after/*
 !.vim/after/ftplugin/
 
-!.elinks/
-.elinks/*
-!.elinks/elinks.conf
-
 !.config/
 .config/*
+!.config/user-dirs.dirs
 
 !.config/cmus/
 .config/cmus/*
@@ -45,9 +40,9 @@
 .config/dunst/*
 !.config/dunst/dunstrc
 
-!.config/i3/
-
-!.config/i3blocks/
+!.config/elinks/
+.config/elinks/*
+!.config/elinks/elinks.conf
 
 !.config/mpv/
 .config/mpv/*
@@ -58,19 +53,15 @@
 .config/picom/*
 !.config/picom/picom.conf
 
+!.config/tmux/
+.config/tmux/*
+!.config/tmux/tmux.conf
+
 !.config/vifm/
 .config/vifm/*
 !.config/vifm/vifmrc
 !.config/vifm/colors/
 !.config/vifm/scripts/
-
-!.config/ranger/
-.config/ranger/*
-!.config/ranger/rc.conf
-!.config/ranger/rifle.conf
-!.config/ranger/colorschemes/
-.config/ranger/colorschemes/__pycache__/
-.config/ranger/colorschemes/__init__.py
 
 !.config/zathura/
 .config/zathura/*

@@ -42,7 +42,7 @@ fi
 xset -b
 
 # Set wallpaper
-~/.fehbg
+~/scripts/fehbg
 
 # Hide cursor
 unclutter &

@@ -128,7 +128,7 @@ fzf_util() {
         dir_fd="$HOME"
         shift
     elif [ "${1,,}" = "m" ]; then
-        dir_fd=(${MEDIA_LOCALS[@]/#/$MEDIA_DIRECTORY})
+        dir_fd=(${MEDIA_LOCALS[@]/#/$MEDIA_DIRECTORY/})
         shift
     elif [ -d "$1" ]; then
         if [ "${1::1}" = "/" ]; then
