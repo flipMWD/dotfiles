@@ -1,0 +1,24 @@
+#!/bin/sh
+# 755 root:root /usr/bin/dwmscrot
+
+scrot_dir="${XDG_PICTURES_DIR:-$HOME/pictures}/screenshots"
+
+if ! [ -d "$scrot_dir" ]; then
+	mkdir -p "$scrot_dir"
+fi
+
+case "$1" in
+	--desk|-d|$NULL)
+		cd $scrot_dir
+		scrot && sleep 1 &&
+		notify-send "Desktop"
+		;;
+	--window|-w)
+		cd $scrot_dir
+		scrot -u && sleep 1 &&
+		notify-send "Window"
+		;;
+	*)  exit 2  ;;
+esac
+
+exit 0
