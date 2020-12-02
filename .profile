@@ -11,13 +11,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
-export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export LESSHISTFILE=-
-export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
-export PASSWORD_STORE_DIR="${XDG_CONFIG_HOME}/pass"
-export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export PASSWORD_STORE_DIR="$XDG_CONFIG_HOME/pass"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
 # Default Programs
 export BROWSER="/usr/bin/chromium"

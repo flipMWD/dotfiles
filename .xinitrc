@@ -38,19 +38,15 @@ fi
 # Custom Settings
 #------------------------------
 
-# Disable beeping on Backspace and moving past limits of file
+# Disable MB beep
 xset -b
 
-# Set wallpaper
-~/scripts/fehbg
-
-# Hide cursor
+# Autostart
+picom -CGb
+~/scripts/fehbg &
+blueman-applet &
+dwmblocks &
 unclutter &
 
-# Start statusbar
-dwmblocks &
-
-# Disable shadow effects, run as background process
-picom -CGb
-
+# Execute Window Manager
 exec dwm

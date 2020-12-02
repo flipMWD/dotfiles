@@ -11,12 +11,12 @@ case "$1" in
 	--desk|-d|$NULL)
 		cd $scrot_dir
 		scrot && sleep 1 &&
-		notify-send "Desktop"
+		notify-send -u low "Desktop"
 		;;
 	--window|-w)
 		cd $scrot_dir
 		scrot -u && sleep 1 &&
-		notify-send "Window"
+		notify-send -u low "Window"
 		;;
 	*)  exit 2  ;;
 esac
