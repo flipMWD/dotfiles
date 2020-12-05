@@ -1,10 +1,10 @@
-#------------------------------
+#-------------------------------
 # ~/.bashrc
-#------------------------------
+#-------------------------------
 
-#------------------------------
+#-------------------------------
 # Options
-#------------------------------
+#-------------------------------
 
 # Check all shell options, return if none of them is i[nteractive]
 [[ $- != *i* ]] && return
@@ -21,25 +21,27 @@ complete -cf sudo
 
 set -o vi
 
-#------------------------------
+#-------------------------------
 # Sourcing
-#------------------------------
+#-------------------------------
 
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-[ -r ~/.bash_aliases ] && . ~/.bash_aliases
-[ -r ~/.private_env ] && . ~/.private_env
+[[ -r /usr/share/bash-completion/bash_completion ]] &&
+    source /usr/share/bash-completion/bash_completion
 
-#------------------------------
+[[ -r ~/.bash_aliases ]] && source ~/.bash_aliases
+[[ -r ~/.private_env  ]] && source ~/.private_env
+
+#-------------------------------
 # Bindings
-#------------------------------
+#-------------------------------
 
 bind -m vi-insert -x '"\C-l":"clear"'
 bind -m vi '"\C-f":"fzf_util\n"'
 bind -m vi-insert '"\C-f":"fzf_util\n"'
 
-#------------------------------
+#-------------------------------
 # Misc
-#------------------------------
+#-------------------------------
 
 # Change the window title of X terminals
 case ${TERM} in
@@ -116,9 +118,9 @@ else
     alias vs="vim --servername ${VIM_SERVERNAME} --remote"
 fi
 
-#------------------------------
+#-------------------------------
 # Functions
-#------------------------------
+#-------------------------------
 
 fzf_util() {
     local dir_fd found
