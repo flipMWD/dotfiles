@@ -41,14 +41,11 @@ elif [[ -z $INTERFACE ]]; then
 fi
 
 # Exit if there is no default route
-[[ -z "$INTERFACE" ]] && exit
-
-# Issue #36 compliant.
-if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || \
+if [ -z "$INTERFACE" ] || ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || \
     (! [ "$TREAT_UNKNOWN_AS_UP" = "1" ] && 
     ! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ])
 then
-    echo "$INTERFACE down"
+    echo " offline"
     exit 0
 fi
 
