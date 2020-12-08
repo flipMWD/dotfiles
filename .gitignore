@@ -5,12 +5,9 @@
 
 !.bash_profile
 !.bashrc
-!.bash_aliases
-!.dir_colors
 !.profile
 !.Xresources
 !.xinitrc
-!.zshrc
 
 !scripts/
 
@@ -28,7 +25,6 @@
 
 !.config/
 .config/*
-!.config/user-dirs.dirs
 
 !.config/cmus/
 .config/cmus/*
@@ -53,6 +49,12 @@
 .config/picom/*
 !.config/picom/picom.conf
 
+!.config/shell/
+.config/shell/*
+!.config/shell/aliasrc
+!.config/shell/dir_colors
+!.config/shell/inputrc
+
 !.config/tmux/
 .config/tmux/*
 !.config/tmux/tmux.conf
@@ -66,4 +68,10 @@
 !.config/zathura/
 .config/zathura/*
 !.config/zathura/zathurarc
+
+!.config/zsh/
+.config/zsh/*
+!.config/zsh/.zshenv
+!.config/zsh/.zshrc
+!.config/zsh/.zlogin
 

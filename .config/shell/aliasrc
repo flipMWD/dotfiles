@@ -1,0 +1,93 @@
+#!/bin/sh
+#-------------------------------
+# ~/.config/zsh/.aliasrc
+#-------------------------------
+
+# Edit and Refresh
+alias aliases="$EDITOR \"${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc\" && \
+    source \"${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc\""
+
+#-------------------------------
+# Colors
+#-------------------------------
+
+alias ip='ip -color=auto'
+alias ls='ls --color=auto --group-directories-first'
+alias diff='diff --color=auto'
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+
+#-------------------------------
+# Programs
+#-------------------------------
+
+# Change Directory
+alias ..='cd ..'
+alias ...='cd ../..'
+alias d='vfcd .'
+alias f='fzcd'
+alias fh='fzcd h'
+alias fm='fzcd m'
+
+# Built In
+alias la='ls -AlhN'
+alias cp='cp -i'
+alias mv='mv -i'
+alias df='df -h'
+alias du='du -h'
+alias free='free -m'
+alias more='less'
+alias :q='exit'
+
+# Allow opening files with Vim from :term w/o nesting
+if [ -z "$VIMRUNTIME" ]; then
+    alias vs='vim --servername VTERMREADY'
+else
+    alias vs="vim --servername $VIM_SERVERNAME --remote"
+fi
+
+# Shortcuts
+alias p='sudo pacman'
+alias v='vim'
+alias ds='dasht'
+alias web='elinks'
+alias ytv="youtube-dl -o \
+    \"${XDG_DOWNLOAD_DIR:-$HOME/download}/%(title)s.%(ext)s\""
+alias ytm="youtube-dl -x --audio-format mp3 -o \
+    \"${XDG_DOWNLOAD_DIR:-$HOME/download}/%(title)s.%(ext)s\""
+alias tsm='transmission-remote'
+alias tsmo='transmission-remote | tail -n +15 | less'
+alias tsms='transmission-daemon'
+alias tsme='transmission-remote --exit'
+
+# User Scripts
+alias n='notetaker'
+alias ns='notetaker -s'
+alias sc='script_creator'
+alias pn='arch_latest_news.py'
+
+#-------------------------------
+# Git
+#-------------------------------
+
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gt='git stash'
+alias gd='git diff'
+alias gb='git branch'
+alias gk='git checkout'
+alias gw='git switch'
+alias gm='git merge'
+alias gy='git cherry-pick'
+alias gr='git reset'
+alias gv='git revert'
+alias gf='git fetch'
+alias gp='git push'
+alias gu='git pull'
+alias gl='git log --stat'
+alias gg='git log --all --graph --decorate --oneline'
+alias ge='git blame'
+alias gq='git reflog'
+
