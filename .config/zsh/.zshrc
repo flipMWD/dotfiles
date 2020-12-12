@@ -145,9 +145,9 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd '^V' edit-command-line
 
-function exit_zsh() { exit }
-zle -N exit_zsh
-bindkey '^D' exit_zsh
+function _exit-zsh() { exit }
+zle -N _exit-zsh
+bindkey '^D' _exit-zsh
 
 #-------------------------------
 # Utility
