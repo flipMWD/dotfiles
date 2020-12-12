@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# NoteTaker (github.com/flipMWD/notetaker)
+# NoteTaker (github.com/flipMWD)
 
 # Exit script if command or pipeline error is found
 set -e
 
 # User Variables
 notes_editor="vim -c \"normal G$\""
-notes_directory="${NOTES_DIRECTORY:-${HOME}/Documents/notes}"
+notes_directory="${NOTES_DIRECTORY:-${HOME}/documents}"
 notes_suffix=".notes"
 
 if [ ! -d "$notes_directory" ]; then

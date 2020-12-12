@@ -43,7 +43,7 @@ xset -b
 
 # Autostart
 picom -CGb
-~/scripts/fehbg &
+fehbg &
 blueman-applet &
 dwmblocks &
 unclutter &

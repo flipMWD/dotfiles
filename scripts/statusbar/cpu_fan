@@ -1,3 +1,0 @@
-#!/bin/sh
-
-sensors | awk '/^fan1/ { printf " %d", $2 }'

@@ -64,8 +64,8 @@ alias tsme='transmission-remote --exit'
 # User Scripts
 alias n='notetaker'
 alias ns='notetaker -s'
-alias sc='script_creator'
-alias pn='arch_latest_news.py'
+alias sc='script-creator'
+alias pn='arch-latest-news'
 
 #-------------------------------
 # Git

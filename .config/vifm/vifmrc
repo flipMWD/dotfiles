@@ -118,10 +118,10 @@ set statusline="  %A %10u:%-7g%= %15s %20d  "
 " :mark mark /full/directory/path [filename]
 
 mark h ~/
-mark d ~/download
 mark g ~/.config
-mark p ~/pictures
 mark r ~/documents
+mark d ~/downloads
+mark p ~/pictures
 
 " ------------------------------------------------------------------------------
 

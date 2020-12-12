@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Pass locale to mpstat run correctly
+[[ $LC_ALL != 'en_US' ]] || LC_ALL='en_US'
+
+mpstat 1 1 | awk '/^Average/ { printf " %.1f%%\n", 100 - $NF }'
+

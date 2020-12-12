@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-clipboard=$(xclip -o -selection clipboard)
+clipboard=$(xclip -out -selection clipboard)
 
 if [[ $clipboard =~ ^(https?:\/\/)|(magnet:\?) ]]; then
     case $clipboard in
@@ -9,11 +9,12 @@ if [[ $clipboard =~ ^(https?:\/\/)|(magnet:\?) ]]; then
                 transmission-daemon
                 sleep 3
             fi
-            transmission-remote -a $clipboard
+            transmission-remote -a "$clipboard"
         ;;
 
         *.png|*.jpg|*.jpeg|*.gif)
-            wget --directory-prefix=$HOME/Downloads/ $clipboard
+            wget --directory-prefix=${XDG_DOWNLOAD_DIR:-$HOME/downloads} \
+                "$clipboard"
         ;;
 
         *) echo "Something went wrong." ;;

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-free -m | awk '/^Mem/ { printf " %.1fG", $3/1024 }'

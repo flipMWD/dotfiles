@@ -1,8 +1,7 @@
 #!/bin/sh
 
 if pgrep -x "cmus" > /dev/null; then
-	# search for line with string, cut the field 3 from 2nd space to the end
-	artist=$(cmus-remote -Q | grep ' artist ' | cut -d ' ' -f3-)
-	song=$(cmus-remote -Q | grep title | cut -d ' ' -f3-)
-	echo " ${artist} - ${song}${song:+  }"
+	artist="$(cmus-remote -Q | grep ' artist ' | cut -d ' ' -f3-)"
+	song="$(cmus-remote -Q | grep ' title ' | cut -d ' ' -f3-)"
+	echo " ${artist} - ${song}"
 fi

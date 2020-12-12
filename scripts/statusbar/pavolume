@@ -1,0 +1,7 @@
+#!/bin/sh
+# pulse  = command -v pulseaudio && pulseaudio --check
+# Master = amixer -D pulse scontrols
+
+amixer -D pulse get Master | tail -n1 | \
+    gawk 'match($0, /\[([0-9]+%)\].*\[(on|off)\]/, arr) \
+    { if (arr[2] == "off") print "  -"; else printf " %s\n", arr[1] }'
