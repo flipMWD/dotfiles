@@ -1,0 +1,11 @@
+#!/bin/sh
+
+[ -r "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env" ] &&
+    source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env"
+
+cmus-remote -C clear
+cmus-remote -C "add $MEDIA_DIRECTORY/music"
+cmus-remote -C "update-cache -f"
+
+exit 0
+

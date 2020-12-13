@@ -17,9 +17,6 @@ scripts/dasht/
 !.vim/vimrc
 !.vim/colors/
 !.vim/syntax/
-!.vim/pack/
-.vim/pack/*
-!.vim/pack/install-pkg.sh
 !.vim/after/
 .vim/after/*
 !.vim/after/ftplugin/
@@ -31,7 +28,6 @@ scripts/dasht/
 .config/cmus/*
 !.config/cmus/dark.theme
 !.config/cmus/config.backup
-!.config/cmus/update-lib.sh
 
 !.config/dunst/
 .config/dunst/*

@@ -1,6 +1,6 @@
 #!/bin/sh
-# ~/.vim/pack/install-pkg.sh, :scriptnames, :helptags ALL
 # Author: Cam [https://vi.stackexchange.com/questions/9522/]
+# Post Update (:scriptnames, :helptags ALL)
 
 create_group() {
 	package_group="$1"
@@ -30,3 +30,4 @@ wait
 ) &
 
 wait
+
