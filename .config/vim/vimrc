@@ -2,11 +2,18 @@
 " General
 "-----------------------------
 
-" Plugins ~/.vim/pack/install-pkg.sh
+" Plugins ~/scripts/update-plugin-vim
 " fzf.vim
 " AutoComplPop
 
 " Paths
+set undodir=$XDG_DATA_HOME/vim/undo
+set directory=$XDG_DATA_HOME/vim/swap
+set backupdir=$XDG_DATA_HOME/vim/backup
+set viewdir=$XDG_DATA_HOME/vim/view
+set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set runtimepath^=$XDG_CONFIG_HOME/vim runtimepath+=$XDG_CONFIG_HOME/vim/after
+let &packpath = &runtimepath
 set path+=**
 
 " General
@@ -91,6 +98,9 @@ syntax on
 autocmd FileType c call MakeFileMissing('gcc')
 autocmd FileType cpp call MakeFileMissing('g++')
 
+" Disable FZF Floating Window
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border': 'top' } }
+
 "-----------------------------
 " Functions
 "-----------------------------
@@ -134,9 +144,6 @@ function! GenerateTags()
     Tags
 endfunction
 
-" Disable FZF Floating Window
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border': 'top' } }
-
 "-----------------------------
 " Keybindings
 "-----------------------------
@@ -153,6 +160,7 @@ nnoremap q; q:
 nnoremap Y y$
 nnoremap S <Nop>
 nnoremap K <Nop>
+" nnoremap <Leader>p :set paste!<CR>"+p:set paste!<CR>
 nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 nnoremap <Leader>r diw"0P
@@ -217,11 +225,3 @@ nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 nnoremap <Leader>i :tab sb %
 nnoremap <Leader>u :tabclose<CR>
 
-"nnoremap <Leader>tw :wincmd T<CR>
-"nnoremap <Leader>tj :tabprevious<CR>
-"nnoremap <Leader>tk :tabnext<CR>
-"nnoremap <Leader>th :tabfirst<CR>
-"nnoremap <Leader>tl :tabs<CR>:tabn<Space>
-"nnoremap <Leader>td :tabclose<CR>
-"nnoremap <Leader>to :tabonly<CR>
-"nnoremap <Leader>tm :tabmove +

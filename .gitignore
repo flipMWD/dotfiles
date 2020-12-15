@@ -12,15 +12,6 @@
 !scripts/
 scripts/dasht/
 
-!.vim/
-.vim/*
-!.vim/vimrc
-!.vim/colors/
-!.vim/syntax/
-!.vim/after/
-.vim/after/*
-!.vim/after/ftplugin/
-
 !.config/
 .config/*
 
@@ -61,6 +52,15 @@ scripts/dasht/
 !.config/vifm/vifmrc
 !.config/vifm/colors/
 !.config/vifm/scripts/
+
+!.config/vim/
+.config/vim/*
+!.config/vim/vimrc
+!.config/vim/colors/
+!.config/vim/syntax/
+!.config/vim/after/
+.config/vim/after/*
+!.config/vim/after/ftplugin/
 
 !.config/zathura/
 .config/zathura/*

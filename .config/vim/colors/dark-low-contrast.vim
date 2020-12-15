@@ -36,7 +36,7 @@ hi StatusLineTerm   ctermfg=white       ctermbg=black       cterm=none
 hi StatusLineTermNC ctermfg=gray        ctermbg=black       cterm=none
 hi WildMenu         ctermfg=black       ctermbg=3           cterm=bold
 hi WarningMsg       ctermfg=darkred
-hi ErrorMsg         ctermfg=white       ctermbg=darkred
+hi ErrorMsg         ctermfg=white       ctermbg=red
 hi ModeMsg          ctermfg=darkblue                        cterm=none
 hi MoreMsg          ctermfg=darkgreen
 hi Question         ctermfg=darkgreen                       cterm=none

@@ -3,16 +3,27 @@
 #-----------------------------
 
 # Append to PATH and MANPATH only once
-if  [[ ":$PATH:" != *":$HOME/scripts:"* ]] &&
-    [[ ":$PATH:" != *":$HOME/documents/dasht/bin:"* ]]
-then
-    export PATH="$PATH:$HOME/scripts:$HOME/documents/dasht/bin"
-fi
+function append_path() {
+    if [[ ":$PATH:" != *:"$1":* ]]; then
+        PATH="${PATH:+$PATH:}$1"
+    fi
+}
 
-if  [[ ":$MANPATH:" != *":$HOME/documents/dasht/man:"* ]]
-then
-    export MANPATH="$MANPATH:$HOME/documents/dasht/man"
-fi
+append_path "$HOME/scripts"
+append_path "$HOME/scripts/statusbar"
+append_path "$HOME/scripts/dasht/bin"
+
+export PATH
+
+function prepend_manpath() {
+    if [[ ":$MANPATH:" != *:"$1":* ]]; then
+        MANPATH="$1:$MANPATH"
+    fi
+}
+
+prepend_manpath "$HOME/scripts/dasht/man"
+
+export MANPATH
 
 # XDG Base Directory
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -20,9 +31,13 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 export XDG_DESKTOP_DIR="$HOME/documents"
-export XDG_DOWNLOAD_DIR="$HOME/download"
 export XDG_DOCUMENTS_DIR="$HOME/documents"
+export XDG_DOWNLOAD_DIR="$HOME/downloads"
+export XDG_MUSIC_DIR="$HOME/downloads"
 export XDG_PICTURES_DIR="$HOME/pictures"
+export XDG_PUBLICSHARE_DIR="$HOME/downloads"
+export XDG_TEMPLATES_DIR="$HOME/documents"
+export XDG_VIDEOS_DIR="$HOME/downloads"
 export SHELL_DOTFILES_DIR="$XDG_CONFIG_HOME/shell"
 
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
@@ -31,6 +46,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PASSWORD_STORE_DIR="$XDG_CONFIG_HOME/pass"
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
 # Default Programs
