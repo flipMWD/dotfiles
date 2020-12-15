@@ -9,3 +9,4 @@ for tcolor in {90..97}; do
 	printf "\e[${tcolor}m████"
 done
 printf "${resetc}\n"
+

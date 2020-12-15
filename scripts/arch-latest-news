@@ -27,3 +27,4 @@ for i, topic in enumerate(titles):
     print(f"\033[33m[{datetime.datetime.strptime(timestamps[i], '%Y-%m-%d').strftime('%A, %d %B %Y')}]\033[0m")
     print(topic)
     print(f"\033[36m{links[i]}\033[0m\n")
+

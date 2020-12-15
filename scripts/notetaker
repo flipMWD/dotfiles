@@ -81,5 +81,3 @@ else
 	printf "%s\n\n" "$*" >> "$notes_path"
 fi
 
-# Note Archiving
-# TODO

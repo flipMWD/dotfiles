@@ -37,3 +37,4 @@ cp -u "$backup_list" "$backup_directory/$date_directory"
 tar -C "$backup_directory" \
 	-czf "$backup_directory/$date_directory.tar.gz" "$date_directory"
 rm -rf "$backup_directory/$date_directory"
+

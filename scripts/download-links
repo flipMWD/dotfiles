@@ -17,6 +17,7 @@ if [[ $clipboard =~ ^(https?:\/\/)|(magnet:\?) ]]; then
                 "$clipboard"
         ;;
 
-        *) echo "Something went wrong." ;;
+        *)  ;;
     esac
 fi
+

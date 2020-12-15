@@ -30,3 +30,4 @@ cp -r ../.vim/ $HOME/
 cp ../.vimrc $HOME/
 
 exit 0
+

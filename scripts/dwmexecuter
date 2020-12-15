@@ -2,7 +2,7 @@
 
 case "$1" in
 	-q)	;;
-	-w)	;;
+	-w)	exec "$BROWSER" ;;
 	-e)	;;
 	-r)	;;
 	-a)	;;

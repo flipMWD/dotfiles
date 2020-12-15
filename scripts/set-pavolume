@@ -11,3 +11,4 @@ elif [ "$1" == "-p" ]; then
 else
     exec pactl set-sink-mute $current toggle
 fi
+

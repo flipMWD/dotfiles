@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 export FIFO_UEBERZUG="/tmp/vifm-ueberzug-${PPID}"
 
 # this should work with both local and global ueberzug install
@@ -20,3 +21,4 @@ tail --follow "$FIFO_UEBERZUG" | ueberzug layer --silent --parser bash 2>&1 >/de
 
 vifm "$@"
 cleanup
+
