@@ -48,6 +48,10 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PASSWORD_STORE_DIR="$XDG_CONFIG_HOME/pass"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
+export XAUTHORITY="${XDG_RUNTIME_DIR:-/run/user/$UID}/Xauthority"
+[[ ! -f $XAUTHORITY ]] && touch "$XAUTHORITY"
 
 # Default Programs
 export BROWSER='chromium'

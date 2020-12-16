@@ -1,0 +1,28 @@
+#!/bin/sh
+#------------------------------
+# /etc/X11/xinit/xinitrc
+#------------------------------
+
+# Colors currently defined on Suckless source code
+#userresources="${XDG_CONFIG_HOME:-$HOME/.config}/X11/Xresources"
+#[ -f "$userresources" ] && xrdb -merge "$userresources"
+
+[ -x /etc/X11/xinit/xinitrc.d/*systemd-user.sh ] &&
+    source /etc/X11/xinit/xinitrc.d/*systemd-user.sh
+
+#------------------------------
+# Custom Settings
+#------------------------------
+
+# Disable MB beep
+xset -b
+
+# Autostart
+picom -CGb
+fehbg &
+dwmblocks &
+unclutter &
+
+# Execute Window Manager
+exec dwm
+

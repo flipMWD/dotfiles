@@ -6,8 +6,6 @@
 !.bash_profile
 !.bashrc
 !.profile
-!.Xresources
-!.xinitrc
 
 !scripts/
 scripts/dasht/
@@ -61,6 +59,11 @@ scripts/dasht/
 !.config/vim/after/
 .config/vim/after/*
 !.config/vim/after/ftplugin/
+
+!.config/X11/
+.config/X11/*
+!.config/X11/xinitrc
+!.config/X11/Xresources
 
 !.config/zathura/
 .config/zathura/*

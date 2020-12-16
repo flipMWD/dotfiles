@@ -1,4 +1,4 @@
-*.font:         Source Code Pro:style=Medium:pixelsize=15,9x15
+*.font:         Source Code Pro:style=Medium:size=10,9x15
 
 *.fading:       10
 *.fadeColor:    #000010
