@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if pgrep -x "cmus" > /dev/null; then
+if pgrep -x cmus >/dev/null 2>&1 ; then
 	artist="$(cmus-remote -Q | grep ' artist ' | cut -d ' ' -f3-)"
 	song="$(cmus-remote -Q | grep ' title ' | cut -d ' ' -f3-)"
 	echo " ${artist} - ${song}"

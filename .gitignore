@@ -16,7 +16,6 @@ scripts/dasht/
 !.config/cmus/
 .config/cmus/*
 !.config/cmus/dark.theme
-!.config/cmus/config.backup
 
 !.config/dunst/
 .config/dunst/*

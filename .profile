@@ -57,6 +57,7 @@ export XAUTHORITY="${XDG_RUNTIME_DIR:-/run/user/$UID}/Xauthority"
 export BROWSER='chromium'
 export EDITOR='vim'
 export READER='zathura'
+export TERMINAL='st'
 
 # Program Options
 export FZF_DEFAULT_COMMAND="fd -HIt f '' ."

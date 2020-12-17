@@ -5,7 +5,7 @@
 
 cmus-remote -C clear
 cmus-remote -C "add $MEDIA_DIRECTORY/music"
-cmus-remote -C "update-cache -f"
+cmus-remote -C 'update-cache -f'
 
 exit 0
 
