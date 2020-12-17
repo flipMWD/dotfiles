@@ -1,11 +1,13 @@
 #!/bin/sh
 #-------------------------------
-# ~/.config/zsh/.aliasrc
+# ~/.config/shell/aliasrc
 #-------------------------------
 
 # Edit and Refresh
-alias aliases="$EDITOR \"${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc\" && \
-    source \"${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc\""
+function aliases() {
+    ${EDITOR:-vim} "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc" &&
+    source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc"
+}
 
 #-------------------------------
 # Colors
@@ -56,6 +58,7 @@ alias ytv="youtube-dl -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/download}/%(title)s.%(ext)s\""
 alias ytm="youtube-dl -x --audio-format mp3 -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/download}/%(title)s.%(ext)s\""
+alias vns='vnstat'
 alias tsm='transmission-remote'
 alias tsmo='transmission-remote | tail -n +15 | less'
 alias tsms='transmission-daemon'
@@ -81,8 +84,7 @@ alias gk='git checkout'
 alias gw='git switch'
 alias gm='git merge'
 alias gy='git cherry-pick'
-alias gr='git reset'
-alias gv='git revert'
+alias gr='git restore'
 alias gf='git fetch'
 alias gp='git push'
 alias gu='git pull'
@@ -90,4 +92,8 @@ alias gl='git log --stat'
 alias gg='git log --all --graph --decorate --oneline'
 alias ge='git blame'
 alias gq='git reflog'
+alias gr='git restore'
+alias grb='git rebase'
+alias grs='git reset'
+alias grv='git revert'
 
