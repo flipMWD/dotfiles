@@ -4,37 +4,42 @@
 [[ -r ${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env ]] &&
     source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env"
 
-# User Variables
-backup_directory="${BACKUP_DIRECTORY:-$HOME/documents/backup}"
-if [[ ! -d "$backup_directory" ]]; then
-	echo -e "Backup Directory does not exist:\n$backup_directory"
-	exit 1
+# User variables
+bkp_dir="${BACKUP_DIRECTORY:-$HOME/documents/backup}"
+if [[ ! -d "$bkp_dir" ]]; then
+    echo -e "Backup Directory does not exist:\n$bkp_dir"
+    exit 1
 fi
 
-backup_list="$backup_directory/backup_list"
-if [[ ! -f "$backup_list" ]]; then
-	echo "Backup List could not be found."
-	exit 101
+bkp_list="$bkp_dir/backup_list"
+if [[ ! -f "$bkp_list" ]]; then
+    echo "Backup List could not be found."
+    exit 101
 fi
 
-date_directory="backup_system_$(date -I)"
-if [[ ! -d "$backup_directory/$date_directory" ]]; then
-	mkdir -p "$backup_directory/$date_directory"
+date_dir="backup_system_$(date -I)"
+if [[ ! -d "$bkp_dir/$date_dir" ]]; then
+    mkdir -p "$bkp_dir/$date_dir"
 fi
 
-# Default
+# Copy all files and directories in backup_list to date_dir
 while IFS='' read -r line; do
-	case "$line" in
-		''|\#*) continue ;;
-	esac
-	eval cp -ru "$line" '"$backup_directory/$date_directory"'
-done < "$backup_list"
+    case "$line" in
+    	''|\#*) continue ;;
+    esac
+    eval cp -ru "$line" '"$bkp_dir/$date_dir"'
+done < "$bkp_list"
 
-pacman -Qq > "$backup_directory/$date_directory/arch-all-install"
-pacman -Qeq > "$backup_directory/$date_directory/arch-exp-install"
-cp -u "$backup_list" "$backup_directory/$date_directory"
+# Backup Arch packages, mark explicitly installed
+comm -2 --output-delimiter='* ' <(pacman -Qq | sort) <(pacman -Qeq | sort) \
+    > "$bkp_dir/$date_dir/arch-installed-pkgs"
 
-tar -C "$backup_directory" \
-	-czf "$backup_directory/$date_directory.tar.gz" "$date_directory"
-rm -rf "$backup_directory/$date_directory"
+# Copy list with full paths
+cp -u "$bkp_list" "$bkp_dir/$date_dir"
+
+# Archive and compact
+tar -C "$bkp_dir" -czf "$bkp_dir/$date_dir.tar.gz" "$date_dir"
+
+# Clean temp directory
+rm -rf "$bkp_dir/$date_dir"
 
