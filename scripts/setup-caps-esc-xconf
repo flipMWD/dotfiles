@@ -1,0 +1,30 @@
+#!/bin/sh
+# Run with sudo
+
+xconf_dir='/etc/X11/xorg.conf.d'
+file_path="$xconf_dir/00-keyboard.conf"
+content='# man xkeyboard-config
+Section "InputClass"
+	Identifier "system-keyboard"
+	MatchIsKeyboard "on"
+	Option "XkbLayout" "us,br"
+	Option "XkbModel" "pc105"
+	Option "XkbVariant" "altgr-intl,"
+	Option "XkbOptions" "grp:menu_toggle,caps:escape_shifted_capslock"
+EndSection
+'
+
+if [ ! -d $xconf_dir ]; then
+    echo "Error: $xconf_dir does not exist"
+    exit 2
+elif [ -f $file_path ]; then
+    echo -e "Error: $(basename -- file_path) already exists.\nEditing..."
+    sleep 1
+
+    ${EDITOR:-vim} "$file_path"
+    [ $? = 0 ] && exit 0 || exit 3
+fi
+
+echo "$content" > "$file_path"
+chmod 744 "$file_path"
+
