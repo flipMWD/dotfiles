@@ -1,10 +1,10 @@
-*.font:         Source Code Pro:style=Medium:size=10,9x15
+*.font:         Source Code Pro:style=Medium:size=10
 
 *.fading:       10
 *.fadeColor:    #000010
 
-! bg: color256, fg: color257, cc: color4
-*.background:   #191b1c
+! bg: color256=#191b1c, fg: color257, cc: color4
+*.background:   #000000
 *.foreground:   #b0bec5
 *.cursorColor:  #87b2e0
 
