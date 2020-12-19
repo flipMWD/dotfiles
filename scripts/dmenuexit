@@ -5,15 +5,7 @@
 sysctl="systemctl"
 sysopt="Lock\\nExit\\nReboot\\nShutdown"
 
-# Dmenu Options
-dmfont="xft:Bitstream Vera Sans:size=10"
-dmnmbg="#191b1c"
-dmnmfg="#bbbbbb"
-dmslbg="#263238"
-dmslfg="#eeeeee"
-
-choice=$(echo -e "$sysopt" | dmenu -i \
-    -fn "$dmfont" -nb "$dmnmbg" -nf "$dmnmfg" -sb "$dmslbg" -sf "$dmslfg" )
+choice=$(echo -e "$sysopt" | dmenu-default-options -i)
 
 case "${choice,,}" in
     lock)       slock               ;;
