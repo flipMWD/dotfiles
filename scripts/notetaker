@@ -1,83 +1,102 @@
 #!/usr/bin/env bash
-# NoteTaker (github.com/flipMWD)
+# Notetaker (github.com/flipMWD)
 
 # Exit script if command or pipeline error is found
 set -e
 
-# User Variables
-notes_editor="vim -c \"normal G$\""
-notes_directory="${NOTES_DIRECTORY:-${HOME}/documents}"
-notes_suffix=".notes"
+#-------------------------------
+# Configuration
+#-------------------------------
 
-if [ ! -d "$notes_directory" ]; then
-	if [ "$1" = "-i" -o "$1" = "--init" ]; then
-		mkdir -p "$notes_directory"
-		echo -e "Notes Directory created:\n${notes_directory}"
-		exit 0
-	fi
-	echo -e "Notes Directory not found:\n${notes_directory}"
-	echo '1) Export $NOTES_DIRECTORY in your ~/.bashrc or ~/.profile.'
-	echo '2) Run' "${0} --init or ${0} -i."
-	exit 101
-elif [ "$1" = "-i" -o "$1" = "--init" ]; then
-	echo -e "Notes Directory already exists:\n${notes_directory}"
-	exit 102
-fi
+editor='vim -c "normal G$"'
 
-# Help Menu
-if [ "$1" = "-h" -o "$1" = "--help" ]; then
-	echo "${0} [-h|-i|-s] [message]"
-	echo -e "\t-h, --help\t\tShow this help menu."
-	echo -e "\t-i, --init\t\tCreate directory set in" '$NOTES_DIRECTORY.'
-	echo -e "\t-s, --search\t\tSearch notes for date, word or pattern."
-	exit 0
-fi
+notes_dir="${NOTEBOOK_DIRECTORY:-$HOME/documents/notebook}"
+[[ ! -d $notes_dir ]] && mkdir -p "$notes_dir"
 
-# Filename Variables
-notes_file="$(date '+%Y-%m')${notes_suffix}"
-notes_path="${notes_directory}/${notes_file}"
+#-------------------------------
+# Definition
+#-------------------------------
 
-# Note Searching [alias ns="notetaker -s"]
-if [ "$1" = "-s" -o "$1" = "--search" ]; then
-	shift
-	if command -v fzf >/dev/null 2>&1; then
-		grep_opt="--line-number --no-heading --smart-case"
-		grep_ret="$(eval \
-			rg "$grep_opt" "${*:-.}" "$notes_directory" 2>/dev/null |
-			sed -E -e '/[┌└]/d; s/ *│ *//g' \
-				-e "s#^${notes_directory}/(.*)${notes_suffix}:([[:digit:]]+):#\1 \2 #" |
-			fzf | awk '{print $1, $2}')"
+# Input from STDIN, use EDITOR or append arguments
+function create_note() {
+    local file_name="$1"
+    shift
 
-		[ -n "$grep_ret" ] && eval "${notes_editor//G$/${grep_ret##* }G}" \
-			"${notes_directory}/${grep_ret% *}${notes_suffix}"
-	fi
-	# TODO no fzf
-	exit 0
-fi
+    if [[ $# -eq 0 ]]; then
+        if [[ -p '/dev/stdin' ]]; then
+            (cat; printf "\n") >> "$file_name"
+        else
+            eval "$editor" "$file_name"
+            [[ -n "$(tail -n1 "$file_name")" ]] && printf "\n" >> "$file_name"
+        fi
+    else
+        printf "%s\n\n" "${*}" >> "$file_name"
+    fi
+}
 
-# Date Header
-date_stamp="$(date '+%A, %d %B %Y')"
+function choose_notebook() {
+    local file_name all_notebooks chosen_notebook
 
-if ! grep -q "$date_stamp" "$notes_path" 2>/dev/null; then
-	bar_top="┌─${date_stamp//?/─}─┐"
-	bar_bot="└─${date_stamp//?/─}─┘"
+    file_name="${1#-}"
+    all_notebooks=($(ls "$notes_dir"))
 
-	printf "%s\n│ %s │\n%s\n\n" \
-		"$bar_top" "$date_stamp" "$bar_bot" >> "$notes_path"
-fi
+    for chosen_notebook in "${all_notebooks[@]}"; do
 
-# Note Creation [alias n="notetaker"]
-time_stamp="[$(date '+%H:%M')] "
-printf "%s" "$time_stamp" >> "$notes_path"
+        if [[ "${chosen_notebook,,}" =~ "${file_name,,}" ]]; then
+            shift
+            create_note "$notes_dir/$chosen_notebook" "$@"
+            exit 0
+        fi
+    done
 
-if [ $# -eq 0 ]; then
-	if [ -p "/dev/stdin" ]; then
-		(cat; printf "\n\n") >> "$notes_path"
-	else
-		eval "$notes_editor" "$notes_path"
-		[ -n "$(tail -n1 "$notes_path")" ] && printf "\n\n" >> "$notes_path"
-	fi
-else
-	printf "%s\n\n" "$*" >> "$notes_path"
-fi
+    # If there's no matching file in notebooks, create one
+    if [[ ! -f "$notes_dir/$file_name" ]]; then
+        touch "$notes_dir/$file_name"
+        echo -e "Notebook $file_name created.\nRun again to insert the message."
+    fi
+}
+
+function date_notebook() {
+    local date_note month_header date_label bar_top bar_bot
+
+    date_note="$(date +'%Y')_notes"
+    month_header="$(date +'%B %Y')"
+    date_label="$(date +'[%Y-%m-%d, %a %H:%M]') "
+
+    # Create Header
+    if ! grep -q "^│ $month_header │$" "$notes_dir/$date_note" 2>/dev/null; then
+        bar_top="┌─${month_header//?/─}─┐"
+        bar_bot="└─${month_header//?/─}─┘"
+        printf "%s\n│ %s │\n%s\n\n" \
+            "$bar_top" "$month_header" "$bar_bot" >> "$notes_dir/$date_note"
+    fi
+
+    # Insert Label
+    printf "%s" "$date_label" >> "$notes_dir/$date_note"
+
+    # Create General Note
+    create_note "$notes_dir/$date_note" "$@"
+}
+
+#-------------------------------
+# Execution
+#-------------------------------
+
+case "$1" in
+    -s|--search)
+        # tail -n +1 /path/* for all notebooks
+        eval cat "$notes_dir/*_notes" | less +G
+        exit 0
+        ;;
+    --*)
+        echo 'Notebooks should be prefixed with only one dash: -example'
+        exit 1
+        ;;
+    -*)
+        choose_notebook "$@"
+        ;;
+    *)
+        date_notebook "$@"
+        ;;
+esac
 
