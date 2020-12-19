@@ -74,6 +74,12 @@ function precmd() {
 # Completion
 #-------------------------------
 
+# Enable menu select with isearch on single <Tab>
+setopt MENU_COMPLETE
+
+# CD by just typing path
+setopt AUTO_CD
+
 autoload -Uz compinit
 
 # Module    Pattern                 Standard Styles
@@ -93,15 +99,9 @@ zstyle      ':completion:*'         completer \
     _expand _complete _ignored _correct _approximate
     # ^ Control Functions
 
-# Enable menu select with isearch on single <Tab>
-setopt MENU_COMPLETE
-
 zmodload zsh/complist
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
 _comp_options+=(globdots)
-
-# CD by just typing path
-setopt autocd
 
 # Quote URLs automatically when pasting on terminal
 autoload -Uz bracketed-paste-magic

@@ -19,6 +19,7 @@ xset -b
 # Autostart
 picom -CGb
 fehbg &
+blueman-applet &
 dwmblocks &
 unclutter &
 

@@ -62,7 +62,7 @@ export TERMINAL='st'
 # Program Options
 export FZF_DEFAULT_COMMAND="fd -HIt f '' ."
 export FZF_DEFAULT_OPTS="--color=16,gutter:0,fg+:15,bg+:-1,hl:11,hl+:11 \
---height=40% --layout=reverse"
+    --height=40% --layout=reverse"
 
 export LESSHISTFILE=-
 export LESS_TERMCAP_mb="$(printf '\e[5;93m')"       # blink

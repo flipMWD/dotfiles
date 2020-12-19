@@ -184,7 +184,7 @@ nnoremap <Leader>fc :Commits<CR>
 nnoremap <Leader>fb :BCommits<CR>
 
 inoremap <C-c> <Esc>viwUea
-inoremap {<CR> {}<Esc>i<CR><BS><Esc>O
+inoremap {<CR> {}<Esc>i<CR><Esc>O
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
