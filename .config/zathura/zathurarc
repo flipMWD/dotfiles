@@ -1,4 +1,12 @@
-# Zathura Configuration #
+#-------------------------------
+# Zathura Configuration
+#-------------------------------
 
 set guioptions none
+#set first-page-column 1:1
+
+#-------------------------------
+# Keybinds
+#-------------------------------
+
 map b toggle_statusbar

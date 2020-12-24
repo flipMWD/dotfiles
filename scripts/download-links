@@ -10,13 +10,11 @@ if [[ $clipboard =~ ^(https?:\/\/)|(magnet:\?) ]]; then
                 sleep 3
             fi
             transmission-remote -a "$clipboard"
-        ;;
-
+            ;;
         *.png|*.jpg|*.jpeg|*.gif)
             wget --directory-prefix=${XDG_DOWNLOAD_DIR:-$HOME/downloads} \
                 "$clipboard"
-        ;;
-
+            ;;
         *)  ;;
     esac
 fi
