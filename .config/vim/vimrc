@@ -12,7 +12,8 @@ set directory=$XDG_DATA_HOME/vim/swap
 set backupdir=$XDG_DATA_HOME/vim/backup
 set viewdir=$XDG_DATA_HOME/vim/view
 set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
-set runtimepath^=$XDG_CONFIG_HOME/vim runtimepath+=$XDG_CONFIG_HOME/vim/after
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
 let &packpath = &runtimepath
 set path+=**
 
@@ -25,7 +26,8 @@ set formatoptions+=ljr
 set formatoptions-=o
 set linebreak
 set showbreak=»
-set listchars=eol:¬,tab:│\ ,space:·,trail:X
+set listchars=tab:│\ ,trail:·,nbsp:X
+set list
 set fillchars=vert:│
 set diffopt+=context:5,foldcolumn:0
 set hidden
@@ -84,10 +86,14 @@ set showmatch           " highlight parens
 
 " NetRW :Lex
 let g:netrw_banner=0
-let g:netrw_winsize=22
-let g:netrw_liststyle=0         " 0=thin, 1=detail, 2=column, 3=tree
-let g:netrw_sizestyle="H"       " human-readable
-let g:netrw_browse_split=4      " open on previous window
+let g:netrw_winsize=30
+let g:netrw_liststyle=3                 " 0=thin, 1=detail, 2=column, 3=tree
+let g:netrw_sizestyle="H"               " human-readable
+let g:netrw_browse_split=4              " open on previous window
+let g:netrw_list_hide='^\.\.\=\/$,'                     " hide . and ..
+let g:netrw_list_hide.='.*\.\(o\)$,'                    " hide extensions
+let g:netrw_list_hide.='.*\.\(git\|node_modules\)\/$'   " hide directories
+let g:NetrwIsOpen=0
 
 " Language
 filetype plugin indent on
@@ -120,7 +126,6 @@ function! AltBOnly()
 endfunction
 
 function! ToggleLines()
-    set list!
     set cursorline!
     set cursorcolumn!
     if (&cursorcolumn)
@@ -142,6 +147,22 @@ function! GenerateTags()
         redraw!
     endif
     Tags
+endfunction
+
+function! ToggleNetrwLex(cdir)
+    if g:NetrwIsOpen
+        let i = bufnr('$')
+        while (i >= 1)
+            if (getbufvar(i, '&filetype') == 'netrw')
+                silent execute 'bwipeout ' . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent execute 'Lexplore ' . a:cdir
+    endif
 endfunction
 
 "-----------------------------
@@ -175,10 +196,11 @@ nnoremap <Leader><Tab> :set et!<CR>
 
 nnoremap <Leader>ee :edit <C-z><S-Tab>
 nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
-nnoremap <Leader>- :Lexplore<CR>
+nnoremap <silent> <Leader>- :call ToggleNetrwLex('<C-r>=expand("%:p:h")<CR>')<CR>
+nnoremap <silent> <Leader>_ :call ToggleNetrwLex('<C-r>=getcwd()<CR>')<CR>
 
-nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>fd :Files ..
+nnoremap <silent> <Leader>ff :Files <C-r>=expand("%:p:h")<CR><CR>
+nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>
 nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fc :Commits<CR>
 nnoremap <Leader>fb :BCommits<CR>
