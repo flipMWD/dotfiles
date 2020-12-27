@@ -4,6 +4,7 @@
 
 " Plugins ~/scripts/update-plugin-vim
 " fzf.vim
+" fff.vim
 " AutoComplPop
 
 " Paths
@@ -107,6 +108,10 @@ autocmd FileType cpp call MakeFileMissing('g++')
 " Disable FZF Floating Window
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border': 'top' } }
 
+" Configure FFF Side Window
+let g:fff#split = '30vnew'
+let g:fff#split_direction = 'nosplitright'
+
 "-----------------------------
 " Functions
 "-----------------------------
@@ -196,8 +201,9 @@ nnoremap <Leader><Tab> :set et!<CR>
 
 nnoremap <Leader>ee :edit <C-z><S-Tab>
 nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
-nnoremap <silent> <Leader>- :call ToggleNetrwLex('<C-r>=expand("%:p:h")<CR>')<CR>
-nnoremap <silent> <Leader>_ :call ToggleNetrwLex('<C-r>=getcwd()<CR>')<CR>
+nnoremap <silent> <Leader>- :F <C-r>=expand("%:p:h")<CR><CR>
+"nnoremap <silent> <Leader>- :call ToggleNetrwLex('<C-r>=expand("%:p:h")<CR>')<CR>
+"nnoremap <silent> <Leader>_ :call ToggleNetrwLex('<C-r>=getcwd()<CR>')<CR>
 
 nnoremap <silent> <Leader>ff :Files <C-r>=expand("%:p:h")<CR><CR>
 nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>

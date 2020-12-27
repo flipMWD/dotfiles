@@ -1,0 +1,28 @@
+auto-reload yes
+reload-time 60
+reload-threads 10
+show-read-articles no
+
+color listnormal            white       default
+color listnormal_unread     default     default
+color listfocus             white       black       bold
+color listfocus_unread      color15     black       bold
+color info                  blue        black
+color end-of-text-marker    black       default
+
+highlight article "https?://[^ ]+"  cyan    default
+highlight article "\\[[0-9]+\\]"    green   default
+
+bind-key q  hard-quit
+bind-key h  quit
+bind-key j  down
+bind-key k  up
+bind-key l  open
+bind-key H  home
+bind-key J  pagedown
+bind-key K  pageup
+bind-key L  end
+bind-key u  prev-feed
+bind-key i  next-feed
+bind-key ;  toggle-show-read-feeds
+

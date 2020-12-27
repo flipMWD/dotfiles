@@ -64,6 +64,20 @@ export FZF_DEFAULT_COMMAND="fd -Ht f -E '.git' -E 'node_modules' '' ."
 export FZF_DEFAULT_OPTS="--color=16,gutter:0,fg+:15,bg+:-1,hl:11,hl+:11 \
     --height=40% --layout=reverse"
 
+export FFF_COL2=0   # status bg
+export FFF_COL3=3   # selected
+export FFF_COL4=9   # cursor
+export FFF_COL5=4   # status fg
+export FFF_HIDDEN=1
+export FFF_FAV1="$HOME/.config"
+export FFF_FAV2="$HOME/downloads"
+export FFF_FAV3="$HOME/documents"
+export FFF_FAV4="$HOME/pictures"
+export FFF_FILE_FORMAT=' %f '
+export FFF_MARK_FORMAT='> %f '
+export FFF_KEY_GO_HOME='`'
+export FFF_KEY_GO_DIR=';'
+
 export LESSHISTFILE=-
 export LESS_TERMCAP_mb="$(printf '\e[5;93m')"       # blink
 export LESS_TERMCAP_md="$(printf '\e[1;34m')"       # bold

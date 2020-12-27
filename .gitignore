@@ -30,6 +30,10 @@ scripts/dasht/
 !.config/mpv/input.conf
 !.config/mpv/mpv.conf
 
+!.config/newsboat/
+.config/newsboat/*
+!.config/newsboat/config
+
 !.config/picom/
 .config/picom/*
 !.config/picom/picom.conf

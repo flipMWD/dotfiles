@@ -27,10 +27,16 @@ alias fgrep='fgrep --colour=auto'
 # Change Directory
 alias ..='cd ..'
 alias ...='cd ../..'
+alias c='ffcd'
 alias d='vfcd .'
 alias f='fzcd'
 alias fh='fzcd h'
 alias fm='fzcd m'
+
+function ffcd() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:-$HOME/.cache}/fff/.fff_d")"
+}
 
 # Built In
 alias la='ls -AlhN'
@@ -53,6 +59,7 @@ fi
 alias p='sudo pacman'
 alias v='vim'
 alias ds='dasht'
+alias nb='newsboat'
 alias web='elinks'
 alias ytv="youtube-dl -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/download}/%(title)s.%(ext)s\""
