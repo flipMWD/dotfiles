@@ -62,6 +62,7 @@ scripts/dasht/
 !.config/vim/after/
 .config/vim/after/*
 !.config/vim/after/ftplugin/
+!.config/vim/after/compiler/
 
 !.config/X11/
 .config/X11/*

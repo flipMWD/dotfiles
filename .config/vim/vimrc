@@ -101,10 +101,6 @@ filetype plugin indent on
 syntax on
 "set spell
 
-" C/C++
-autocmd FileType c call MakeFileMissing('gcc')
-autocmd FileType cpp call MakeFileMissing('g++')
-
 " Disable FZF Floating Window
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border': 'top' } }
 
@@ -140,10 +136,11 @@ function! ToggleLines()
     endif
 endfunction
 
-function! MakeFileMissing(compiler)
-    if !filereadable("./Makefile")
-        let &l:makeprg=a:compiler . ' $* % -o %<'
+function! MakefileExists()
+    if filereadable("./Makefile")
+        let &makeprg = 'make'
     endif
+    call feedkeys(':make ')
 endfunction
 
 function! GenerateTags()
@@ -177,24 +174,29 @@ endfunction
 let mapleader="\<Space>"
 let maplocalleader="\<Bslash>"
 
-" nore disallow that the {rhs} execute other mappings
+" All modes, nore disallow {rhs} to execute other mappings
 noremap <Leader>; <Esc>A;<Esc>
-noremap <Leader>d "+d
 noremap <Leader>y "+y
+noremap <Leader>Y "+y$
 
+" Insert mode
+inoremap <C-c> <Esc>viwUea
+inoremap {<CR> {}<Esc>i<CR><Esc>O
+
+" Normal mode
 nnoremap q; q:
 nnoremap Y y$
 nnoremap S <Nop>
 nnoremap K <Nop>
-" nnoremap <Leader>p :set paste!<CR>"+p:set paste!<CR>
 nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 nnoremap <Leader>r diw"0P
 nnoremap <Leader>n :noh<CR>
 nnoremap <Leader>N :let @/=""<CR>
-nnoremap <Leader>C :split $MYVIMRC<CR>
 nnoremap <Leader>c :source $MYVIMRC<CR>
+nnoremap <Leader>C :split $MYVIMRC<CR>
 nnoremap <Leader>s :call ToggleLines()<CR>
+nnoremap <Leader>M :call MakefileExists()<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
 nnoremap <Leader><Tab> :set et!<CR>
@@ -210,9 +212,6 @@ nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>
 nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fc :Commits<CR>
 nnoremap <Leader>fb :BCommits<CR>
-
-inoremap <C-c> <Esc>viwUea
-inoremap {<CR> {}<Esc>i<CR><Esc>O
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
