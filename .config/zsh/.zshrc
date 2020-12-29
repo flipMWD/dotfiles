@@ -170,7 +170,7 @@ function fzcd() {
     fi
 
     fzout="$(eval fd -HIpt f ${arign/#/-E } '""' '"$dirfd"' | fzf)"
-    [[ -a $fzout ]] && cd "$(dirname -- "$fzout")"
+    [[ -e $fzout ]] && cd "$(dirname -- "$fzout")"
 }
 
 # CD to Vifm last directory
