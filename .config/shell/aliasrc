@@ -68,7 +68,7 @@ alias ytm="youtube-dl -x --audio-format mp3 -o \
 alias vns='vnstat'
 alias tsm='transmission-remote'
 alias tsmo='transmission-remote | tail -n +15 | less'
-alias tsms='transmission-daemon'
+alias tsms='transmission-launch'
 alias tsme='transmission-remote --exit'
 
 # User Scripts
