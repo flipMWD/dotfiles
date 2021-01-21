@@ -167,6 +167,14 @@ function! ToggleNetrwLex(cdir)
     endif
 endfunction
 
+function! PreviewGroff()
+    let ext = expand("%:e")
+    if ext == "ms"
+        execute "! groff -ms -Tpdf -Kutf8 % > /tmp/preview_groff.pdf"
+    endif
+    execute "! zathura /tmp/preview_groff.pdf"
+endfunction
+
 "-----------------------------
 " Keybindings
 "-----------------------------
@@ -199,7 +207,8 @@ nnoremap <Leader>s :call ToggleLines()<CR>
 nnoremap <Leader>M :call MakefileExists()<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
-nnoremap <Leader><Tab> :set et!<CR>
+nnoremap <Leader><Tab> :set expandtab!<CR>
+nnoremap <Leader>z :call PreviewGroff()<CR><CR><CR>
 
 nnoremap <Leader>ee :edit <C-z><S-Tab>
 nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
