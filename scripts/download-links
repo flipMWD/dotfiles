@@ -11,6 +11,10 @@ if [[ $clipboard =~ ^(https?:\/\/)|(magnet:\?) ]]; then
             fi
             transmission-remote -a "$clipboard"
             ;;
+        *github.com*|*gitlab.com*)
+            cd ${XDG_DOCUMENTS_DIR:-$HOME/documents}
+            git clone "$clipboard"
+            ;;
         *.png|*.jpg|*.jpeg|*.gif)
             wget --directory-prefix=${XDG_DOWNLOAD_DIR:-$HOME/downloads} \
                 "$clipboard"
