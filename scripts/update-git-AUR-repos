@@ -35,10 +35,9 @@ for repo in "${repos_arr[@]}"; do
 		    throw_error "$repo" "no remote URLs" &&
 		    continue
 
-		# Go to master/main branch
+		# Go to master/main branch after saving current state
 		if [[ $check_branch != $check_master ]]; then
 			stash_message="${check_branch}_$(date +'%Y%m%d_%H%M%S%z')"
-
 			git stash push -um "$stash_message" || echo "Nothing to stash"
 			git checkout -q "$check_master"
 		fi
@@ -63,13 +62,10 @@ for repo in "${repos_arr[@]}"; do
 		# Resume worktree back to previous branch
 		if [[ $check_branch != $check_master ]]; then
 			git checkout -q "$check_branch"
-
 			if [[ $(git stash list) == *${stash_message}* ]]; then
 				stash_commit="$(git stash list | \
 				    sed -n "s/^\([^:]\+\):\s\+[^:]\+:\s\+$stash_message$/\1/p")"
-
 				git stash apply "$stash_commit"
-
 				echo "Worktree on $check_branch restored"
 				echo "Run \`git stash drop $stash_commit' to remove it"
 			fi

@@ -54,7 +54,7 @@ export XAUTHORITY="${XDG_RUNTIME_DIR:-/run/user/$UID}/Xauthority"
 [[ ! -f $XAUTHORITY ]] && touch "$XAUTHORITY"
 
 # Default Programs
-export BROWSER='chromium'
+export BROWSER='librewolf'
 export EDITOR='vim'
 export READER='zathura'
 export TERMINAL='st'
