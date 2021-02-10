@@ -3,7 +3,7 @@ reload-time 60
 reload-threads 10
 max-items 200
 keep-articles-days 90
-save-path "~/documents/newsboat-articles"
+save-path "~/Documents/newsboat-articles"
 show-read-articles no
 
 color listnormal            white       default

@@ -10,7 +10,7 @@ set -e
 
 editor='vim -c "normal G$"'
 
-notes_dir="${NOTEBOOK_DIRECTORY:-$HOME/documents/notebook}"
+notes_dir="${NOTEBOOK_DIRECTORY:-$HOME/Documents/notebook}"
 [[ ! -d $notes_dir ]] && mkdir -p "$notes_dir"
 
 #-------------------------------

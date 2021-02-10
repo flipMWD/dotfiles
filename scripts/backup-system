@@ -5,7 +5,7 @@
     source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env"
 
 # User variables
-bkp_dir="${BACKUP_DIRECTORY:-$HOME/documents/backup}"
+bkp_dir="${BACKUP_DIRECTORY:-$HOME/Documents/backup}"
 if [[ ! -d "$bkp_dir" ]]; then
     echo -e "Backup Directory does not exist:\n$bkp_dir"
     exit 1

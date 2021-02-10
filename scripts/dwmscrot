@@ -1,7 +1,7 @@
 #!/bin/sh
 # 755 root:root /usr/bin/dwmscrot
 
-scrot_dir="${XDG_PICTURES_DIR:-$HOME/pictures}/screenshots"
+scrot_dir="${XDG_PICTURES_DIR:-$HOME/Pictures}/screenshots"
 
 if ! [ -d "$scrot_dir" ]; then
     mkdir -p "$scrot_dir"

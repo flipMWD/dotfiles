@@ -62,9 +62,9 @@ alias ds='dasht'
 alias nb='newsboat'
 alias web='elinks'
 alias ytv="youtube-dl -o \
-    \"${XDG_DOWNLOAD_DIR:-$HOME/download}/%(title)s.%(ext)s\""
+    \"${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/%(title)s.%(ext)s\""
 alias ytm="youtube-dl -x --audio-format mp3 -o \
-    \"${XDG_DOWNLOAD_DIR:-$HOME/download}/%(title)s.%(ext)s\""
+    \"${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/%(title)s.%(ext)s\""
 alias vns='vnstat'
 alias tsm='transmission-remote'
 alias tsmo='transmission-remote | tail -n +15 | less'

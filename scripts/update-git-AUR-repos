@@ -8,7 +8,7 @@ function finish_script() {
 trap finish_script EXIT
 
 # Choose git/AUR repository directory
-repos_path="${XDG_DOCUMENTS_DIR:-$HOME/documents}"
+repos_path="${XDG_DOCUMENTS_DIR:-$HOME/Documents}"
 repos_arr=($(find "$repos_path" -maxdepth 1 -type d))
 
 function throw_error() {
