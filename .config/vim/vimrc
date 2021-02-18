@@ -2,10 +2,7 @@
 " General
 "-----------------------------
 
-" Plugins ~/scripts/update-plugin-vim
-" fzf.vim
-" fff.vim
-" AutoComplPop
+" Plugins flipMWD/dotfiles ~/scripts/update-plugin-vim
 
 " Paths
 set undodir=$XDG_DATA_HOME/vim/undo
@@ -58,13 +55,24 @@ set statusline+=%P\                             " doc percentage
 set showcmd
 
 " Formatting
-set shiftwidth=4        " indent length
-set softtabstop=4       " mix space and tab
-set tabstop=4           " set tab length
-set expandtab           " convert tab into spaces
+set tabstop=4           " tab length
+set shiftwidth=4        " space length
+set softtabstop=-1      " mix space and tab
+set noexpandtab         " convert tab into spaces
 set autoindent
 set smartindent
 set smarttab
+
+" Search
+set hlsearch
+set incsearch           " hl as type
+set ignorecase
+set smartcase           " type Caps to match A-Z only
+set showmatch           " highlight parens
+
+" Language
+filetype plugin indent on
+syntax on
 
 " Cursor
 if exists('$TMUX')
@@ -78,13 +86,6 @@ else
 	let &t_EI.="\<Esc>[1 q"     " normal, blink block
 endif
 
-" Search
-set hlsearch
-set incsearch           " hl as type
-set ignorecase
-set smartcase           " type Caps to match A-Z only
-set showmatch           " highlight parens
-
 " NetRW :Lex
 let g:netrw_banner=0
 let g:netrw_winsize=30
@@ -95,11 +96,6 @@ let g:netrw_list_hide='^\.\.\=\/$,'                     " hide . and ..
 let g:netrw_list_hide.='.*\.\(o\)$,'                    " hide extensions
 let g:netrw_list_hide.='.*\.\(git\|node_modules\)\/$'   " hide directories
 let g:NetrwIsOpen=0
-
-" Language
-filetype plugin indent on
-syntax on
-"set spell
 
 " Disable FZF Floating Window
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border': 'top' } }
@@ -114,65 +110,65 @@ let g:fff#split_direction = 'nosplitright'
 
 " Alternate between Only Window and split with Alt Buffer
 function! AltBOnly()
-    if (bufexists(0) && winnr('$') == 1)    " buf 0 = #, win $ = last
-        if (winwidth(0) >= 170)             " win 0 = current
-            vsplit
-            buffer #
-        else
-            sbuffer #
-        endif
-    else
-        only
-    endif
+	if (bufexists(0) && winnr('$') == 1)    " buf 0 = #, win $ = last
+		if (winwidth(0) >= 170)             " win 0 = current
+			vsplit
+			buffer #
+		else
+			sbuffer #
+		endif
+	else
+		only
+	endif
 endfunction
 
 function! ToggleLines()
-    set cursorline!
-    set cursorcolumn!
-    if (&cursorcolumn)
-        set colorcolumn=+1
-    else
-        set colorcolumn=""
-    endif
+	set cursorline!
+	set cursorcolumn!
+	if (&cursorcolumn)
+		set colorcolumn=+1
+	else
+		set colorcolumn=""
+	endif
 endfunction
 
 function! MakefileExists()
-    if filereadable("./Makefile")
-        let &makeprg = 'make'
-    endif
-    call feedkeys(':make ')
+	if filereadable("./Makefile")
+		let &makeprg = 'make'
+	endif
+	call feedkeys(':make ')
 endfunction
 
 function! GenerateTags()
-    if filereadable("./tags")
-        silent !ctags -R
-        redraw!
-    endif
-    Tags
+	if filereadable("./tags")
+		silent !ctags -R
+		redraw!
+	endif
+	Tags
 endfunction
 
 function! ToggleNetrwLex(cdir)
-    if g:NetrwIsOpen
-        let i = bufnr('$')
-        while (i >= 1)
-            if (getbufvar(i, '&filetype') == 'netrw')
-                silent execute 'bwipeout ' . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent execute 'Lexplore ' . a:cdir
-    endif
+	if g:NetrwIsOpen
+		let i = bufnr('$')
+		while (i >= 1)
+			if (getbufvar(i, '&filetype') == 'netrw')
+				silent execute 'bwipeout ' . i
+			endif
+			let i-=1
+		endwhile
+		let g:NetrwIsOpen=0
+	else
+		let g:NetrwIsOpen=1
+		silent execute 'Lexplore ' . a:cdir
+	endif
 endfunction
 
 function! PreviewGroff()
-    let ext = expand("%:e")
-    if ext == "ms"
-        execute "! groff -ms -Tpdf -Kutf8 % > /tmp/preview_groff.pdf"
-    endif
-    execute "! zathura /tmp/preview_groff.pdf"
+	let ext = expand("%:e")
+	if ext == "ms"
+		execute "! groff -ms -Tpdf -Kutf8 % > /tmp/preview_groff.pdf"
+	endif
+	execute "! zathura /tmp/preview_groff.pdf"
 endfunction
 
 "-----------------------------
