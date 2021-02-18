@@ -14,6 +14,7 @@ package() {
 	repo_name="$(basename "$repo_url" .git)"
 	if [ -d "$repo_name" ]; then
 		cd "$repo_name" || exit
+		[ $(git config pull.ff) != 'only' ] && git config pull.ff only
 		result=$(git pull --force)
 		echo "$repo_name: $result"
 	else
@@ -27,6 +28,7 @@ create_group utility
 package https://github.com/junegunn/fzf.vim &
 package https://github.com/dylanaraps/fff.vim &
 package https://github.com/vim-scripts/AutoComplPop &
+package https://github.com/mattn/emmet-vim &
 wait
 ) &
 
