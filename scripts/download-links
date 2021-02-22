@@ -3,23 +3,23 @@
 clipboard=$(xclip -out -selection clipboard)
 
 if [[ $clipboard =~ ^(https?:\/\/)|(magnet:\?) ]]; then
-    case $clipboard in
-        magnet*)
-            if ! pgrep -x transmission-daemon; then
-                transmission-daemon
-                sleep 3
-            fi
-            transmission-remote -a "$clipboard"
-            ;;
-        *github.com*|*gitlab.com*)
-            cd ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
-            git clone "$clipboard"
-            ;;
-        *.png|*.jpg|*.jpeg|*.gif)
-            wget --directory-prefix=${XDG_DOWNLOAD_DIR:-$HOME/Downloads} \
-                "$clipboard"
-            ;;
-        *)  ;;
-    esac
+	case $clipboard in
+		magnet*)
+			if ! pgrep -x transmission-daemon; then
+				transmission-daemon
+				sleep 3
+			fi
+			transmission-remote -a "$clipboard"
+			;;
+		*github.com*|*gitlab.com*|*aur.archlinux.org*)
+			cd ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+			git clone "$clipboard"
+			;;
+		*.png|*.jpg|*.jpeg|*.gif)
+			wget --directory-prefix=${XDG_DOWNLOAD_DIR:-$HOME/Downloads} \
+				"$clipboard"
+			;;
+		*)  ;;
+	esac
 fi
 
