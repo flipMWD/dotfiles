@@ -5,7 +5,7 @@ case "$1" in
     -w) exec "$BROWSER" ;;
     -e) ;;
     -r) ;;
-    -a) ;;
+    -a) exec lbry ;;
     -s) ;;
     -d) exec download-links ;;
     -f) ;;
