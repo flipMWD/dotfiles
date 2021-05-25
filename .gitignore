@@ -38,6 +38,10 @@ scripts/dasht/
 .config/picom/*
 !.config/picom/picom.conf
 
+!.config/sc-im/
+.config/sc-im/*
+!.config/sc-im/scimrc
+
 !.config/shell/
 .config/shell/*
 !.config/shell/aliasrc

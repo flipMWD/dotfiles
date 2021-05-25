@@ -74,7 +74,7 @@ alias tsme='transmission-remote --exit'
 # User Scripts
 alias n='notetaker'
 alias ns='notetaker -s'
-alias sc='script-creator'
+alias sc='sc-im'
 alias pn='arch-latest-news'
 
 #-------------------------------
