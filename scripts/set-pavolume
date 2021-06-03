@@ -1,14 +1,12 @@
 #!/bin/sh
-# Find correct Bluetooth Headset Sink for DWM - Volume Control
+# Find correct Audio Sink for DWM - Volume Control
 
-# edit grep -e RUNNING
-current=$(pactl list short sinks | grep a2dp_sink | cut -f1)
+# Audio Sink Priority: Bluetooth > Audio jack
+as=$(pactl list short sinks | grep 'a2dp_sink' | cut -f1)
+as=${as:=$(pactl list short sinks | grep 'analog-stereo' | cut -f1)}
 
-if [ "$1" == "-m" ]; then
-    exec pactl set-sink-volume $current -5%
-elif [ "$1" == "-p" ]; then
-    exec pactl set-sink-volume $current +5%
-else
-    exec pactl set-sink-mute $current toggle
-fi
-
+case "$1" in
+	-m) exec pactl set-sink-volume $as -5%  ;;
+	-p) exec pactl set-sink-volume $as +5%  ;;
+	*)  exec pactl set-sink-mute $as toggle ;;
+esac
