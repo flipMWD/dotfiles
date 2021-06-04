@@ -1,0 +1,14 @@
+#!/bin/sh
+
+link=$(xclip -out -selection clipboard)
+
+case "$link" in
+	*youtube*v=*)
+		id="${link##*v=}"
+		echo -n "https://i.ytimg.com/vi/${id%%&*}/maxresdefault.jpg" | \
+			xclip -in -selection clipboard
+		notify-send "Thumbnail link copied to clipboard"
+	;;
+	*)
+		notify-send "Incorrect link"
+esac

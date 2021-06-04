@@ -4,7 +4,7 @@ case "$1" in
     -q) ;;
     -w) exec "$BROWSER" ;;
     -e) ;;
-    -r) ;;
+    -r) exec yt-thumbnail ;;
     -a) exec lbry ;;
     -s) ;;
     -d) exec download-links ;;
