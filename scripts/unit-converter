@@ -1,0 +1,22 @@
+#!/bin/sh
+
+info="\t[f]  Farenheit\t↔\t[c]  Celsius
+\t[ft] Feet\t↔\t[m]  Meters
+\t[mi] Miles\t↔\t[km] Kilometers
+\t[oz] Ounces\t↔\t[l]  Liters"
+
+[ -z $1 ] && echo -e "$info" && exit 2
+
+case "$1$2" in
+	*[0-9]f)    fn="(${1%f}-32)*5/9"    ;;
+	*[0-9]c)    fn="${1%c}*9/5+32"      ;;
+	*[0-9]ft)   fn="${1%ft}/3.2808"     ;;
+	*[0-9]m)    fn="${1%m}*3.2808"      ;;
+	*[0-9]mi)   fn="${1%mi}*1.609344"   ;;
+	*[0-9]km)   fn="${1%km}/1.609344"   ;;
+	*[0-9]oz)   fn="${1%oz}/33.814"     ;;
+	*[0-9]l)    fn="${1%l}*33.814"      ;;
+	*)          echo -e "$info"         ;;
+esac
+
+printf "%.2f\n" $(echo "$fn" | bc -l)
