@@ -42,6 +42,10 @@ scripts/dasht/
 .config/sc-im/*
 !.config/sc-im/scimrc
 
+!.config/screen/
+.config/screen/*
+!.config/screen/screenrc
+
 !.config/shell/
 .config/shell/*
 !.config/shell/aliasrc

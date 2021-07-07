@@ -45,6 +45,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PASSWORD_STORE_DIR="$XDG_CONFIG_HOME/pass"
+export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 export SHELL_DOTFILES_DIR="$XDG_CONFIG_HOME/shell"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
