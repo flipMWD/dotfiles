@@ -11,7 +11,7 @@ case "$1" in
     -f) ;;
     -z) ;;
     -x) ;;
-    -c) ;;
+    -c) exec nicotine ;;
     -v) ;;
     -1) ;;
     -2) ;;

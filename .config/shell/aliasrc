@@ -5,8 +5,8 @@
 
 # Edit and Refresh
 function aliases() {
-    ${EDITOR:-vim} "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc" &&
-    source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc"
+	${EDITOR:-vim} "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc" &&
+	source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc"
 }
 
 #-------------------------------
@@ -34,8 +34,8 @@ alias fh='fzcd h'
 alias fm='fzcd m'
 
 function ffcd() {
-    fff "$@"
-    cd "$(cat "${XDG_CACHE_HOME:-$HOME/.cache}/fff/.fff_d")"
+	fff "$@"
+	cd "$(cat "${XDG_CACHE_HOME:-$HOME/.cache}/fff/.fff_d")"
 }
 
 # Built In
@@ -50,9 +50,9 @@ alias :q='exit'
 
 # Allow opening files with Vim from :term w/o nesting
 if [ -z "$VIMRUNTIME" ]; then
-    alias vs='vim --servername VTERMREADY'
+	alias vs='vim --servername VTERMREADY'
 else
-    alias vs="vim --servername $VIM_SERVERNAME --remote"
+	alias vs="vim --servername $VIM_SERVERNAME --remote"
 fi
 
 # Shortcuts
@@ -102,4 +102,15 @@ alias gr='git restore'
 alias grb='git rebase'
 alias grs='git reset'
 alias grv='git revert'
+
+function gca() {
+	git branch
+	git status --short
+	read "msg?Commit Message: "
+	if [ $? -eq 0 ] ; then
+		git add .
+		git commit -m "${msg:-No comment}"
+		[ "$(git branch -vv | grep -E '^\*.*\[.*\].*$')" ] && git push
+	fi
+}
 
