@@ -8,7 +8,7 @@ case "$1" in
     -a) exec lbry ;;
     -s) ;;
     -d) exec download-links ;;
-    -f) ;;
+    -f) exec dmenucalc ;;
     -z) ;;
     -x) ;;
     -c) exec nicotine ;;
