@@ -59,8 +59,7 @@ autoload -U colors && colors
 if [[ -o login ]]; then
     PS1='%n@%m %/ %# '
 else
-    PS1="%(?.%F{8}.%F{11})◆%f ${uath}%F{4}%B%3~%b%f %F{8}%B>%b%f "
-    RPROMPT='%(1j.%j %F{9}●%f.)'
+	PS1="%(1j.%F{3}.%F{7})◆%f ${uath}%F{4}%B%3~%b%f %(?.%F{7}.%F{1})%B>%b%f "
 fi
 
 # Insert new line before Prompt, except top line
