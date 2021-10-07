@@ -1,8 +1,8 @@
-"-----------------------------
-" General
-"-----------------------------
-
+"-------------------------------------------------------------------------------
 " Plugins flipMWD/dotfiles ~/scripts/update-plugin-vim
+"-------------------------------------------------------------------------------
+" Settings {{{
+"-------------------------------------------------------------------------------
 
 " Paths
 set undodir=$XDG_DATA_HOME/vim/undo
@@ -40,20 +40,6 @@ set wildignore+=*/.git/**,*/node_modules/**
 set wildignorecase
 set timeout timeoutlen=3000 ttimeoutlen=50  " deal with term esc
 
-" Style
-colorscheme dark-low-contrast
-set laststatus=2
-set statusline=
-set statusline+=%1*\ \«\ %n\ \»\ %*\            " buffer number
-set statusline+=%<%{expand('%:p:h:t')}/%t\ %m   " break, dir / filename [m]
-set statusline+=%=\ %r\ %y\                     " [read only] [file type]
-set statusline+=%{&ff==\"dos\"?\"[CRLF]\ \":&ff==\"mac\"?\"[CR]\ \":\"\"}
-set statusline+=%{&enc!=\"utf-8\"?\"[\".&enc.\"]\ \":\"\"}
-set statusline+=%1*\ %{&et?\"S\":\"T\"}%{&sw}\ %*
-set statusline+=%2*\ %l-%L\ \:\ %v\ %*\         " lines-total : cols
-set statusline+=%P\                             " doc percentage
-set showcmd
-
 " Formatting
 set tabstop=4           " tab length
 set shiftwidth=4        " space length
@@ -70,6 +56,30 @@ set ignorecase
 set smartcase           " type Caps to match A-Z only
 set showmatch           " highlight parens
 
+" }}}
+"-------------------------------------------------------------------------------
+" Colors {{{
+"-------------------------------------------------------------------------------
+
+" Status Bar
+colorscheme dark-low-contrast
+set laststatus=2
+set statusline=
+set statusline+=%1*\ \«\ %n\ \»\ %*\            " buffer number
+set statusline+=%<%{expand('%:p:h:t')}/%t\ %m   " break, dir / filename [m]
+set statusline+=%=\ %r\ %y\                     " [read only] [file type]
+set statusline+=%{&ff==\"dos\"?\"[CRLF]\ \":&ff==\"mac\"?\"[CR]\ \":\"\"}
+set statusline+=%{&enc!=\"utf-8\"?\"[\".&enc.\"]\ \":\"\"}
+set statusline+=%1*\ %{&et?\"S\":\"T\"}%{&sw}\ %*
+set statusline+=%2*\ %l-%L\ \:\ %v\ %*\         " lines-total : cols
+set statusline+=%P\                             " doc percentage
+set showcmd
+
+" }}}
+"-------------------------------------------------------------------------------
+" Syntax {{{
+"-------------------------------------------------------------------------------
+
 " Language
 filetype plugin indent on
 syntax on
@@ -80,6 +90,12 @@ if exists('$TMUX')
 	let &t_SR.="\<Esc>Ptmux;\<Esc>\<Esc>[3 q\<Esc>\\"
 	let &t_EI.="\<Esc>Ptmux;\<Esc>\<Esc>[1 q\<Esc>\\"
 	autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
+elseif exists('$STY')
+	let &t_ti.="\eP\e[1 q\e\\"
+	let &t_SI.="\eP\e[5 q\e\\"
+	let &t_SR.="\eP\e[3 q\e\\"
+	let &t_EI.="\eP\e[1 q\e\\"
+	let &t_te.="\eP\e[0 q\e\\"
 else
 	let &t_SI.="\<Esc>[5 q"     " insert, blink bar
 	let &t_SR.="\<Esc>[3 q"     " replace, blink underscore
@@ -104,9 +120,20 @@ let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border
 let g:fff#split = '30vnew'
 let g:fff#split_direction = 'nosplitright'
 
-"-----------------------------
-" Functions
-"-----------------------------
+" }}}
+"-------------------------------------------------------------------------------
+" Compiler {{{
+"-------------------------------------------------------------------------------
+
+" }}}
+"-------------------------------------------------------------------------------
+" Filetypes {{{
+"-------------------------------------------------------------------------------
+
+" }}}
+"-------------------------------------------------------------------------------
+" Functions {{{
+"-------------------------------------------------------------------------------
 
 " Alternate between Only Window and split with Alt Buffer
 function! AltBOnly()
@@ -171,9 +198,10 @@ function! PreviewGroff()
 	execute "! zathura /tmp/preview_groff.pdf"
 endfunction
 
-"-----------------------------
-" Keybindings
-"-----------------------------
+" }}}
+"-------------------------------------------------------------------------------
+" Keybindings {{{
+"-------------------------------------------------------------------------------
 
 let mapleader="\<Space>"
 let maplocalleader="\<Bslash>"
@@ -214,7 +242,7 @@ nnoremap <silent> <Leader>- :F <C-r>=expand("%:p:h")<CR><CR>
 
 nnoremap <silent> <Leader>ff :Files <C-r>=expand("%:p:h")<CR><CR>
 nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>
-nnoremap <Leader>fl :Lines<CR>
+nnoremap <Leader>fl :GFiles<CR>
 nnoremap <Leader>fc :Commits<CR>
 nnoremap <Leader>fb :BCommits<CR>
 
@@ -257,3 +285,7 @@ nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 nnoremap <Leader>i :tab sb %
 nnoremap <Leader>u :tabclose<CR>
 
+" }}}
+"-------------------------------------------------------------------------------
+" vim:foldmethod=marker:foldlevel=0
+"-------------------------------------------------------------------------------
