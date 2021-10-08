@@ -51,7 +51,7 @@ set smarttab
 
 " Search
 set hlsearch
-set incsearch           " hl as type
+set incsearch           " highlight as type
 set ignorecase
 set smartcase           " type Caps to match A-Z only
 set showmatch           " highlight parens
@@ -65,19 +65,16 @@ set showmatch           " highlight parens
 colorscheme dark-low-contrast
 set laststatus=2
 set statusline=
-set statusline+=%1*\ \«\ %n\ \»\ %*\            " buffer number
-set statusline+=%<%{expand('%:p:h:t')}/%t\ %m   " break, dir / filename [m]
-set statusline+=%=\ %r\ %y\                     " [read only] [file type]
+set statusline+=%1*\ %{&et?\"S\":\"T\"}%{&sw}\ %*\  " tab/space indicator
+set statusline+=%<%F\ %m%=\ %r\ %y\                 " path [m] [ro] [ft]
 set statusline+=%{&ff==\"dos\"?\"[CRLF]\ \":&ff==\"mac\"?\"[CR]\ \":\"\"}
 set statusline+=%{&enc!=\"utf-8\"?\"[\".&enc.\"]\ \":\"\"}
-set statusline+=%1*\ %{&et?\"S\":\"T\"}%{&sw}\ %*
-set statusline+=%2*\ %l-%L\ \:\ %v\ %*\         " lines-total : cols
-set statusline+=%P\                             " doc percentage
+set statusline+=%1*\ %l-%L\ \:\ %v\ %*              " lines-total : cols
 set showcmd
 
 " }}}
 "-------------------------------------------------------------------------------
-" Syntax {{{
+" Options {{{
 "-------------------------------------------------------------------------------
 
 " Language
@@ -231,7 +228,7 @@ nnoremap <Leader>s :call ToggleLines()<CR>
 nnoremap <Leader>M :call MakefileExists()<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
-nnoremap <Leader><Tab> :set expandtab!<CR>
+nnoremap <silent> <Leader><Tab> :set expandtab!<CR>
 nnoremap <Leader>z :call PreviewGroff()<CR><CR><CR>
 
 nnoremap <Leader>ee :edit <C-z><S-Tab>
