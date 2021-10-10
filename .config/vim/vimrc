@@ -32,6 +32,7 @@ set hidden
 set splitbelow
 set splitright
 set previewpopup=height:10,width:80
+set shortmess=a
 set wildmenu
 set wildmode=longest,full
 set wildcharm=<C-z>
@@ -224,12 +225,12 @@ nnoremap <Leader>n :noh<CR>
 nnoremap <Leader>N :let @/=""<CR>
 nnoremap <Leader>c :source $MYVIMRC<CR>
 nnoremap <Leader>C :split $MYVIMRC<CR>
-nnoremap <Leader>s :call ToggleLines()<CR>
+nnoremap <silent> <Leader>s :call ToggleLines()<CR>
 nnoremap <Leader>M :call MakefileExists()<CR>
 nnoremap <Leader>b jmzk:move $<CR>`z
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
 nnoremap <silent> <Leader><Tab> :set expandtab!<CR>
-nnoremap <Leader>z :call PreviewGroff()<CR><CR><CR>
+nnoremap <silent> <Leader>z :call PreviewGroff()<CR><CR><CR>
 
 nnoremap <Leader>ee :edit <C-z><S-Tab>
 nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
@@ -239,21 +240,21 @@ nnoremap <silent> <Leader>- :F <C-r>=expand("%:p:h")<CR><CR>
 
 nnoremap <silent> <Leader>ff :Files <C-r>=expand("%:p:h")<CR><CR>
 nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>
-nnoremap <Leader>fl :GFiles<CR>
-nnoremap <Leader>fc :Commits<CR>
-nnoremap <Leader>fb :BCommits<CR>
+nnoremap <silent> <Leader>fl :GFiles<CR>
+nnoremap <silent> <Leader>fc :Commits<CR>
+nnoremap <silent> <Leader>fb :BCommits<CR>
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
-nnoremap <Leader>j :Buffer<CR>
-nnoremap <Leader>k :BTags<CR>
-nnoremap <Leader>m :Marks<CR>
-nnoremap <Leader>g :Rg<CR>
-nnoremap <Leader>t :call GenerateTags()<CR>
-nnoremap <Leader>/ :Lines<CR>
+nnoremap <silent> <Leader>j :Buffer<CR>
+nnoremap <silent> <Leader>k :BTags<CR>
+nnoremap <silent> <Leader>m :Marks<CR>
+nnoremap <silent> <Leader>g :Rg<CR>
+nnoremap <silent> <Leader>t :call GenerateTags()<CR>
+nnoremap <silent> <Leader>/ :Lines<CR>
 
 " :sp :vs <C-w>{nr}| z{nr} <C-\><C-n>|<C-w>N
-nnoremap <Leader>o :call AltBOnly()<CR>
+nnoremap <silent> <Leader>o :call AltBOnly()<CR>
 nnoremap <Leader>h :wincmd W<CR>
 nnoremap <Leader>l :wincmd w<CR>
 nnoremap <Leader>H :wincmd R<CR>
