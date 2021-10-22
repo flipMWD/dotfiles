@@ -1,4 +1,6 @@
+term screen-256color
 startup_message off
+altscreen on
 autodetach on
 defscrollback 5000
 
