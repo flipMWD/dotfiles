@@ -213,6 +213,9 @@ noremap <Leader>Y "+y$
 inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><Esc>O
 
+" Visual mode
+vnoremap * /<C-r>*<CR><Esc>
+
 " Normal mode
 nnoremap q; q:
 nnoremap Y y$
