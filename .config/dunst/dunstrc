@@ -23,9 +23,9 @@
     separator_height = 5
     horizontal_padding = 20
     frame_width = 1
-    frame_color = "#87b2e0"
+    frame_color = "#70a3f3"
 
-	# Text
+    # Text
     font = Source Code Pro 11
     format = "<b>%s</b>\n%b"
     word_wrap = yes
