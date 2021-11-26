@@ -20,6 +20,27 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 
+# TTY Colors
+if [ "$TERM" = "linux" ]; then
+	echo -ne "\e]P0191B1C"
+	echo -ne "\e]P1FB6864"
+	echo -ne "\e]P28AE234"
+	echo -ne "\e]P3FDDD3D"
+	echo -ne "\e]P470A3F3"
+	echo -ne "\e]P5AE89FA"
+	echo -ne "\e]P61DD7FB"
+	echo -ne "\e]P7B0BEC5"
+	echo -ne "\e]P837474F"
+	echo -ne "\e]P9E53935"
+	echo -ne "\e]PA8AE234"
+	echo -ne "\e]PBF57900"
+	echo -ne "\e]PC70A3F3"
+	echo -ne "\e]PD9F666F"
+	echo -ne "\e]PE1DD7FB"
+	echo -ne "\e]PFF5F5F5"
+	clear
+fi
+
 #-------------------------------
 # Programs
 #-------------------------------
