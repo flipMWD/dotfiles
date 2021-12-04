@@ -8,3 +8,6 @@ bind h focus left
 bind j focus down
 bind k focus up
 bind l focus right
+
+# STRING ESCAPES: default fg on black bg, if in focus change fg to bright white
+caption splitonly '%{= kd}%?%F%{.W}%?%3n %t'
