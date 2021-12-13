@@ -2,12 +2,17 @@ term screen-256color
 startup_message off
 altscreen on
 autodetach on
+hardcopy_append on
 defscrollback 5000
+maptimeout 50
 
-bind h focus left
-bind j focus down
-bind k focus up
-bind l focus right
+bind j focus next
+bind k focus prev
+bind s split
+bind q only
+bind x remove
+bind X lockscreen
+bind , title
 
 # STRING ESCAPES: default fg on black bg, if in focus change fg to bright white
-caption splitonly '%{= kd}%?%F%{.W}%?%3n %t'
+caption splitonly '%{= kd}%?%F%{.W}%?%3n %t%=%S %u@%H '
