@@ -4,7 +4,7 @@
 #-------------------------------
 
 # Edit and Refresh
-function aliases() {
+aliases() {
 	${EDITOR:-vim} "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc" &&
 	source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc"
 }
@@ -54,7 +54,7 @@ alias f='fzcd'
 alias fh='fzcd h'
 alias fm='fzcd m'
 
-function ffcd() {
+ffcd() {
 	fff "$@"
 	cd "$(cat "${XDG_CACHE_HOME:-$HOME/.cache}/fff/.fff_d")"
 }
@@ -79,7 +79,6 @@ fi
 # Shortcuts
 alias p='sudo pacman'
 alias v='vim'
-alias ds='dasht'
 alias nb='newsboat'
 alias web='elinks'
 alias ytv="youtube-dl -o \
@@ -124,7 +123,7 @@ alias grb='git rebase'
 alias grs='git reset'
 alias grv='git revert'
 
-function gca() {
+gca() {
 	git branch
 	git status --short
 	read "msg?Commit Message: "
@@ -134,4 +133,3 @@ function gca() {
 		[ "$(git branch -vv | grep -E '^\*.*\[.*\].*$')" ] && git push
 	fi
 }
-

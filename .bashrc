@@ -68,7 +68,7 @@ fi
 #-------------------------------
 
 # CD with FZF
-function fzcd() {
+fzcd() {
     local dirfd arign fzout
 
     dirfd='.'
@@ -88,10 +88,9 @@ function fzcd() {
 }
 
 # CD to Vifm last directory
-function vfcd() {
+vfcd() {
     local dest
 
     dest="$(command "$HOME/.config/vifm/scripts/vifmrun" --choose-dir - "$@")"
     [[ -d $dest ]] && cd "$dest"
 }
-

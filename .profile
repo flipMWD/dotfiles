@@ -3,27 +3,22 @@
 #-----------------------------
 
 # Append to PATH and MANPATH only once
-function append_path() {
-    if [[ ":$PATH:" != *:"$1":* ]]; then
-        PATH="${PATH:+$PATH:}$1"
-    fi
+append_path() {
+	if [[ ":$PATH:" != *:"$1":* ]]; then
+		PATH="${PATH:+$PATH:}$1"
+	fi
 }
 
 append_path "$HOME/scripts"
 append_path "$HOME/scripts/statusbar"
-append_path "$HOME/scripts/dasht/bin"
 
 export PATH
 
-function prepend_manpath() {
-    if [[ ":$MANPATH:" != *:"$1":* ]]; then
-        MANPATH="$1:$MANPATH"
-    fi
+prepend_manpath() {
+	if [[ ":$MANPATH:" != *:"$1":* ]]; then
+		MANPATH="$1:$MANPATH"
+	fi
 }
-
-prepend_manpath "$HOME/scripts/dasht/man"
-
-export MANPATH
 
 # XDG Base Directory
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -89,4 +84,3 @@ export LESS_TERMCAP_ue="$(printf '\e[0m')"
 export LESS_TERMCAP_se="$(printf '\e[0m')"
 
 export QT_QPA_PLATFORMTHEME='qt5ct'
-

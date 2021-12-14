@@ -28,4 +28,3 @@ bind-key L  end
 bind-key u  prev-feed
 bind-key i  next-feed
 bind-key ;  toggle-show-read-feeds
-

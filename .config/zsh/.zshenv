@@ -13,4 +13,3 @@
 
 # Source Environment Variables
 [[ -r $HOME/.profile ]] && source "$HOME/.profile"
-

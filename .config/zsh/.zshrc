@@ -63,8 +63,8 @@ else
 fi
 
 # Insert new line before Prompt, except top line
-function precmd() {
-    function precmd() {
+precmd() {
+    precmd() {
         echo
     }
 }
@@ -144,7 +144,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd '^V' edit-command-line
 
-function _exit-zsh() { exit }
+_exit-zsh() { exit }
 zle -N _exit-zsh
 bindkey '^D' _exit-zsh
 
@@ -153,7 +153,7 @@ bindkey '^D' _exit-zsh
 #-------------------------------
 
 # CD with FZF
-function fzcd() {
+fzcd() {
     local dirfd arign fzout
 
     dirfd='.'
@@ -173,10 +173,9 @@ function fzcd() {
 }
 
 # CD to Vifm last directory
-function vfcd() {
+vfcd() {
     local dest
 
     dest="$(command "$HOME/.config/vifm/scripts/vifmrun" --choose-dir - "$@")"
     [[ -d $dest ]] && cd "$dest"
 }
-
