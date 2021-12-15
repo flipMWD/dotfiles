@@ -1,12 +1,8 @@
 #!/bin/sh
-#-------------------------------
-# ~/.config/shell/aliasrc
-#-------------------------------
 
 # Edit and Refresh
 aliases() {
-	${EDITOR:-vim} "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc" &&
-	source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc"
+	${EDITOR:-vim} "$HOME/.aliasrc" && source "$HOME/.aliasrc"
 }
 
 #-------------------------------

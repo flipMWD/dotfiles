@@ -7,7 +7,8 @@
 # /etc/zsh/zlogin   ~/.zlogin
 # /etc/zsh/zlogout  ~/.zlogout (v)
 #
-# ZDOTDIR=$HOME/.config/zsh
+# Optional:
+# ZDOTDIR=$HOME/.config/zsh (set in /etc/zsh/zshenv)
 # compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 #-------------------------------
 

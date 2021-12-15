@@ -1,39 +1,14 @@
 #-------------------------------
-# ~/.config/zsh/.zshrc
-#-------------------------------
-
-#-------------------------------
 # Options
 #-------------------------------
 
 # Quit if not interactive shell
 [[ ! -o interactive ]] && return
 
-#-------------------------------
-# Sourcing
-#-------------------------------
+# Source alias
+[[ -r $HOME/.aliasrc ]] && source "$HOME/.aliasrc"
 
-[[ -r ${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env ]] &&
-    source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env"
-
-[[ -r ${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc ]] &&
-    source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/aliasrc"
-
-# Set alt path for .zcompdump
-[[ ! -d ${XDG_CACHE_HOME:-$HOME/.cache}/zsh ]] &&
-    mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
-
-# Set alt path for HISTFILE
-[[ ! -d ${XDG_DATA_HOME:-$HOME/.local/share}/zsh ]] &&
-    mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/zsh" &&
-    touch "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
-
-#-------------------------------
 # History
-#-------------------------------
-
-export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
-
 HISTSIZE=2000
 SAVEHIST=2000
 
@@ -44,10 +19,10 @@ setopt HIST_IGNORE_ALL_DUPS
 #-------------------------------
 
 # Generate and source LS_COLORS
-if [[ -r ${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/dir_colors ]]; then
-    eval $(dircolors -b ${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/dir_colors)
+if [[ -r $HOME/.dir_colors ]]; then
+	eval $(dircolors -b "$HOME/.dir_colors")
 elif [[ -r /etc/DIR_COLORS ]]; then
-    eval $(dircolors -b /etc/DIR_COLORS)
+	eval $(dircolors -b /etc/DIR_COLORS)
 fi
 
 # which colors
@@ -57,16 +32,16 @@ autoload -U colors && colors
 [[ $SSH_CONNECTION ]] && local uath='%F{2}%n@%M%f '
 
 if [[ -o login ]]; then
-    PS1='%n@%m %/ %# '
+	PS1='%n@%m %/ %# '
 else
 	PS1="%(1j.%F{3}.%F{7})◆%f ${uath}%F{4}%B%3~%b%f %(?.%F{7}.%F{1})%B>%b%f "
 fi
 
 # Insert new line before Prompt, except top line
 precmd() {
-    precmd() {
-        echo
-    }
+	precmd() {
+		echo
+	}
 }
 
 #-------------------------------
@@ -99,7 +74,7 @@ zstyle      ':completion:*'         completer \
     # ^ Control Functions
 
 zmodload zsh/complist
-compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+compinit -d "$HOME/.zcompdump"
 _comp_options+=(globdots)
 
 # Quote URLs automatically when pasting on terminal
@@ -154,28 +129,28 @@ bindkey '^D' _exit-zsh
 
 # CD with FZF
 fzcd() {
-    local dirfd arign fzout
+	local dirfd arign fzout
 
-    dirfd='.'
-    arign=(.git node_modules)
-    if [[ ${(L)1} = 'h' ]]; then
-        dirfd="$HOME"
-        arign+=("${HOME_IGNORE[@]}")
-    elif [[ ${(L)1} = 'm' ]]; then
-        dirfd="$MEDIA_DIRECTORY"
-        arign+=("${MEDIA_IGNORE[@]}")
-    elif [[ -d $1 ]]; then
-        [[ ${1:0:1} = '/' ]] && dirfd="$1" || cd "$dirfd/$1"
-    fi
+	dirfd='.'
+	arign=(.git node_modules)
+	if [[ ${(L)1} = 'h' ]]; then
+		dirfd="$HOME"
+		arign+=("${HOME_IGNORE[@]}")
+	elif [[ ${(L)1} = 'm' ]]; then
+		dirfd="$MEDIA_DIRECTORY"
+		arign+=("${MEDIA_IGNORE[@]}")
+	elif [[ -d $1 ]]; then
+		[[ ${1:0:1} = '/' ]] && dirfd="$1" || cd "$dirfd/$1"
+	fi
 
-    fzout="$(eval fd -HIpt f ${arign/#/-E } '""' '"$dirfd"' | fzf)"
-    [[ -e $fzout ]] && cd "$(dirname -- "$fzout")"
+	fzout="$(eval fd -HIpt f ${arign/#/-E } '""' '"$dirfd"' | fzf)"
+	[[ -e $fzout ]] && cd "$(dirname -- "$fzout")"
 }
 
 # CD to Vifm last directory
 vfcd() {
-    local dest
+	local dest
 
-    dest="$(command "$HOME/.config/vifm/scripts/vifmrun" --choose-dir - "$@")"
-    [[ -d $dest ]] && cd "$dest"
+	dest="$(command "$HOME/.config/vifm/scripts/vifmrun" --choose-dir - "$@")"
+	[[ -d $dest ]] && cd "$dest"
 }

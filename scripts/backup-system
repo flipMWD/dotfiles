@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Source Environmental Variables for Cronjob
-[[ -r ${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env ]] &&
-    source "${SHELL_DOTFILES_DIR:-$HOME/.config/shell}/private_env"
-
 # User variables
 bkp_dir="${BACKUP_DIRECTORY:-$HOME/Documents/backup}"
 if [[ ! -d "$bkp_dir" ]]; then

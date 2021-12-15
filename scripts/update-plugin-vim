@@ -4,7 +4,7 @@
 
 create_group() {
 	package_group="$1"
-	path="${XDG_CONFIG_HOME:-$HOME/.config}/vim/pack/$package_group/${2:-start}"
+	path="$HOME/.vim/pack/$package_group/${2:-start}"
 	mkdir -p "$path"
 	cd "$path" || exit
 }
