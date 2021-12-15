@@ -8,11 +8,8 @@
 !.bashrc
 !.dir_colors
 !.inputrc
-!.profile
 !.screenrc
 !.vimrc
-!.xinitrc
-!.Xresources
 !.zlogin
 !.zshenv
 !.zshrc
@@ -43,10 +40,6 @@
 .config/dunst/*
 !.config/dunst/dunstrc
 
-!.config/elinks/
-.config/elinks/*
-!.config/elinks/elinks.conf
-
 !.config/mpv/
 .config/mpv/*
 !.config/mpv/input.conf
@@ -64,16 +57,6 @@
 .config/sc-im/*
 !.config/sc-im/scimrc
 
-!.config/screen/
-.config/screen/*
-!.config/screen/screenrc
-
-!.config/shell/
-.config/shell/*
-!.config/shell/aliasrc
-!.config/shell/dir_colors
-!.config/shell/inputrc
-
 !.config/tmux/
 .config/tmux/*
 !.config/tmux/tmux.conf
@@ -84,27 +67,6 @@
 !.config/vifm/colors/
 !.config/vifm/scripts/
 
-!.config/vim/
-.config/vim/*
-!.config/vim/vimrc
-!.config/vim/colors/
-!.config/vim/syntax/
-!.config/vim/after/
-.config/vim/after/*
-!.config/vim/after/ftplugin/
-!.config/vim/after/compiler/
-
-!.config/X11/
-.config/X11/*
-!.config/X11/xinitrc
-!.config/X11/Xresources
-
 !.config/zathura/
 .config/zathura/*
 !.config/zathura/zathurarc
-
-!.config/zsh/
-.config/zsh/*
-!.config/zsh/.zshenv
-!.config/zsh/.zshrc
-!.config/zsh/.zlogin
