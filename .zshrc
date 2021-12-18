@@ -12,6 +12,8 @@
 HISTSIZE=2000
 SAVEHIST=2000
 
+export HISTFILE="$HOME/.histfile"
+
 setopt HIST_IGNORE_ALL_DUPS
 
 #-------------------------------
