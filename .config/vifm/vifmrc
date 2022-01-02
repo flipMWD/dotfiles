@@ -192,6 +192,11 @@ filextype *.djvu
         \ {View in apvlv}
         \ apvlv %f,
 
+" EPub
+filextype *.epub
+        \ {View in zathura}
+        \ zathura %f,
+
 " Audio
 filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
        \ {Play using ffplay}
