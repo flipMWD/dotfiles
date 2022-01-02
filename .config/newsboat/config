@@ -1,6 +1,6 @@
 auto-reload yes
-reload-time 60
-reload-threads 10
+reload-time 30
+reload-threads 20
 max-items 200
 keep-articles-days 90
 save-path "~/Documents/newsboat-articles"
@@ -13,6 +13,10 @@ color listfocus_unread      color15     black       bold
 color info                  blue        black
 color end-of-text-marker    black       default
 
+highlight feedlist "---.*---"       magenta default
+highlight feedlist ".*0/0.."        default default invis
+
+highlight article "^Title: .*$"     yellow  default
 highlight article "https?://[^ ]+"  cyan    default
 highlight article "\\[[0-9]+\\]"    green   default
 
