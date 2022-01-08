@@ -32,3 +32,7 @@ bind-key L  end
 bind-key u  prev-feed
 bind-key i  next-feed
 bind-key ;  toggle-show-read-feeds
+
+browser "elinks %u"
+macro m set browser "setsid -f mpv --no-terminal %u" ; open-in-browser ; set browser "elinks %u"
+macro . set browser "$BROWSER %u" ; open-in-browser ; set browser "elinks %u"
