@@ -1,7 +1,7 @@
 auto-reload yes
 reload-time 30
 reload-threads 20
-max-items 200
+max-items 100
 keep-articles-days 90
 save-path "~/Documents/newsboat-articles"
 show-read-articles no
