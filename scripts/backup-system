@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Load Environment Variables
+[[ -r $HOME/.profile ]] && source "$HOME/.profile"
+
 # User variables
 bkp_dir="${BACKUP_DIRECTORY:-$HOME/Documents/backup}"
 if [[ ! -d "$bkp_dir" ]]; then
