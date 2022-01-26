@@ -197,6 +197,10 @@ filextype *.epub
         \ {View in zathura}
         \ zathura %f,
 
+" Spreadsheet TUI
+filextype *.sc
+        \ {View in sc-im}
+        \ sc-im %f,
 " Audio
 filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
        \ {Play using ffplay}
