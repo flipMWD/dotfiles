@@ -1,6 +1,7 @@
 #!/bin/sh
 
-pwlist="$(pass ls | sed '1d;s/^[^[:alpha:]]\+ \+//g')"
+#pwlist="$(pass ls | sed '1d;s/^[^[:alpha:]]\+ \+//g')"
+pwlist="$(cd ~/.password-store && fd -e gpg | sed 's/^\.\/\(.*\)\.gpg$/\1/g')"
 choice=$(echo "$pwlist" | dmenu-default-options -i)
 
 if [ -n "$choice" ]; then
