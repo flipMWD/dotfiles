@@ -2,7 +2,7 @@
 
 help_fn() {
 	echo "Usage:
-	--create <RAW|QCOW2>
+	--create <RAW|QCOW2> [<SIZE>]G
 	--install <ISO> <RAW|QCOW2>
 	--run <RAW|QCOW2>
 Options:
@@ -20,7 +20,7 @@ case "$1" in
 	--create|-c)
 		shift
 		[ -d "${1%/*}" ] || mkdir -p "${1%/*}" 
-		qemu-img create -f "${1##*.}" "$1" 30G
+		qemu-img create -f "${1##*.}" "$1" "${2:-30}G"
 		exit 0
 		;;
 	--install|-i)
