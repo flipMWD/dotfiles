@@ -14,5 +14,5 @@ bind x remove
 bind X lockscreen
 bind , title
 
-# STRING ESCAPES: default fg on black bg, if in focus change fg to bright white
-caption splitonly '%{= kd}%?%F%{.W}%?%3n %t%=%S %u@%H '
+# man screen(1) /^STRING ESCAPES
+caption always '%{= kd} %-Lw%{+b kW}|%n%f %t|%{= kd}%+Lw %-=%S %{.g} %u@%H %{.W} %d/%m %0c %{-}'
