@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# Load Environment Variables
+[[ -r $HOME/.profile ]] && source "$HOME/.profile"
+
+# User variables
+bkp_dir="${BACKUP_DIRECTORY:-$HOME/Documents/backup}"
+if [[ ! -d "$bkp_dir" ]]; then
+	echo -e "Backup Directory does not exist:\n$bkp_dir"
+	exit 1
+fi
+
+bkp_list="$bkp_dir/backup_list"
+if [[ ! -f "$bkp_list" ]]; then
+	echo "Backup List could not be found."
+	exit 101
+fi
+
+date_dir="backup_system_$(date -I)"
+if [[ ! -d "$bkp_dir/$date_dir" ]]; then
+	mkdir -p "$bkp_dir/$date_dir"
+fi
+
+# Copy all files and directories in backup_list to date_dir
+while IFS='' read -r line; do
+	case "$line" in
+		''|\#*) continue ;;
+	esac
+	eval cp -ru "$line" '"$bkp_dir/$date_dir"'
+done < "$bkp_list"
+
+# Backup Arch packages, mark explicitly installed, and AUR/GitHub repos
+comm -2 --output-delimiter='* ' <(pacman -Qq | sort) <(pacman -Qeq | sort) \
+    > "$bkp_dir/$date_dir/arch-installed-pkgs"
+find "${XDG_DOCUMENTS_DIR:-$HOME/Documents}" -maxdepth 1 -type d \
+    >> "$bkp_dir/$date_dir/arch-installed-pkgs"
+
+# Copy list with full paths
+cp -u "$bkp_list" "$bkp_dir/$date_dir"
+
+# Archive and compact
+tar -C "$bkp_dir" -czf "$bkp_dir/$date_dir.tar.gz" "$date_dir"
+
+# Clean temp directory
+rm -rf "$bkp_dir/$date_dir"
