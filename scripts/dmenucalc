@@ -1,9 +1,0 @@
-#!/bin/sh
-
-prefix="scale=2"
-calc="$(echo "" | dmenu-default-options -p "Calc: ")"
-result="$(echo "${prefix};${calc}" | bc)"
-
-notify-send -u normal "$calc" "$result"
-
-echo "$result" | xclip -in -selection clipboard

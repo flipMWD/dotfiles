@@ -1,7 +1,0 @@
-#!/bin/sh
-
-dir="${XDG_PICTURES_DIR:-$HOME/Pictures}/wallpapers/"
-bgs=($(ls $dir))
-
-feh --no-fehbg --bg-scale "${dir}${bgs[$(($RANDOM % ${#bgs[@]}))]}"
-

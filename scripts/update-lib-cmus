@@ -1,8 +1,0 @@
-#!/bin/sh
-
-cmus-remote -C clear
-cmus-remote -C "add $MEDIA_DIRECTORY/music/library"
-cmus-remote -C 'update-cache -f'
-
-exit 0
-

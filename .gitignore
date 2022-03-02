@@ -18,6 +18,7 @@
 .elinks/*
 !.elinks/elinks.conf
 
+!.local/bin/
 !scripts/
 
 !.vim/
