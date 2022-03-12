@@ -1,5 +1,5 @@
 "-------------------------------------------------------------------------------
-" Plugins flipMWD/dotfiles ~/scripts/update-plugin-vim
+" Plugins flipMWD/dotfiles ~/.local/bin/update-plugin-vim
 "-------------------------------------------------------------------------------
 " Settings {{{
 "-------------------------------------------------------------------------------
@@ -20,6 +20,7 @@ set listchars=tab:│\ ,trail:·,nbsp:X
 set list
 set fillchars=vert:│
 set diffopt+=context:5,foldcolumn:0
+set modeline
 set hidden
 set splitbelow
 set splitright
@@ -29,7 +30,7 @@ set wildmenu
 set wildmode=longest,full
 set wildcharm=<C-z>
 set wildignore+=*.bak,*.tar.*,*.cache,*.o
-set wildignore+=*/.git/**,*/node_modules/**
+set wildignore+=*/.cache/**,*/.git/**,*/node_modules/**
 set wildignorecase
 set timeout timeoutlen=3000 ttimeoutlen=50  " deal with term esc
 
@@ -95,20 +96,18 @@ endif
 " NetRW :Lex
 let g:netrw_banner=0
 let g:netrw_winsize=30
-let g:netrw_liststyle=3                 " 0=thin, 1=detail, 2=column, 3=tree
+let g:netrw_liststyle=0                 " 0=thin, 1=detail, 2=column, 3=tree
 let g:netrw_sizestyle="H"               " human-readable
 let g:netrw_browse_split=4              " open on previous window
-let g:netrw_list_hide='^\.\.\=\/$,'                     " hide . and ..
+let g:netrw_list_hide='^\.\/$,'                         " hide . (current dir)
 let g:netrw_list_hide.='.*\.\(o\)$,'                    " hide extensions
-let g:netrw_list_hide.='.*\.\(git\|node_modules\)\/$'   " hide directories
-let g:NetrwIsOpen=0
+let g:netrw_list_hide.='.*\.\(cache\|git\|node_modules\)\/$'    " hide dirs
 
-" Disable FZF Floating Window
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border': 'top' } }
-
-" Configure FFF Side Window
-let g:fff#split = '30vnew'
-let g:fff#split_direction = 'nosplitright'
+" Search file contents with :grep <pattern> [<dir>]
+if executable("rg")
+	set grepprg=rg\ --hidden\ --smart-case\ --vimgrep
+	set grepformat=%f:%l:%c:%m
+endif
 
 " }}}
 "-------------------------------------------------------------------------------
@@ -157,27 +156,8 @@ function! MakefileExists()
 endfunction
 
 function! GenerateTags()
-	if filereadable("./tags")
-		silent !ctags -R
-		redraw!
-	endif
-	Tags
-endfunction
-
-function! ToggleNetrwLex(cdir)
-	if g:NetrwIsOpen
-		let i = bufnr('$')
-		while (i >= 1)
-			if (getbufvar(i, '&filetype') == 'netrw')
-				silent execute 'bwipeout ' . i
-			endif
-			let i-=1
-		endwhile
-		let g:NetrwIsOpen=0
-	else
-		let g:NetrwIsOpen=1
-		silent execute 'Lexplore ' . a:cdir
-	endif
+	silent !ctags -R
+	redraw!
 endfunction
 
 function! PreviewGroff()
@@ -227,26 +207,26 @@ nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
 nnoremap <silent> <Leader><Tab> :set expandtab!<CR>
 nnoremap <silent> <Leader>z :call PreviewGroff()<CR><CR><CR>
 
-nnoremap <Leader>ee :edit <C-z><S-Tab>
-nnoremap <Leader>ed :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
-nnoremap <silent> <Leader>- :F <C-r>=expand("%:p:h")<CR><CR>
-"nnoremap <silent> <Leader>- :call ToggleNetrwLex('<C-r>=expand("%:p:h")<CR>')<CR>
-"nnoremap <silent> <Leader>_ :call ToggleNetrwLex('<C-r>=getcwd()<CR>')<CR>
+nnoremap <Leader>d :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
+nnoremap <Leader>e :edit <C-z><S-Tab>
+nnoremap <Leader>f :find<Space>
+nnoremap <Leader>- :Lex <C-r>=expand("%:p:h")<CR><CR>
+nnoremap <Leader>_ :Lex <C-r>=getcwd()<CR><CR>
 
-nnoremap <silent> <Leader>ff :Files <C-r>=expand("%:p:h")<CR><CR>
-nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>
-nnoremap <silent> <Leader>fl :GFiles<CR>
-nnoremap <silent> <Leader>fc :Commits<CR>
-nnoremap <silent> <Leader>fb :BCommits<CR>
+"nnoremap <silent> <Leader>ff :Files <C-r>=expand("%:p:h")<CR><CR>
+"nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>
+"nnoremap <silent> <Leader>fl :GFiles<CR>
+"nnoremap <silent> <Leader>fc :Commits<CR>
+"nnoremap <silent> <Leader>fb :BCommits<CR>
 
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
-nnoremap <silent> <Leader>j :Buffer<CR>
-nnoremap <silent> <Leader>k :BTags<CR>
-nnoremap <silent> <Leader>m :Marks<CR>
-nnoremap <silent> <Leader>g :Rg<CR>
+nnoremap <Leader>j :ls<CR>:buffer<Space>
+nnoremap <Leader>k <C-^>
+nnoremap <Leader>m :reg<CR>
+nnoremap <Leader>g :grep<Space>
 nnoremap <silent> <Leader>t :call GenerateTags()<CR>
-nnoremap <silent> <Leader>/ :Lines<CR>
+"nnoremap <silent> <Leader>/ :Lines<CR>
 
 " :sp :vs <C-w>{nr}| z{nr} <C-\><C-n>|<C-w>N
 nnoremap <silent> <Leader>o :call AltBOnly()<CR>
@@ -275,10 +255,10 @@ nnoremap <Leader>we :wincmd =<CR>
 nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 
 " gt|T :tabe|f :tabo :tabn|p :tabm -|+
-nnoremap <Leader>i :tab sb %
+nnoremap <Leader>i :tab sb %<CR>
 nnoremap <Leader>u :tabclose<CR>
 
 " }}}
 "-------------------------------------------------------------------------------
-" vim:foldmethod=marker:foldlevel=0
+" vim: set foldmethod=marker foldlevel=0 :
 "-------------------------------------------------------------------------------

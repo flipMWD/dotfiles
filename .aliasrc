@@ -44,15 +44,16 @@ fi
 # Change Directory
 alias ..='cd ..'
 alias ...='cd ../..'
-alias c='ffcd'
-alias d='vfcd .'
-alias f='fzcd'
-alias fh='fzcd h'
-alias fm='fzcd m'
+alias d='vifm .'
+alias f='fzfcd'
+alias fh="fzfcd ~"
 
-ffcd() {
-	fff "$@"
-	cd "$(cat "${XDG_CACHE_HOME:-$HOME/.cache}/fff/.fff_d")"
+fzfcd() {
+	local dir_ignore fzfexc fzfout
+	dir_ignore=(.android .cache .git .mozilla .pki node_modules)
+	for dir in "$dir_ignore[@]" ; do fzfexc+="-E \"$dir\" " ; done
+	fzfout="$(eval fdfind -HIp -t f $fzfexc '""' '"${1:-.}"' | fzf)"
+	[[ -e $fzfout ]] && cd "$(dirname -- "$fzfout")"
 }
 
 # Built In
@@ -65,21 +66,14 @@ alias free='free -m'
 alias more='less'
 alias :q='exit'
 
-# Allow opening files with Vim from :term w/o nesting
-if [ -z "$VIMRUNTIME" ]; then
-	alias vs='vim --servername VTERMREADY'
-else
-	alias vs="vim --servername $VIM_SERVERNAME --remote"
-fi
-
 # Shortcuts
 alias p='sudo pacman'
 alias v='vim'
 alias nb='newsboat'
 alias web='elinks'
-alias ytv="youtube-dl -o \
+alias ytv="yt-dlp -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/%(title)s.%(ext)s\""
-alias ytm="youtube-dl -x --audio-quality 0 --audio-format mp3 -o \
+alias ytm="yt-dlp -x --audio-quality 0 --audio-format mp3 -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/%(title)s.%(ext)s\""
 alias vns='vnstat'
 alias tsm='transmission-remote'

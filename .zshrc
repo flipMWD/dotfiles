@@ -124,35 +124,3 @@ bindkey -M vicmd '^V' edit-command-line
 _exit-zsh() { exit }
 zle -N _exit-zsh
 bindkey '^D' _exit-zsh
-
-#-------------------------------
-# Utility
-#-------------------------------
-
-# CD with FZF
-fzcd() {
-	local dirfd arign fzout
-
-	dirfd='.'
-	arign=(.git node_modules)
-	if [[ ${(L)1} = 'h' ]]; then
-		dirfd="$HOME"
-		arign+=("${HOME_IGNORE[@]}")
-	elif [[ ${(L)1} = 'm' ]]; then
-		dirfd="$MEDIA_DIRECTORY"
-		arign+=("${MEDIA_IGNORE[@]}")
-	elif [[ -d $1 ]]; then
-		[[ ${1:0:1} = '/' ]] && dirfd="$1" || cd "$dirfd/$1"
-	fi
-
-	fzout="$(eval fd -HIpt f ${arign/#/-E } '""' '"$dirfd"' | fzf)"
-	[[ -e $fzout ]] && cd "$(dirname -- "$fzout")"
-}
-
-# CD to Vifm last directory
-vfcd() {
-	local dest
-
-	dest="$(command "$HOME/.config/vifm/scripts/vifmrun" --choose-dir - "$@")"
-	[[ -d $dest ]] && cd "$dest"
-}

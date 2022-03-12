@@ -11,14 +11,17 @@ shopt -s expand_aliases
 
 complete -cf sudo
 
-xhost +local:root > /dev/null 2>&1
-
 # Completion
 [[ -r /usr/share/bash-completion/bash_completion ]] &&
     source '/usr/share/bash-completion/bash_completion'
 
 # Source alias
 [[ -r $HOME/.aliasrc ]] && source "$HOME/.aliasrc"
+
+# History (ignore duplicates and leading space)
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 #-------------------------------
 # Appearance
@@ -35,7 +38,7 @@ fi
 if [[ $(tty) =~ /dev/tty[0-9]+ ]]; then
 	PS1='\u@\h \W \$ '
 else
-	PS1='\[\033[40;90m\]▌\[\033[01;40;97m\] \W \[\033[00;40;90m\]▐\[\033[07;47;90m\]»\[\033[00;90m\]▌\[\033[00m\] '
+	PS1='\[\033[37m\]◆ \[\033[32m\]\u@\h \[\033[34m\]\w \[\033[01;37m\]>\[\033[0;0m\] '
 fi
 
 #-------------------------------
@@ -45,35 +48,3 @@ fi
 bind -m vi-insert -x '"\C-l":"clear"'
 bind -m vi '"\C-f":"fzcd\n"'
 bind -m vi-insert '"\C-f":"fzcd\n"'
-
-#-------------------------------
-# Utility
-#-------------------------------
-
-# CD with FZF
-fzcd() {
-	local dirfd arign fzout
-
-	dirfd='.'
-	arign=(.git node_modules)
-	if [[ ${1,,} = 'h' ]]; then
-		dirfd="$HOME"
-		arign+=("${HOME_IGNORE[@]}")
-	elif [[ ${1,,} = 'm' ]]; then
-		dirfd="$MEDIA_DIRECTORY"
-		arign+=("${MEDIA_IGNORE[@]}")
-	elif [[ -d $1 ]]; then
-		[[ ${1::1} = '/' ]] && dirfd="$1" || cd "$dirfd/$1"
-	fi
-
-	fzout="$(eval fd -HIpt f ${arign[@]/#/-E } '""' '"$dirfd"' | fzf)"
-	[[ -e $fzout ]] && cd "$(dirname -- "$fzout")"
-}
-
-# CD to Vifm last directory
-vfcd() {
-	local dest
-
-	dest="$(command "$HOME/.config/vifm/scripts/vifmrun" --choose-dir - "$@")"
-	[[ -d $dest ]] && cd "$dest"
-}
