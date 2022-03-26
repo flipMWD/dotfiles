@@ -2,7 +2,7 @@
 
 # Edit and Refresh
 aliases() {
-	${EDITOR:-vim} "$HOME/.aliasrc" && source "$HOME/.aliasrc"
+	${EDITOR:-gvim -v} "$HOME/.aliasrc" && source "$HOME/.aliasrc"
 }
 
 #-------------------------------
@@ -52,7 +52,7 @@ fzfcd() {
 	local dir_ignore fzfexc fzfout
 	dir_ignore=(.android .cache .git .mozilla .pki node_modules Music Pictures Videos)
 	for dir in "$dir_ignore[@]" ; do fzfexc+="-E \"$dir\" " ; done
-	fzfout="$(eval fdfind -HIp -t f $fzfexc '""' '"${1:-.}"' | fzf)"
+	fzfout="$(eval fd -HIp -t f $fzfexc '""' '"${1:-.}"' | fzf)"
 	[[ -e $fzfout ]] && cd "$(dirname -- "$fzfout")"
 }
 
@@ -68,7 +68,7 @@ alias :q='exit'
 
 # Shortcuts
 alias p='sudo pacman'
-alias v='vim'
+alias v='gvim -v'
 alias nb='newsboat'
 alias web='elinks'
 alias ytv="yt-dlp -o \

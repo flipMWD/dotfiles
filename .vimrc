@@ -10,7 +10,7 @@ set path+=**
 " General
 set number
 set relativenumber
-set scrolloff=5
+set scrolloff=3
 set textwidth=80
 set formatoptions+=ljr
 set formatoptions-=o
@@ -109,6 +109,9 @@ if executable("rg")
 	set grepformat=%f:%l:%c:%m
 endif
 
+" Disable FZF Floating Window
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset':1, 'border': 'top' } }
+
 " }}}
 "-------------------------------------------------------------------------------
 " Compiler {{{
@@ -156,8 +159,11 @@ function! MakefileExists()
 endfunction
 
 function! GenerateTags()
-	silent !ctags -R
-	redraw!
+	if filereadable("./tags")
+		silent !ctags -R
+		redraw!
+	endif
+	Tags
 endfunction
 
 function! PreviewGroff()
@@ -198,37 +204,23 @@ nnoremap <Leader>P "+P
 nnoremap <Leader>r diw"0P
 nnoremap <Leader>n :noh<CR>
 nnoremap <Leader>N :let @/=""<CR>
-nnoremap <Leader>c :source $MYVIMRC<CR>
-nnoremap <Leader>C :split $MYVIMRC<CR>
-nnoremap <silent> <Leader>s :call ToggleLines()<CR>
-nnoremap <Leader>M :call MakefileExists()<CR>
-nnoremap <Leader>b jmzk:move $<CR>`z
+nnoremap <Leader>v :source $MYVIMRC<CR>
+nnoremap <Leader>V :split $MYVIMRC<CR>
 nnoremap <Leader>x mx:%s/\s\+$//<CR>:let @/=""<CR>`x
+nnoremap <Leader>" :registers<CR>
+nnoremap <Leader>m :call MakefileExists()<CR>
+nnoremap <silent> <Leader>s :call ToggleLines()<CR>
 nnoremap <silent> <Leader><Tab> :set expandtab!<CR>
 nnoremap <silent> <Leader>z :call PreviewGroff()<CR><CR><CR>
 
-nnoremap <Leader>d :edit <C-r>=expand("%:p:h")."/"<CR><C-z><S-Tab>
-nnoremap <Leader>e :edit <C-z><S-Tab>
-nnoremap <Leader>f :find<Space>
+" Browse Files (gf >>> ~/.vim/after/plugin/post-plugin.vim)
 nnoremap <Leader>- :Lex <C-r>=expand("%:p:h")<CR><CR>
 nnoremap <Leader>_ :Lex <C-r>=getcwd()<CR><CR>
 
-"nnoremap <silent> <Leader>ff :Files <C-r>=expand("%:p:h")<CR><CR>
-"nnoremap <Leader>fd :Files <C-r>=expand("%:p:h:h")<CR>
-"nnoremap <silent> <Leader>fl :GFiles<CR>
-"nnoremap <silent> <Leader>fc :Commits<CR>
-"nnoremap <silent> <Leader>fb :BCommits<CR>
-
 " Buffer/Window/Tab Management
 " :bad :bn :bp :bm :bd :bw :bf :bl :sb[#]
-nnoremap <Leader>j :ls<CR>:buffer<Space>
-nnoremap <Leader>k <C-^>
-nnoremap <Leader>m :reg<CR>
-nnoremap <Leader>g :grep<Space>
-nnoremap <silent> <Leader>t :call GenerateTags()<CR>
-"nnoremap <silent> <Leader>/ :Lines<CR>
-
 " :sp :vs <C-w>{nr}| z{nr} <C-\><C-n>|<C-w>N
+" gt|T :tabe|f :tabo :tabn|p :tabm -|+
 nnoremap <silent> <Leader>o :call AltBOnly()<CR>
 nnoremap <Leader>h :wincmd W<CR>
 nnoremap <Leader>l :wincmd w<CR>
@@ -254,7 +246,6 @@ nnoremap <Leader>ws :vertical resize<Space>
 nnoremap <Leader>we :wincmd =<CR>
 nnoremap <expr> <Leader>wm winwidth(0) >= 170 ? ':vert term<CR>' : ':term<CR>'
 
-" gt|T :tabe|f :tabo :tabn|p :tabm -|+
 nnoremap <Leader>i :tab sb %<CR>
 nnoremap <Leader>u :tabclose<CR>
 

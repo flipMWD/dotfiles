@@ -25,9 +25,9 @@ package() {
 
 (
 create_group utility
-#package https://github.com/junegunn/fzf.vim &
 package https://github.com/vim-scripts/AutoComplPop &
 package https://github.com/mattn/emmet-vim &
+package https://github.com/junegunn/fzf.vim &
 wait
 ) &
 
