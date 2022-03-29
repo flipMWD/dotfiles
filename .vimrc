@@ -6,10 +6,10 @@
 
 " Paths
 set path+=**
+set noswapfile
 
 " General
-set number
-set relativenumber
+set number relativenumber
 set scrolloff=3
 set textwidth=80
 set formatoptions+=ljr
@@ -22,10 +22,9 @@ set fillchars=vert:│
 set diffopt+=context:5,foldcolumn:0
 set modeline
 set hidden
-set splitbelow
-set splitright
+set splitbelow splitright
 set previewpopup=height:10,width:80
-set shortmess=a
+set shortmess=at
 set wildmenu
 set wildmode=longest,full
 set wildcharm=<C-z>
@@ -155,6 +154,7 @@ function! MakefileExists()
 	if filereadable("./Makefile")
 		let &makeprg = 'make'
 	endif
+	update
 	call feedkeys(':make ')
 endfunction
 
