@@ -1,0 +1,14 @@
+#!/bin/sh
+
+default_dir='.venv'
+
+if [ -n "$VIRTUAL_ENV" ]; then
+	echo "Python Virtual Environment is active. To disable it, you must run:
+	deactivate"
+	exit 0
+fi
+
+python3 -m venv "$default_dir"
+echo "To create a Python Virtual Environment, run:
+	source $default_dir/bin/activate
+	python -m pip install [--user] [--update] <module>..."

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+resetc="\e[0m"
+
+for tcolor in {30..37}; do
+	printf "\e[7;49;%sm %3s ${resetc}" ${tcolor} ${tcolor}
+done
+printf "${resetc}\n"
+
+for tcolor in {90..97}; do
+	printf "\e[7;49;%sm %3s ${resetc}" ${tcolor} ${tcolor}
+done
+printf "${resetc}\n\n"
+
+for ((i = 2; i < 38; i++)); do
+	for ((c = i * 6 + 4; c < (i + 1) * 6 + 4 && c < 255 + 4; c++)); do
+		printf "\e[7;49;38;5;%sm %3s ${resetc}" ${c} ${c}
+	done
+	printf "${resetc}\n"
+done
+printf "\n"
+
+for tcolor in {232..243}; do
+	printf "\e[48;5;%sm %3s ${resetc}" ${tcolor} ${tcolor}
+done
+printf "${resetc}\n"
+
+for tcolor in {244..255}; do
+	printf "\e[7;49;38;5;%sm %3s ${resetc}" ${tcolor} ${tcolor}
+done
+printf "${resetc}\n"

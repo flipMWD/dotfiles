@@ -11,6 +11,8 @@
 !.zshrc
 !README.md
 
+!.local/
+.local/*
 !.local/bin/
 
 !.vim/
