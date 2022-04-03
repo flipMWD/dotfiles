@@ -50,7 +50,8 @@ alias fh="fzfcd ~"
 
 fzfcd() {
 	local dir_ignore fzfexc fzfout
-	dir_ignore=(.android .cache .git .mozilla .pki node_modules Music Pictures Videos)
+	dir_ignore=(.android .cache .git .mozilla .pki .venv __pycache__
+		node_modules Music Pictures Videos)
 	for dir in "$dir_ignore[@]" ; do fzfexc+="-E \"$dir\" " ; done
 	fzfout="$(eval fd -HIp -t f $fzfexc '""' '"${1:-.}"' | fzf)"
 	[[ -e $fzfout ]] && cd "$(dirname -- "$fzfout")"
