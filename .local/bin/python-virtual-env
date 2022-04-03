@@ -1,14 +1,28 @@
 #!/bin/sh
 
-default_dir='.venv'
+default_dir="${1:-.venv}"
 
 if [ -n "$VIRTUAL_ENV" ]; then
-	echo "Python Virtual Environment is active. To disable it, you must run:
-	deactivate"
-	exit 0
+	echo -e "\033[32m[Virtual Environment Active]\033[0m
+	deactivate\nOr install new modules with:
+	python -m pip install [--user] [--update] <module>..."
+
+elif [ -d "$default_dir" ] ||
+	find_dir="$(find . -maxdepth 2 -type f -name 'pyvenv.cfg')"; then
+	[ -n "$find_dir" ] && default_dir="${find_dir%/*}"
+	echo -e "\033[33m[Virtual Environment Available]\033[0m
+	source $default_dir/bin/activate \033[36m(Copied)\033[0m
+	python -m pip install [--user] [--update] <module>..."
+
+else
+	echo -e "\033[34m[Virtual Environment Setup]\033[0m
+	source $default_dir/bin/activate \033[36m(Copied)\033[0m
+	python -m pip install [--user] [--update] <module>..."
+	python3 -m venv "$default_dir"
 fi
 
-python3 -m venv "$default_dir"
-echo "To create a Python Virtual Environment, run:
-	source $default_dir/bin/activate
-	python -m pip install [--user] [--update] <module>..."
+if [ -n "$WAYLAND_DISPLAY" ]; then
+	wl-copy "source $default_dir/bin/activate"
+else
+	echo "source $default_dir/bin/activate" | xclip -in -selection clipboard
+fi
