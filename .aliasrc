@@ -70,7 +70,8 @@ alias :q='exit'
 # Shortcuts
 alias v='gvim -v'
 alias nb='newsboat'
-alias jn='jupyter notebook'
+alias jn='jupyter lab'
+alias jl='jupyter lab'
 alias ytv="yt-dlp -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/%(title)s.%(ext)s\""
 alias ytm="yt-dlp -x --audio-quality 0 --audio-format mp3 -o \
