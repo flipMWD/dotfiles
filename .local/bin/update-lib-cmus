@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cmus-remote -C clear
-cmus-remote -C "add ${XDG_MUSIC_DIR:-$HOME/Music}/library"
-cmus-remote -C 'update-cache -f'
-
-exit 0

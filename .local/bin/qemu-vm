@@ -1,0 +1,25 @@
+#!/bin/sh
+
+term_gn='\033[32m'
+term_bl='\033[34m'
+term_mg='\033[35m'
+term_rs='\033[0m'
+
+help_fn() {
+	echo -e "Install:
+	sudo ${term_mg}<PKG_MNG>${term_rs} install qemu ${term_bl}[${term_rs}qemu-kvm libvirt-daemon-system ...${term_bl}]${term_rs}
+
+Usage:
+	${term_mg}qemu-img${term_rs} create -f ${term_gn}<FMT>${term_rs} ${term_gn}<PATH>${term_rs} ${term_gn}<SIZE>G${term_rs}
+
+	${term_mg}qemu-system-x86_64${term_rs}
+		-enable-kvm
+		-smp ${term_gn}<CORES>${term_rs}
+		-m ${term_gn}<MEM>G${term_rs}
+		-net nic -net user,smb=${term_gn}<PATH>${term_rs}
+		-device intel-hda -device hda-duplex
+		${term_bl}[${term_rs}-cdrom ${term_gn}<PATH>${term_rs} -boot menu=on${term_bl}]${term_rs}
+		-drive file=${term_gn}<PATH>${term_rs},format=${term_gn}<FMT>${term_rs}"
+}
+
+help_fn
