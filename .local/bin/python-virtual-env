@@ -8,7 +8,7 @@ if [ -n "$VIRTUAL_ENV" ]; then
 	python -m pip install [--user] [--update] <module>..."
 
 elif [ -d "$default_dir" ] ||
-	find_dir="$(find . -maxdepth 2 -type f -name 'pyvenv.cfg')"; then
+	[ -z find_dir="$(find . -maxdepth 2 -type f -name 'pyvenv.cfg')" ]; then
 	[ -n "$find_dir" ] && default_dir="${find_dir%/*}"
 	echo -e "\033[33m[Virtual Environment Available]\033[0m
 	source $default_dir/bin/activate \033[36m(Copied)\033[0m
