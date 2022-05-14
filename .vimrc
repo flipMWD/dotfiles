@@ -190,6 +190,7 @@ noremap <Leader>Y "+y$
 " Insert mode
 inoremap <C-c> <Esc>viwUea
 inoremap {<CR> {}<Esc>i<CR><Esc>O
+inoremap # <C-v>#
 
 " Visual mode
 vnoremap * /<C-r>*<CR><Esc>

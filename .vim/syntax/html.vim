@@ -12,6 +12,8 @@ hi def link htmlSpecialChar         SpecialChar
 hi def link htmlEvent               Function
 hi def link javaScript              Special
 hi def link javaScriptExpression    javaScript
+hi def link htmlItalic              Operator
+hi def link htmlBoldItalic          Operator
 
 if !exists("html_no_rendering")
     hi def link htmlTitle               Operator
