@@ -74,6 +74,7 @@ alias ytv="yt-dlp -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/%(title)s.%(ext)s\""
 alias ytm="yt-dlp -x --audio-quality 0 --audio-format mp3 -o \
     \"${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/%(title)s.%(ext)s\""
+alias ncdu='ncdu --color off'
 alias tsm='transmission-remote'
 alias tsmo='transmission-remote | tail -n +15 | less'
 alias tsms='transmission-launch'
