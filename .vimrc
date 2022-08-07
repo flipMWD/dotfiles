@@ -189,6 +189,7 @@ noremap <Leader>Y "+y$
 
 " Insert mode
 inoremap <C-c> <Esc>viwUea
+inoremap <C-t> <Esc>:set et!<CR>a<Tab><Esc>:set et!<CR>a
 inoremap {<CR> {}<Esc>i<CR><Esc>O
 inoremap # <C-v>#
 
