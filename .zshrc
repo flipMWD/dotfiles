@@ -35,6 +35,9 @@ autoload -U colors && colors
 
 if [[ -o login ]]; then
 	PS1='%n@%m %/ %# '
+	if command -v screen >/dev/null 2>&1 ; then
+		exec screen
+	fi
 else
 	PS1="%(1j.%F{3}.%F{7})◆%f ${uath}%F{4}%B%3~%b%f %(?.%F{7}.%F{1})%B>%b%f "
 fi

@@ -2,7 +2,7 @@
 
 # Edit and Refresh
 aliases() {
-	gvim -v "$HOME/.aliasrc" && source "$HOME/.aliasrc"
+	vim "$HOME/.aliasrc" && source "$HOME/.aliasrc"
 }
 
 #-------------------------------
@@ -67,7 +67,7 @@ alias more='less'
 alias :q='exit'
 
 # Shortcuts
-alias v='gvim -v'
+alias v='vim'
 alias nb='newsboat'
 alias jn='jupyter notebook'
 alias ytv="yt-dlp -o \
