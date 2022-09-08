@@ -89,9 +89,10 @@ function jl() {
 }
 
 # User Scripts
-alias p='pass-fzf'
 alias n='notetaker'
 alias ns='notetaker -s'
+alias sp='sudo pacman'
+alias pf='pass-fzf'
 
 #-------------------------------
 # Git
